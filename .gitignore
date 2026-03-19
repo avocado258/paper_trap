@@ -1,0 +1,18 @@
+# Data (too large for git)
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models (large binary files)
+outputs/models/
+
+# OS
+.DS_Store
+Thumbs.db
