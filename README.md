@@ -42,9 +42,9 @@ pip install google-genai python-dotenv
 #### Member Assignments
 | Member | Paper IDs | Provider |
 |--------|-----------|----------|
-| Member 1 | 1 – 84 | Gemini 2.0 Flash |
-| Member 2 | 85 – 168 | Gemini 2.0 Flash |
-| Member 3 | 169 – 250 | Gemini 2.0 Flash |
+| Member 1 | 1 – 84 | Gemini 3.1 Flash Lite Preview |
+| Member 2 | 85 – 168 | Gemini 3.1 Flash Lite Preview |
+| Member 3 | 169 – 250 | Gemini 3.1 Flash Lite Preview |
 
 Each member only needs their own Gemini API key in their local `.env` file.
 
