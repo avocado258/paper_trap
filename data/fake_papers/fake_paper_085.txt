@@ -1,0 +1,197 @@
+# Latent Message Bottlenecking for Communication-Efficient Cooperative Multi-Agent Reinforcement Learning
+
+**Authors:**
+Elena V. Sterling, Department of Computer Science, Stanford University; Marcus J. Thorne, AI Research Lab, MIT; Julian K. Vance, Department of Electrical Engineering, University of Oxford.
+
+### Abstract
+
+Cooperative Multi-Agent Reinforcement Learning (MARL) is fundamentally limited by the trade-off between communication bandwidth and coordination efficacy. While centralized training with decentralized execution (CTDE) frameworks have achieved significant success, they often assume noise-free, high-bandwidth communication channels between agents, an assumption that frequently fails in real-world deployment scenarios such as swarm robotics and autonomous vehicle networks. In this paper, we introduce **Latent Message Bottlenecking (LMB)**, a novel framework that utilizes information-theoretic constraints to prune redundant communication overhead while maximizing task-relevant mutual information. We formulate the communication problem as an optimization over a constrained latent space, employing a variational information bottleneck objective to force agents to learn compressed, high-utility representations. Theoretical analysis demonstrates that LMB minimizes the regret bound under restricted bandwidth settings. Extensive empirical evaluations on the StarCraft Multi-Agent Challenge (SMAC) and a custom multi-robot navigation task reveal that LMB consistently outperforms state-of-the-art baselines by up to 14% in high-pressure, low-bandwidth environments. We further demonstrate that our learned latent codes exhibit high interpretability, providing insights into the emergence of specialized communication protocols.
+
+### Keywords
+Multi-Agent Reinforcement Learning, Communication Constraints, Information Bottleneck, Decentralized Execution, Representation Learning.
+
+---
+
+### Introduction
+
+The paradigm of Multi-Agent Reinforcement Learning (MARL) has undergone a significant transformation through the lens of Centralized Training with Decentralized Execution (CTDE) [1]. By allowing agents to leverage global state information during training while restricting them to local observations during execution, researchers have successfully addressed the non-stationarity inherent in multi-agent environments [2]. However, the vast majority of these frameworks operate under the implicit assumption of an ideal communication topology, where agents may broadcast their full internal state or observations to teammates without cost or latency [3].
+
+In practical deployments, such as underwater acoustic networks or congested urban V2V (Vehicle-to-Vehicle) systems, communication is inherently a scarce resource characterized by limited bandwidth, packet loss, and latency [4]. Ignoring these constraints leads to models that either collapse under communication failure or demand prohibitive overhead that renders them impractical [5]. While recent efforts have attempted to address this via learned communication protocols, these methods often suffer from either information loss due to aggressive pruning or high computational complexity during the inference phase [6].
+
+In this work, we propose Latent Message Bottlenecking (LMB), a framework designed to optimize the trade-off between communication efficiency and cooperative performance. Drawing inspiration from the Information Bottleneck (IB) principle [7], LMB enforces a structural constraint on the latent communication vectors, ensuring that only information critically relevant to the joint action-value function is transmitted. By minimizing the mutual information between raw observation history and the transmitted message, while maximizing the mutual information between the message and the future joint reward, our method encourages agents to develop efficient, task-specific communication policies.
+
+The contributions of this paper are threefold: (1) We introduce the LMB framework, which integrates a variational information bottleneck into the agent’s communication channel to facilitate compact messaging. (2) We provide a theoretical derivation showing that LMB effectively bounds the sub-optimality induced by communication constraints. (3) We conduct extensive experiments, demonstrating superior performance in bandwidth-constrained MARL benchmarks compared to existing state-of-the-art communication models.
+
+---
+
+### Related Work
+
+Communication in MARL has been extensively studied, with initial approaches focusing on simple differentiable message passing [8]. Methods such as DIAL (Differentiable Inter-Agent Learning) demonstrated that agents could learn to communicate gradients during training, which were then realized as discrete messages during execution [9]. However, these early models lacked explicit constraints on message size, often leading to uninterpretable and inefficient protocols.
+
+More recent developments have pivoted toward attention-based mechanisms, such as ATOC (Attentional Communication) and TarMAC, which allow agents to selectively attend to teammates [10], [11]. While effective at filtering which agents to communicate with, these models do not fundamentally address the *content* compression problem. The Information Bottleneck principle has been previously applied to single-agent RL for feature selection [12], but its application to the multi-agent cooperative setting remains underexplored.
+
+Furthermore, existing approaches to communication constraints often rely on fixed pruning strategies or simple penalty terms on message magnitude [13], [14]. These strategies lack the formal information-theoretic grounding provided by the IB principle, often leading to sub-optimal information retention. Our work bridges this gap by explicitly optimizing the message representation through a variational objective that balances compression and utility.
+
+---
+
+### Background / Preliminaries
+
+We consider a Decentralized Partially Observable Markov Decision Process (Dec-POMDP) defined by the tuple $\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \Omega, \mathcal{O}, n, \gamma \rangle$. Here, $n$ represents the number of agents, $\mathcal{A}$ the joint action space, $\mathcal{P}$ the transition dynamics, and $\mathcal{R}$ the joint reward function [15].
+
+Each agent $i$ maintains a local policy $\pi_i(a_i | o_i, m_{-i}, h_i)$, where $o_i$ is the local observation, $m_{-i}$ is the incoming message from teammates, and $h_i$ is the hidden state (usually represented by a Recurrent Neural Network such as a GRU) [16]. The communication constraint is defined by a bandwidth budget $B$ (in bits), such that for any message $m_i \in \mathbb{R}^d$, the entropy $H(m_i) \leq B$.
+
+We define the Joint Action-Value function $Q_{tot}(\tau, \mathbf{a})$, where $\tau$ is the joint history and $\mathbf{a}$ the joint action. In CTDE, the goal is to maximize the expected return $J = \mathbb{E}_{\pi} [\sum_{t=0}^{\infty} \gamma^t r_t]$.
+
+---
+
+### Methodology / Proposed Approach
+
+The LMB framework modifies the standard MARL architecture by inserting an **Information Bottleneck Module (IBM)** between the agent’s internal state encoder and the communication channel.
+
+#### 4.1 Variational Message Compression
+Given an internal state encoding $z_i = \text{Enc}(o_i, h_i)$, the IBM generates a latent message $m_i$ by sampling from a conditional distribution $q_\phi(m_i | z_i)$. The objective function is augmented with an information-theoretic constraint:
+$$ \mathcal{L}_{LMB} = \mathcal{L}_{RL} + \beta \cdot I(Z; M) - \alpha \cdot I(M; \mathcal{R}) $$
+where $I(Z; M)$ is the mutual information between the state encoding and the message, and $I(M; \mathcal{R})$ is the mutual information between the message and the future reward [17].
+
+We approximate the variational upper bound on $I(Z; M)$ using a Gaussian prior $p(m) = \mathcal{N}(0, I)$, resulting in the following loss term for each agent:
+$$ \mathcal{L}_{IB} = \sum_{i=1}^n \text{KL}(q_\phi(m_i|z_i) || p(m_i)) \quad (1) $$
+
+#### 4.2 The LMB Algorithm
+The training process employs a centralized critic that evaluates the quality of the messages received by agents, effectively acting as a supervisor for the communication policy. The pseudocode is presented below:
+
+**Algorithm 1: Latent Message Bottlenecking (LMB)**
+1. Initialize policies $\pi_\theta$, encoders $\text{Enc}_\psi$, and centralized critic $Q_w$.
+2. **Repeat**
+3.   Sample trajectories under current $\pi_\theta$.
+4.   For each agent $i$, compute $z_i = \text{Enc}_\psi(o_i, h_i)$.
+5.   Sample $m_i \sim q_\phi(m_i | z_i)$.
+6.   Apply bandwidth constraint: truncate $m_i$ to top-$k$ components.
+7.   Compute joint action $\mathbf{a} = \pi_\theta(o, m_{-i})$.
+8.   Calculate $\mathcal{L}_{IB}$ as per Eq. (1).
+9.   Compute $Q_{tot}$ and perform temporal difference update.
+10.  Update $\theta, \psi, \phi$ via gradient descent.
+11. **Until** convergence.
+
+#### 4.3 Computational Complexity
+The inclusion of the IBM adds a negligible overhead of $O(d^2)$ per communication step, where $d$ is the latent message dimension. Since $d \ll |S|$, the overall complexity remains dominated by the centralized critic update, $O(|\mathcal{S}| \cdot |\mathcal{A}|)$, ensuring scalability to large agent populations.
+
+---
+
+### Theoretical Analysis
+
+**Theorem 1:** *The minimization of $\mathcal{L}_{IB}$ bounds the regret $R$ of the communication policy relative to the unconstrained optimal policy $\pi^*$.*
+
+*Proof Sketch:* Let $J(\pi)$ be the value of the joint policy. Under a bandwidth constraint $B$, the difference in value is bounded by the information gap. Using the Data Processing Inequality, we observe that $I(M; \mathcal{R}) \leq I(Z; \mathcal{R})$. As we minimize $I(Z; M)$ while maintaining $I(M; \mathcal{R}) \geq \kappa$, the message bottleneck ensures that only information strictly necessary for the joint action is preserved [18]. Thus, $\| Q_{tot}^* - Q_{tot}^{LMB} \| \leq \epsilon(B)$, where $\epsilon(B)$ decays exponentially with $B$.
+
+This suggests that LMB allows agents to operate near-optimally even when $B$ is strictly limited, provided the latent space dimensionality is sufficient to capture the task’s underlying manifold.
+
+---
+
+### Experiments
+
+#### Datasets
+We evaluate LMB on two domains:
+1. **SMAC (StarCraft Multi-Agent Challenge):** We select the `3m` and `8m` maps, which require precise coordination [19].
+2. **Multi-Robot Navigation:** A custom 2D grid-world where agents must navigate to target points without colliding, with a shared global reward [20].
+
+#### Experimental Setup
+We compare LMB against the following baselines:
+- **Independent Q-Learning (IQL):** No communication [21].
+- **CommNet:** Continuous message passing without compression [22].
+- **DIAL:** Discrete communication with gradient backpropagation [9].
+- **TarMAC:** Attention-based message routing [11].
+- **DCC (Dynamic Communication Channel):** Adaptive bandwidth gating [23].
+
+All models were trained for $2 \times 10^6$ timesteps using RMSprop with a learning rate of $5 \times 10^{-4}$.
+
+#### Results
+
+**Table 1: Win Rates on SMAC (3m, 8m)**
+| Model | 3m (Win Rate %) | 8m (Win Rate %) | Latency (ms) |
+| :--- | :--- | :--- | :--- |
+| IQL | 42.1 | 15.3 | 0.2 |
+| CommNet | 68.4 | 45.2 | 1.8 |
+| DIAL | 71.2 | 48.9 | 1.5 |
+| TarMAC | 74.5 | 52.1 | 2.2 |
+| DCC | 76.8 | 55.4 | 1.9 |
+| **LMB (Ours)** | **82.3** | **61.2** | **1.6** |
+
+**Table 2: Average Reward in Navigation Task**
+| Model | Low Bandwidth | High Bandwidth |
+| :--- | :--- | :--- |
+| TarMAC | 12.4 | 28.5 |
+| DCC | 14.8 | 29.1 |
+| **LMB (Ours)** | **22.5** | **29.8** |
+
+The results indicate that LMB maintains high performance even in low-bandwidth scenarios where other methods suffer from informational collapse.
+
+---
+
+### Ablation Study
+
+To isolate the contribution of the information bottleneck, we performed an ablation study by removing the KL-divergence term (LMB-NoIB) and replacing the stochastic sampler with a deterministic linear layer (LMB-Det).
+
+**Table 3: Ablation Results (3m Map)**
+| Component | Win Rate % |
+| :--- | :--- |
+| Full LMB | 82.3 |
+| LMB-NoIB | 73.1 |
+| LMB-Det | 68.5 |
+
+The performance drop in LMB-NoIB confirms that the variational objective is critical for forcing compact, high-utility representations.
+
+---
+
+### Discussion / Insights
+
+The superior performance of LMB relative to baselines such as DCC and TarMAC suggests that the explicit regularization of the latent message space is a more robust strategy than simple gating or attentional weighting. By forcing the latent code to conform to a Gaussian prior, we effectively regularize the communication channel, preventing the "overfitting" of messages to specific noise patterns in the environment.
+
+One observation of note is the interpretability of the learned codes. Post-hoc visualization of the latent messages revealed that agents developed distinct "modes" of communication: low-magnitude signals corresponded to routine movements, while high-magnitude, high-entropy signals were reserved for conflict resolution or target acquisition. This hierarchical structure emerges naturally from the bottleneck objective, reinforcing the theory that task-relevant information occupies a low-dimensional manifold [24].
+
+However, it is worth noting that the effectiveness of LMB is sensitive to the choice of the $\beta$ hyperparameter. A too-large $\beta$ leads to overly aggressive compression, where agents fail to convey even essential coordination signals. Conversely, a small $\beta$ collapses to standard CommNet, losing the benefits of regularization. We suggest an adaptive scheduling approach for $\beta$, an avenue we intend to explore in future work.
+
+---
+
+### Limitations & Future Work
+
+Despite the improvements offered by LMB, several limitations remain. First, the current formulation assumes a shared latent space across all agents. In heterogeneous populations, this may lead to sub-optimal communication as agents with different physical capabilities attempt to map observations to a common latent space. Implementing agent-specific bottleneck priors could mitigate this discrepancy [25].
+
+Second, the current experimental validation is primarily performed in simulated environments. While these environments are standard in the MARL literature, they do not fully capture the non-stationary, asynchronous nature of real-world communication channels, where packet delay and jitter are non-negligible. Adapting the LMB objective to include a temporal delay penalty is a necessary next step.
+
+Finally, we plan to extend the LMB framework to large-scale, open-ended multi-agent systems where the number of agents is not fixed during training. The current centralized training architecture relies on a fixed permutation-invariant input, which may need to be replaced with graph neural network (GNN) architectures to handle dynamic agent counts effectively.
+
+---
+
+### Conclusion
+
+This paper introduced Latent Message Bottlenecking, a rigorous and efficient approach to communication-constrained MARL. By leveraging the Information Bottleneck principle, we demonstrated that agents can learn to transmit highly compact, yet semantically rich, messages that enable successful coordination. Our theoretical and empirical results confirm that LMB outperforms state-of-the-art communication frameworks, particularly under restricted bandwidth conditions. We believe this work provides a foundational step toward deploying robust multi-agent systems in real-world environments where communication is a precious and volatile commodity.
+
+---
+
+### References
+
+[1] J. Foerster, G. Farquhar, T. Afouras, N. Nardelli, and S. Whiteson, "Counterfactual multi-agent policy gradients," in Proc. AAAI, New Orleans, 2018, pp. 2974-2982.
+[2] R. Lowe et al., "Multi-agent actor-critic for mixed cooperative-competitive environments," in Proc. NeurIPS, Long Beach, 2017, pp. 6379-6390.
+[3] L. Panait and S. Luke, "Cooperative multi-agent learning: The state of the art," Autonomous Agents and Multi-Agent Systems, vol. 11, pp. 387-434, 2005.
+[4] Y. Liu and T. K. S. Kumar, "Communication in multi-agent reinforcement learning: A survey," arXiv preprint arXiv:2104.09549, 2021.
+[5] J. Zhang and M. Lesser, "Multi-agent systems with bandwidth constraints," in Proc. IJCAI, Buenos Aires, 2015, pp. 120-128.
+[6] S. Sukhbaatar, A. Szlam, and R. Fergus, "Learning multiagent communication with backpropagation," in Proc. NeurIPS, Barcelona, 2016, pp. 2244-2252.
+[7] N. Tishby, F. C. Pereira, and W. Bialek, "The information bottleneck method," in Proc. Allerton, Monticello, 1999, pp. 368-377.
+[8] P. Gupta et al., "Multi-agent reinforcement learning with communicative agents," in Proc. AAMAS, Stockholm, 2018, pp. 100-110.
+[9] J. Foerster et al., "Learning to communicate with deep multi-agent reinforcement learning," in Proc. NeurIPS, Barcelona, 2016, pp. 2137-2145.
+[10] D. Jiang and Z. Lu, "Learning attentional communication for multi-agent cooperation," in Proc. NeurIPS, Montreal, 2018, pp. 7254-7264.
+[11] A. Das et al., "TarMAC: Targeted multi-agent communication," in Proc. ICML, Long Beach, 2019, pp. 1538-1546.
+[12] A. A. Alemi et al., "Deep variational information bottleneck," in Proc. ICLR, Toulon, 2017, pp. 1-12.
+[13] X. Wang and H. Liu, "Communication-efficient MARL via adaptive gating," in Proc. AAMAS, Auckland, 2020, pp. 550-558.
+[14] T. Kim and J. Park, "Constraint-aware communication in multi-agent systems," IEEE Trans. Neural Netw. Learn. Syst., vol. 32, no. 5, pp. 2100-2112, 2021.
+[15] F. A. Oliehoek and C. Amato, *A Concise Introduction to Decentralized POMDPs*. Cham, Switzerland: Springer, 2016.
+[16] M. Hausknecht and P. Stone, "Deep recurrent Q-learning for partially observable MDPs," in Proc. AAAI, Austin, 2015, pp. 29-37.
+[17] I. Higgins et al., "beta-VAE: Learning basic visual concepts with a constrained variational framework," in Proc. ICLR, Toulon, 2017, pp. 1-15.
+[18] T. M. Cover and J. A. Thomas, *Elements of Information Theory*. Hoboken, NJ: Wiley, 2006.
+[19] M. Samvelyan et al., "The StarCraft multi-agent challenge," in Proc. AAMAS, Stockholm, 2019, pp. 2186-2188.
+[20] H. Liu et al., "Multi-robot navigation in constrained environments," J. Field Robot., vol. 37, no. 4, pp. 550-565, 2020.
+[21] M. Tan, "Multi-agent reinforcement learning: Independent vs. cooperative agents," in Proc. ICML, New Brunswick, 1993, pp. 330-337.
+[22] S. Sukhbaatar, R. Fergus, et al., "Learning multiagent communication with backpropagation," in Proc. NeurIPS, Barcelona, 2016, pp. 2244-2252.
+[23] W. Zhang and Y. Hao, "Dynamic communication channel for multi-agent reinforcement learning," in Proc. AAAI, New York, 2020, pp. 7820-7827.
+[24] G. Hinton and R. Zemel, "Autoencoders, minimum description length and Helmholtz free energy," in Proc. NeurIPS, Denver, 1994, pp. 3-10.
+[25] K. Zhang et al., "Multi-agent reinforcement learning with heterogeneous communication," in Proc. ICML, Vienna, 2020, pp. 11200-11210.

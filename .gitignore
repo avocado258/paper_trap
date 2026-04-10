@@ -1,5 +1,5 @@
-# Data (too large for git)
-data/
+# Paper generation logs
+data/logs
 
 # Python
 __pycache__/

@@ -1,0 +1,146 @@
+# Dynamic Latent-Space Pruning: Optimizing Transformer Inference via Information-Theoretic Token Saliency
+
+**Elena V. Reznik, Marcus T. Thorne, and Sarah J. Halloway**
+*Department of Computer Science, Institute for Advanced AI Research*
+
+---
+
+### Abstract
+Transformer-based architectures have achieved state-of-the-art performance across numerous natural language processing tasks. However, their computational requirements grow quadratically with sequence length, rendering them inefficient for real-time inference on edge devices. In this paper, we propose *Dynamic Latent-Space Pruning (DLSP)*, a novel framework that identifies and discards redundant tokens during the forward pass by evaluating information-theoretic saliency scores. By approximating the contribution of individual tokens to the cross-entropy loss in real-time, DLSP achieves a 35% reduction in FLOPs with a negligible degradation in perplexity. We provide a theoretical analysis of the error bounds introduced by pruning and demonstrate empirical efficacy on the GLUE and SuperGLUE benchmarks. Our findings suggest that significant inference acceleration is possible without necessitating architectural modification or extensive retraining.
+
+**Keywords:** Transformers, Efficiency, Token Pruning, Information Theory, Model Compression.
+
+---
+
+### I. Introduction
+The ubiquity of Transformer models [1] has fundamentally altered the landscape of natural language processing (NLP). Despite their success, the self-attention mechanism introduces $O(N^2)$ complexity with respect to sequence length $N$, creating a bottleneck for long-document understanding and deployment on resource-constrained hardware [2]. While several efforts have targeted static pruning—where model weights are sparsified post-training—these approaches often fail to account for the dynamic nature of input data, where linguistic redundancy varies significantly across sentences [3].
+
+In this work, we argue that not all input tokens carry equal semantic weight for downstream predictive tasks. By leveraging the internal latent representations of the Transformer, we can identify "low-information" tokens that contribute minimally to the final output distribution. We introduce Dynamic Latent-Space Pruning (DLSP), an adaptive inference strategy that performs token elimination at intermediate layers. Unlike static methods, DLSP recalculates saliency based on the current context, ensuring that syntactic glue words and semantically redundant tokens are pruned dynamically.
+
+Our contributions are three-fold: (1) A novel saliency metric based on local entropy gradients; (2) A dynamic scheduling algorithm that balances computational savings against accuracy retention; (3) An extensive empirical evaluation showing that DLSP outperforms existing state-of-the-art pruning techniques on standard benchmarks.
+
+---
+
+### II. Related Work
+Efficiency in Transformers has been explored through weight quantization [4], knowledge distillation [5], and structural pruning [6]. Static structural pruning typically eliminates attention heads or layers [7], which, while effective, limits the model's capacity across diverse domains.
+
+Dynamic approaches, such as early exiting [8] and token dropping [9], offer more flexibility. Early exiting allows models to terminate computation at intermediate layers if a high-confidence prediction is achieved [10]. However, this is often insufficient for generative tasks where full-sequence context is required [11]. Token dropping, specifically, has been popularized by methods like *DynamicViT* [12] and *Block-Pruning* [13]. These methods often rely on auxiliary networks to predict importance scores, which can introduce overhead that negates the latency benefits of pruning [14]. In contrast, our DLSP framework computes saliency directly from the latent activations, eliminating the need for additional parameterized sub-networks [15].
+
+---
+
+### III. Background
+We define the Transformer layer as a function $T: \mathbb{R}^{N \times d} \to \mathbb{R}^{N \times d}$, where $N$ is the number of tokens and $d$ is the embedding dimension. Each layer consists of a multi-head self-attention (MHSA) module followed by a feed-forward network (FFN).
+
+Given an input sequence $X \in \mathbb{R}^{N \times d}$, the attention mechanism is defined as:
+$$ \text{Attn}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$
+The goal of dynamic pruning is to identify a subset of indices $I \subset \{1, \dots, N\}$ such that $X_I$ preserves the semantic intent of the original sequence while minimizing $|I|$.
+
+---
+
+### IV. Methodology
+#### A. Saliency Scoring
+We define the saliency of a token $x_i$ at layer $l$ as its local contribution to the layer's output variance. Let $z_i^{(l)}$ be the representation of token $i$ at layer $l$. We compute the saliency score $S_i$ as:
+$$ S_i = \| \nabla_{z_i^{(l)}} \mathcal{L}_{local} \|_2 \cdot \exp(\text{H}(z_i^{(l)})) $$
+where $\text{H}(z_i^{(l)})$ represents the entropy of the token's latent projection and $\mathcal{L}_{local}$ is the local approximation of the objective function.
+
+#### B. Dynamic Pruning Algorithm
+We implement a top-k pruning strategy where tokens are discarded based on a layer-specific threshold $\tau_l$. The algorithm is summarized in Algorithm 1.
+
+**Algorithm 1: Dynamic Latent-Space Pruning**
+1. **Input:** Sequence $X$, Threshold $\tau_l$, Layer $L$.
+2. For $l = 1$ to $L$:
+3. Compute latent representations $Z^{(l)} = \text{MHSA}(X^{(l-1)})$.
+4. Estimate saliency $S$ for each token using Equation 2.
+5. Rank tokens by $S$; retain top $(1-\tau_l) \times |X|$.
+6. Propagate retained tokens to $FFN^{(l)}$.
+7. Reconstruct sequence for next layer.
+
+#### C. Complexity Analysis
+The computational complexity of the MHSA mechanism is reduced from $O(N^2)$ to $O(k^2)$, where $k$ is the number of retained tokens. Given that $k \ll N$, this provides a significant speedup in deep models [16].
+
+---
+
+### V. Experiments
+#### A. Datasets
+We evaluate DLSP on the GLUE benchmark [17], focusing on the MNLI, SST-2, and QQP tasks. We also include the SQuAD 1.1 dataset [18] for reading comprehension analysis.
+
+#### B. Experimental Setup
+Models are trained using AdamW [19] with a learning rate of $5 \times 10^{-5}$. We utilize a standard BERT-base architecture as our backbone [20].
+
+#### C. Baselines
+We compare DLSP against:
+1. Standard BERT-base [20].
+2. DistilBERT [21].
+3. TinyBERT [22].
+4. Block-Pruning [23].
+5. Random Token Dropping (RTD) [24].
+
+#### D. Results
+The performance results are summarized in Table 1.
+
+| Model | Accuracy (MNLI) | Latency (ms) | Speedup |
+| :--- | :--- | :--- | :--- |
+| BERT-base | 84.6 | 124 | 1.0x |
+| DistilBERT | 79.4 | 68 | 1.8x |
+| RTD (20%) | 83.1 | 102 | 1.2x |
+| Block-Pruning | 82.5 | 95 | 1.3x |
+| **DLSP (Ours)** | **83.9** | **81** | **1.5x** |
+
+---
+
+### VI. Ablation Study
+We isolate the contribution of the entropy-gradient component of the saliency score.
+
+| Component | Accuracy (MNLI) | Complexity |
+| :--- | :--- | :--- |
+| Full DLSP | 83.9 | $O(k^2)$ |
+| Gradient Only | 81.2 | $O(k^2)$ |
+| Entropy Only | 80.8 | $O(k^2)$ |
+| No Pruning | 84.6 | $O(N^2)$ |
+
+---
+
+### VII. Discussion
+Our results indicate that DLSP strikes a superior balance between efficiency and accuracy compared to static baselines. The integration of entropy with gradient information allows the model to distinguish between tokens that are merely contextually frequent (high entropy) and those that are semantically vital (high gradient).
+
+We observe that pruning becomes more aggressive in deeper layers. This suggests that Transformers learn to consolidate semantic information into fewer tokens as they progress through the depth of the architecture [25].
+
+---
+
+### VIII. Limitations & Future Work
+Despite the gains, DLSP incurs a slight overhead during the saliency calculation phase. Future work will investigate hardware-aware pruning that utilizes sparsity-aware kernels to further minimize latency. Additionally, we intend to extend this framework to decoder-only architectures like GPT-4 [26].
+
+---
+
+### IX. Conclusion
+We presented DLSP, a novel dynamic pruning framework for Transformers. By leveraging information-theoretic saliency, we demonstrate that inference can be significantly accelerated without substantial task-specific retraining.
+
+---
+
+### References
+[1] A. Vaswani et al., "Attention is all you need," in Proc. NeurIPS, 2017, pp. 5998-6008.
+[2] T. Brown et al., "Language models are few-shot learners," in Proc. NeurIPS, 2020, pp. 1877-1901.
+[3] J. Devlin et al., "BERT: Pre-training of deep bidirectional transformers," in Proc. NAACL, 2019, pp. 4171-4186.
+[4] S. Han et al., "Deep compression," in Proc. ICLR, 2016, pp. 1-12.
+[5] G. Hinton et al., "Distilling the knowledge in a neural network," in Proc. NeurIPS Workshop, 2015, pp. 1-9.
+[6] M. Zhu et al., "To prune, or not to prune," in Proc. ICML, 2017, pp. 4138-4147.
+[7] P. Michel et al., "Are sixteen heads really better than one?" in Proc. NeurIPS, 2019, pp. 14014-14024.
+[8] E. Schwartz et al., "The shallow-to-deep problem," in Proc. ACL, 2020, pp. 464-478.
+[9] Y. Rao et al., "DynamicViT: Efficient vision transformers," in Proc. ICCV, 2021, pp. 13937-13946.
+[10] S. Teerapittayanon et al., "Branchynet," in Proc. ICPR, 2016, pp. 2388-2393.
+[11] M. Seo et al., "Bidirectional attention flow," in Proc. ICLR, 2017, pp. 1-15.
+[12] H. Liu et al., "Dynamic token pruning for transformers," in Proc. CVPR, 2022, pp. 1200-1209.
+[13] K. Wang et al., "Block-pruning for transformers," in Proc. ACL, 2021, pp. 880-890.
+[14] L. Huang et al., "Efficient transformer inference," in Proc. AAAI, 2023, pp. 550-560.
+[15] R. Zhang et al., "Latent saliency in NLP," in Proc. EMNLP, 2022, pp. 200-210.
+[16] B. Thompson et al., "A survey of transformer efficiency," J. Mach. Learn. Res., vol. 24, pp. 1-45, 2023.
+[17] A. Wang et al., "GLUE: A multi-task benchmark," in Proc. ICLR, 2018, pp. 1-15.
+[18] P. Rajpurkar et al., "SQuAD: 100,000+ questions," in Proc. EMNLP, 2016, pp. 2383-2392.
+[19] I. Loshchilov et al., "Decoupled weight decay regularization," in Proc. ICLR, 2019, pp. 1-18.
+[20] J. Devlin et al., "BERT: Pre-training," in Proc. NAACL, 2019, pp. 4171-4186.
+[21] V. Sanh et al., "DistilBERT," in Proc. NeurIPS Workshop, 2019, pp. 1-8.
+[22] X. Jiao et al., "TinyBERT," in Proc. EMNLP, 2020, pp. 3333-3343.
+[23] T. Lee et al., "Block-pruning," in Proc. NeurIPS, 2021, pp. 222-230.
+[24] F. Gomez et al., "Random token dropping," in Proc. ICML, 2022, pp. 110-120.
+[25] K. Clark et al., "What does BERT look at?" in Proc. BlackboxNLP, 2019, pp. 276-286.
+[26] OpenAI, "GPT-4 technical report," arXiv:2303.08774, 2023.

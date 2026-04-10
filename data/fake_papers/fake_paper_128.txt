@@ -1,0 +1,148 @@
+# Adaptive Rank-Projection: Enhancing Parameter-Efficient Fine-Tuning via Hessian-Aware LoRA
+
+**Elena V. Sterling, Marcus Thorne, and Jian-Wei Zhou**  
+*Department of Computer Science, Institute for Advanced AI Research*  
+*{e.sterling, m.thorne, j.zhou}@iaair.edu*
+
+### Abstract
+Low-Rank Adaptation (LoRA) has emerged as the de facto standard for fine-tuning Large Language Models (LLMs) due to its minimal parameter overhead. However, current implementations typically employ a uniform rank $r$ across all transformer layers, ignoring the heterogeneous sensitivity of different modules to downstream task objectives. In this paper, we introduce Adaptive Rank-Projection (AdaRP), a novel framework that dynamically modulates the rank of low-rank updates based on the second-order sensitivity (Hessian trace) of the model parameters. By approximating the eigenvalue decay of the Hessian during the initial training phase, AdaRP allocates higher rank capacity to modules that exhibit higher curvature, thereby optimizing the trade-off between parameter efficiency and task performance. We evaluate our approach across the GLUE benchmark and demonstrate that AdaRP achieves a 12% improvement in parameter efficiency compared to fixed-rank LoRA while maintaining competitive predictive accuracy.
+
+**Keywords:** Large Language Models, Parameter-Efficient Fine-Tuning, LoRA, Second-Order Optimization, Adaptive Rank Allocation.
+
+### Introduction
+The escalation in parameter counts for Large Language Models (LLMs) has rendered full fine-tuning computationally prohibitive for most research entities. Consequently, Parameter-Efficient Fine-Tuning (PEFT) methods, specifically Low-Rank Adaptation (LoRA), have gained significant traction [1]. LoRA operates under the premise that the updates to weight matrices during fine-tuning possess a low intrinsic rank, allowing for the decomposition of weight updates into two smaller matrices, $A$ and $B$, such that $\Delta W = BA$ [2].
+
+Despite the success of LoRA, the choice of rank $r$ remains largely heuristic. Practitioners often apply a uniform rank across all query, key, value, and output projection layers. This approach is inherently sub-optimal; empirical evidence suggests that different layers within the transformer architecture capture disparate linguistic and semantic features, implying that the "intrinsic dimensionality" of the weight updates is non-uniform [3]. Assigning the same budget of trainable parameters to a layer that contributes minimally to the task objective as to one that is critical for adaptation results in either wasted computational resources or under-parameterized capacity.
+
+In this work, we propose Adaptive Rank-Projection (AdaRP). AdaRP integrates a lightweight Hessian-aware rank estimation module that periodically probes the curvature of the loss landscape. By identifying layers that exhibit high sensitivity—defined as the magnitude of change in loss given a perturbation—we dynamically resize the low-rank adapters. This mechanism allows the model to compress information in stable layers while expanding capacity in volatile layers. Our contributions are threefold: (1) we formulate a Hessian-based rank allocation strategy; (2) we introduce a dynamic projection operator that permits rank resizing without full model retraining; and (3) we provide empirical evidence of superior performance-to-parameter ratios on standard NLP benchmarks.
+
+### Related Work
+The landscape of PEFT is dominated by three main paradigms: additive methods, selective methods, and reparameterization methods. Additive methods, such as Adapters [4], insert small neural modules between transformer layers. While effective, they introduce inference latency. Selective methods [5] update only a subset of existing parameters (e.g., bias terms or layer normalization parameters), but often struggle to reach the performance levels of full fine-tuning.
+
+LoRA occupies the reparameterization space by injecting trainable rank-decomposition matrices [2]. Extensions such as QLoRA [6] introduce quantization to further reduce memory footprints, while DoRA [7] attempts to decouple magnitude and direction during weight updates. However, none of these methods address the structural heterogeneity of the transformer layers themselves.
+
+Second-order optimization techniques have historically been difficult to scale to LLMs due to the $O(n^2)$ memory complexity of the Hessian matrix. Recent approximations, such as K-FAC [8] or diagonal approximations [9], have made curvature estimation more tractable. We leverage these insights to guide our rank selection, moving beyond the static paradigms currently prevalent in the field.
+
+### Background
+Given a pre-trained weight matrix $W \in \mathbb{R}^{d \times d}$, LoRA constrains the update $\Delta W$ by:
+$$ \Delta W = B A $$
+where $B \in \mathbb{R}^{d \times r}$ and $A \in \mathbb{R}^{r \times d}$, with $r \ll d$. The forward pass is defined as:
+$$ h = Wx + s \cdot (BA)x $$
+where $s$ is a scaling factor. The objective is to minimize the loss $\mathcal{L}(\theta + BA)$.
+
+The Fisher Information Matrix (FIM) or the Hessian $H = \nabla^2_{\theta} \mathcal{L}$ captures the curvature of the loss landscape. In our context, we are interested in the spectrum of the Hessian of the adapter parameters. Specifically, if $\lambda_i$ are the eigenvalues of $H$, the "importance" of a parameter block can be estimated by the trace $\text{Tr}(H) = \sum \lambda_i$.
+
+### Methodology: Adaptive Rank-Projection (AdaRP)
+AdaRP replaces static adapters with a dynamic rank-controller. We define the rank of the $l$-th layer's adapter $r_l$ as a function of the local Hessian trace.
+
+#### Hessian-Aware Rank Estimation
+We compute a moving average of the Hessian trace using a stochastic power iteration method. For a block of parameters $\phi_l$, the estimated importance $I_l$ is given by:
+$$ I_l = \mathbb{E}[\|\nabla_{\phi_l} \mathcal{L}\|^2] \approx \frac{1}{T} \sum_{t=1}^T g_t^2 $$
+where $g_t$ is the gradient at iteration $t$. We map $I_l$ to a discrete rank $r_l \in \{r_{min}, \dots, r_{max}\}$ via a quantization function $Q$:
+$$ r_l = Q\left( \alpha \cdot \frac{I_l}{\sum I_j} \cdot R_{total} \right) $$
+where $R_{total}$ is the global parameter budget.
+
+#### Dynamic Projection
+To facilitate rank changes, we employ a projection operator $P$. When $r_{new} > r_{old}$, we pad the adapter matrices with zero-mean Gaussian noise. When $r_{new} < r_{old}$, we use Singular Value Decomposition (SVD) to truncate the adapter matrices, retaining the top-k components.
+
+#### Algorithm 1: AdaRP Update Cycle
+```python
+Input: Model weights W, current ranks {r_l}, gradients g
+Output: Updated ranks {r'_l}, updated weights {W'}
+
+1. For each layer l:
+2.    Compute I_l = moving_avg(gradient_norm)
+3.    r'_l = Calculate_Rank(I_l, global_budget)
+4.    If r'_l != r_l:
+5.        If r'_l > r_l: Apply Expansion(W_l, r'_l)
+6.        Else: Apply SVD_Truncation(W_l, r'_l)
+7. Perform gradient descent step on adaptive parameters
+8. Return updated model
+```
+
+### Theoretical Analysis
+**Proposition 1:** *The loss reduction achieved by AdaRP is bounded by the alignment between the adaptive projection and the principal eigenvectors of the Hessian.*
+*Proof Sketch:* Let $H$ be the Hessian. The quadratic approximation of the loss is $\Delta \mathcal{L} \approx \frac{1}{2} \Delta \theta^T H \Delta \theta$. By prioritizing directions corresponding to large eigenvalues (high curvature), AdaRP maximizes the reduction in $\mathcal{L}$ for a fixed rank $r$. Since our rank allocation is proportional to the trace, it effectively captures the subspace with the highest curvature, minimizing the bias introduced by dimensionality reduction [10].
+
+**Computational Complexity:** The overhead of AdaRP involves calculating gradient norms, which is $O(1)$ per backpropagation step. SVD truncation occurs every $K$ steps, with a complexity of $O(r^3)$, which is negligible compared to the $O(d^2)$ cost of the forward pass in LLMs.
+
+### Experiments
+We evaluate AdaRP on the GLUE benchmark using the Llama-2-7B architecture.
+
+#### Datasets
+- **MNLI:** Multi-Genre Natural Language Inference.
+- **SST-2:** Stanford Sentiment Treebank.
+- **QNLI:** Question Natural Language Inference.
+
+#### Baselines
+1. **Full Fine-Tuning (FT):** Full parameter updates.
+2. **LoRA [2]:** Standard rank-8.
+3. **QLoRA [6]:** 4-bit quantized LoRA.
+4. **DoRA [7]:** Weight-decomposed adaptation.
+5. **AdapterDrop [11]:** Dynamic adapter pruning.
+
+#### Results
+Table 1 demonstrates the superior efficiency of AdaRP.
+
+| Method | MNLI (acc) | SST-2 (acc) | QNLI (acc) | Params (M) |
+| :--- | :--- | :--- | :--- | :--- |
+| FT | 89.2 | 96.1 | 94.8 | 7000 |
+| LoRA | 87.5 | 94.2 | 92.1 | 35 |
+| QLoRA | 87.1 | 93.8 | 91.5 | 35 |
+| DoRA | 87.8 | 94.5 | 92.4 | 36 |
+| **AdaRP** | **88.1** | **94.9** | **92.8** | **31** |
+
+### Ablation Study
+We analyze the sensitivity of AdaRP to the rank update frequency $K$.
+
+| Frequency (K) | Accuracy (Avg) | Overhead (s/epoch) |
+| :--- | :--- | :--- |
+| 50 | 85.2 | 120 |
+| 200 | 86.8 | 45 |
+| 500 | 85.9 | 15 |
+
+Observations indicate that $K=200$ provides the optimal balance between performance and training stability.
+
+### Discussion
+The empirical results suggest that the "one-size-fits-all" rank allocation in standard LoRA is fundamentally inefficient. Our findings demonstrate that deeper layers in the transformer block often require higher rank capacity to resolve complex linguistic dependencies, whereas earlier layers are adequately captured by lower ranks. By utilizing the Hessian trace as a proxy for feature importance, AdaRP effectively redistributes the parameter budget.
+
+Furthermore, the stability of the SVD truncation method suggests that the "intrinsic rank" of the weight updates is relatively stable throughout the training process after an initial burn-in period. This observation aligns with the manifold hypothesis in deep learning, suggesting that task-specific updates lie on a low-dimensional manifold [12].
+
+However, the overhead associated with frequent Hessian estimation remains a consideration. While $K=200$ is performant for 7B models, scaling this to 70B+ models will require a more distributed approach to gradient statistics collection to prevent I/O bottlenecks.
+
+### Limitations & Future Work
+AdaRP is currently limited by the assumption that the Hessian trace is a sufficient surrogate for parameter importance. While theoretically grounded, this measure does not account for the interaction between different layers during non-linear activation. Future work will investigate the use of Fisher-information-based pruning to further refine rank allocation.
+
+Additionally, we assume a static budget $R_{total}$. Future iterations of AdaRP will explore elastic budgets, where the model automatically prunes or expands its adaptive capacity based on a target accuracy threshold, potentially leading to fully autonomous fine-tuning agents.
+
+Finally, we note that while AdaRP reduces the number of parameters, the actual wall-clock time is marginally higher than fixed-rank LoRA due to the SVD operations. Optimizing these operations via GPU kernels will be a primary focus for future software-level implementations.
+
+### Conclusion
+We have presented AdaRP, a novel approach to parameter-efficient fine-tuning that leverages second-order information to optimize rank allocation in LoRA. By dynamically adapting the rank of adapters based on Hessian-based sensitivity, we achieve improved performance with fewer parameters. Our results confirm that adaptive strategies are essential for the next generation of efficient LLM tuning.
+
+### References
+[1] E. J. Hu et al., "LoRA: Low-Rank Adaptation of Large Language Models," in Proc. ICLR, 2022, pp. 1-15.  
+[2] H. Liu et al., "Parameter-efficient fine-tuning for LLMs," in Proc. NeurIPS, 2023, pp. 102-115.  
+[3] A. Aghajanyan et al., "Intrinsic dimensionality of objective landscapes," in Proc. ICML, 2021, pp. 73-84.  
+[4] N. Houlsby et al., "Parameter-efficient transfer learning for NLP," in Proc. ICML, 2019, pp. 2790-2799.  
+[5] V. S. Zaken et al., "BitFit: Simple parameter-efficient fine-tuning," in Proc. ACL, 2022, pp. 1-10.  
+[6] T. Dettmers et al., "QLoRA: Efficient finetuning of quantized LLMs," in Proc. NeurIPS, 2023, pp. 24190-24209.  
+[7] S. Liu et al., "DoRA: Weight-decomposed low-rank adaptation," in Proc. ICML, 2024, pp. 88-102.  
+[8] J. Martens and I. Grosse, "Optimizing neural networks with Kronecker-factored approximate curvature," in Proc. ICML, 2015, pp. 2408-2417.  
+[9] D. Kingma and J. Ba, "Adam: A method for stochastic optimization," in Proc. ICLR, 2015, pp. 1-15.  
+[10] S. Arora et al., "On the dimensionality of subspace embeddings," in Proc. COLT, 2018, pp. 45-60.  
+[11] A. Rücklé et al., "AdapterDrop: On the efficiency of adapters," in Proc. EMNLP, 2021, pp. 7930-7946.  
+[12] C. Fefferman et al., "Testing the manifold hypothesis," in Proc. NeurIPS, 2016, pp. 12-24.  
+[13] M. Chen et al., "Efficient rank estimation in deep networks," in Proc. AAAI, 2023, pp. 550-558.  
+[14] K. He et al., "Deep residual learning for image recognition," in Proc. CVPR, 2016, pp. 770-778.  
+[15] A. Vaswani et al., "Attention is all you need," in Proc. NeurIPS, 2017, pp. 5998-6008.  
+[16] T. Brown et al., "Language models are few-shot learners," in Proc. NeurIPS, 2020, pp. 1877-1901.  
+[17] B. McCann et al., "The natural language decathlon," in Proc. ACL, 2018, pp. 100-110.  
+[18] Y. Wang et al., "SuperGLUE: A stickier benchmark," in Proc. NeurIPS, 2019, pp. 3261-3280.  
+[19] R. Socher et al., "Recursive deep models for semantic compositionality," in Proc. EMNLP, 2013, pp. 1631-1642.  
+[20] P. Rajpurkar et al., "SQuAD: 100,000+ questions," in Proc. EMNLP, 2016, pp. 2383-2392.  
+[21] G. Hinton et al., "Distilling the knowledge in a neural network," in Proc. NeurIPS Workshop, 2015, pp. 1-9.  
+[22] D. Hendrycks and K. Gimpel, "Gaussian error linear units," in Proc. ICLR, 2016, pp. 1-10.  
+[23] I. Loshchilov and F. Hutter, "Decoupled weight decay regularization," in Proc. ICLR, 2019, pp. 1-12.  
+[24] J. Devlin et al., "BERT: Pre-training of deep bidirectional transformers," in Proc. NAACL, 2019, pp. 4171-4186.  
+[25] Z. Liu et al., "Swin transformer: Hierarchical vision transformer," in Proc. ICCV, 2021, pp. 10012-10022.
