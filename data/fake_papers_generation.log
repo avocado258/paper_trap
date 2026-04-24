@@ -1,0 +1,1085 @@
+2026-03-24 20:06:13,448 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:06:13,448 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:06:13,450 [INFO] Created D:\6th Semester\Software Engineering\paper_trap\data\fake_papers_metadata.csv
+2026-03-24 20:06:13,454 [INFO] Already done : 0 / 84
+2026-03-24 20:06:13,454 [INFO] Pending      : 84
+2026-03-24 20:06:13,454 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:06:13,456 [WARNING] Attempt 1/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:06:23,457 [WARNING] Attempt 2/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:06:43,458 [WARNING] Attempt 3/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:06:43,458 [ERROR] All retries exhausted for gemini
+2026-03-24 20:06:43,458 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:06:43,459 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:06:43,459 [WARNING] Attempt 1/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:06:53,460 [WARNING] Attempt 2/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:07:13,461 [WARNING] Attempt 3/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:07:13,462 [ERROR] All retries exhausted for gemini
+2026-03-24 20:07:13,463 [ERROR] Skipping paper 86 — all retries failed.
+2026-03-24 20:07:13,463 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:07:13,464 [WARNING] Attempt 1/3 failed [gemini]: name 'genai' is not defined
+2026-03-24 20:07:23,243 [WARNING] Interrupted — progress saved.
+2026-03-24 20:07:23,244 [INFO] === Session Summary ===
+2026-03-24 20:07:23,245 [INFO]   Generated : 0
+2026-03-24 20:07:23,245 [INFO]   Failed    : 2
+2026-03-24 20:07:23,245 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:07:23,246 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:09:01,469 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:09:01,470 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:09:01,473 [INFO] Already done : 0 / 84
+2026-03-24 20:09:01,473 [INFO] Pending      : 84
+2026-03-24 20:09:01,473 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:09:03,172 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:09:35,774 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:09:35,778 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:09:47,329 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:09:56,821 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:09:56,823 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:10:18,217 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:10:24,279 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:10:24,280 [WARNING] Attempt 3/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:10:24,281 [ERROR] All retries exhausted for gemini
+2026-03-24 20:10:24,281 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:10:24,282 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:10:25,927 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:10:36,216 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:10:36,217 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:10:47,566 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:11:52,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:11:52,259 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:11:54,616 [WARNING] Interrupted — progress saved.
+2026-03-24 20:11:54,618 [INFO] === Session Summary ===
+2026-03-24 20:11:54,618 [INFO]   Generated : 0
+2026-03-24 20:11:54,619 [INFO]   Failed    : 1
+2026-03-24 20:11:54,620 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:11:54,621 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:12:44,302 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:12:44,302 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:12:44,304 [INFO] Already done : 0 / 84
+2026-03-24 20:12:44,304 [INFO] Pending      : 84
+2026-03-24 20:12:44,304 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:12:45,740 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:12:46,393 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:12:46,407 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 13.898505266s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13s'}]}}
+2026-03-24 20:12:57,951 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:12:58,413 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:12:58,416 [WARNING] Attempt 2/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 1.67313486s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}
+2026-03-24 20:13:19,785 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:13:20,881 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:13:20,883 [WARNING] Attempt 3/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 39.20206643s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}
+2026-03-24 20:13:20,886 [ERROR] All retries exhausted for gemini
+2026-03-24 20:13:20,887 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:13:20,887 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:13:22,244 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:13:22,690 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:13:22,692 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 37.404707631s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '37s'}]}}
+2026-03-24 20:13:34,046 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:13:34,873 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:13:34,875 [WARNING] Attempt 2/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 25.217323173s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}
+2026-03-24 20:13:56,526 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:13:56,971 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:13:56,974 [WARNING] Attempt 3/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 3.117077922s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '3s'}]}}
+2026-03-24 20:13:56,980 [ERROR] All retries exhausted for gemini
+2026-03-24 20:13:56,981 [ERROR] Skipping paper 86 — all retries failed.
+2026-03-24 20:13:56,981 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:13:59,006 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:14:00,028 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:14:00,052 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 63.895311ms.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '0s'}]}}
+2026-03-24 20:14:11,950 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:14:13,162 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:14:13,165 [WARNING] Attempt 2/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 46.933208256s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '46s'}]}}
+2026-03-24 20:14:34,803 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:14:35,824 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:14:35,876 [WARNING] Attempt 3/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 24.259532192s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}
+2026-03-24 20:14:35,883 [ERROR] All retries exhausted for gemini
+2026-03-24 20:14:35,884 [ERROR] Skipping paper 87 — all retries failed.
+2026-03-24 20:14:35,884 [INFO] [88/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-03-24 20:14:37,472 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:14:37,917 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:14:37,928 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 22.175540158s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '22s'}]}}
+2026-03-24 20:14:41,015 [WARNING] Interrupted — progress saved.
+2026-03-24 20:14:41,017 [INFO] === Session Summary ===
+2026-03-24 20:14:41,017 [INFO]   Generated : 0
+2026-03-24 20:14:41,018 [INFO]   Failed    : 3
+2026-03-24 20:14:41,018 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:14:41,019 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:14:53,902 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:14:53,902 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:14:53,904 [INFO] Already done : 0 / 84
+2026-03-24 20:14:53,904 [INFO] Pending      : 84
+2026-03-24 20:14:53,904 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:14:55,334 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:14:55,773 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:14:55,775 [WARNING] Attempt 1/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:15:07,170 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:15:07,614 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:15:07,619 [WARNING] Attempt 2/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:15:29,135 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:15:30,198 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:15:30,201 [WARNING] Attempt 3/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:15:30,202 [ERROR] All retries exhausted for gemini
+2026-03-24 20:15:30,203 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:15:30,203 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:15:32,543 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:15:32,993 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:15:32,994 [WARNING] Attempt 1/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:15:44,652 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:15:46,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:15:46,144 [WARNING] Attempt 2/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:16:07,633 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:16:08,658 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:16:08,659 [WARNING] Attempt 3/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:16:08,660 [ERROR] All retries exhausted for gemini
+2026-03-24 20:16:08,660 [ERROR] Skipping paper 86 — all retries failed.
+2026-03-24 20:16:08,660 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:16:10,419 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:16:10,890 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:16:10,894 [WARNING] Attempt 1/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:16:22,786 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:16:23,233 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-24 20:16:23,235 [WARNING] Attempt 2/3 failed [gemini]: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-24 20:16:23,624 [WARNING] Interrupted — progress saved.
+2026-03-24 20:16:23,624 [INFO] === Session Summary ===
+2026-03-24 20:16:23,625 [INFO]   Generated : 0
+2026-03-24 20:16:23,625 [INFO]   Failed    : 2
+2026-03-24 20:16:23,625 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:16:23,626 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:21:31,763 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:21:31,763 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:21:31,765 [INFO] Already done : 0 / 84
+2026-03-24 20:21:31,765 [INFO] Pending      : 84
+2026-03-24 20:21:31,765 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:21:33,212 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:21:46,975 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:21:46,980 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:21:58,313 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:22:43,786 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:22:43,789 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:23:05,321 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:23:53,564 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:23:53,567 [WARNING] Attempt 3/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:23:53,568 [ERROR] All retries exhausted for gemini
+2026-03-24 20:23:53,569 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:23:53,572 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:23:55,274 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:24:46,448 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:24:46,452 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:24:58,704 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:25:57,682 [WARNING] Interrupted — progress saved.
+2026-03-24 20:25:57,683 [INFO] === Session Summary ===
+2026-03-24 20:25:57,684 [INFO]   Generated : 0
+2026-03-24 20:25:57,684 [INFO]   Failed    : 1
+2026-03-24 20:25:57,684 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:25:57,685 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:26:33,935 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:26:33,935 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:26:33,937 [INFO] Already done : 0 / 84
+2026-03-24 20:26:33,937 [INFO] Pending      : 84
+2026-03-24 20:26:33,937 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:26:35,487 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:26:36,078 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:26:36,081 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 24.001155125s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}
+2026-03-24 20:26:47,885 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:26:48,359 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:26:48,361 [WARNING] Attempt 2/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 11.73369228s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '11s'}]}}
+2026-03-24 20:27:10,767 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:27:11,219 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:27:11,221 [WARNING] Attempt 3/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 48.863811462s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '48s'}]}}
+2026-03-24 20:27:11,275 [ERROR] All retries exhausted for gemini
+2026-03-24 20:27:11,276 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:27:11,277 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:27:13,600 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:27:14,058 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:27:14,062 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 46.035815298s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '46s'}]}}
+2026-03-24 20:27:27,008 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:27:28,064 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:27:28,065 [WARNING] Attempt 2/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 32.016250774s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash-lite', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}}
+2026-03-24 20:27:49,828 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:27:50,861 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 400 Bad Request"
+2026-03-24 20:27:50,863 [WARNING] Attempt 3/3 failed [gemini]: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key expired. Please renew the API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key expired. Please renew the API key.'}]}}
+2026-03-24 20:27:50,864 [ERROR] All retries exhausted for gemini
+2026-03-24 20:27:50,864 [ERROR] Skipping paper 86 — all retries failed.
+2026-03-24 20:27:50,864 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:27:52,732 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:27:53,175 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 20:27:53,178 [WARNING] Attempt 1/3 failed [gemini]: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 6.910267323s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}
+2026-03-24 20:27:54,256 [WARNING] Interrupted — progress saved.
+2026-03-24 20:27:54,257 [INFO] === Session Summary ===
+2026-03-24 20:27:54,258 [INFO]   Generated : 0
+2026-03-24 20:27:54,259 [INFO]   Failed    : 2
+2026-03-24 20:27:54,259 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:27:54,260 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:28:14,255 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:28:14,256 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:28:14,258 [INFO] Already done : 0 / 84
+2026-03-24 20:28:14,259 [INFO] Pending      : 84
+2026-03-24 20:28:14,259 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:28:15,680 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:28:37,933 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:28:37,936 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:28:50,205 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:28:54,492 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:28:54,493 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:29:17,568 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:29:38,779 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:29:38,781 [WARNING] Attempt 3/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:29:38,782 [ERROR] All retries exhausted for gemini
+2026-03-24 20:29:38,782 [ERROR] Skipping paper 85 — all retries failed.
+2026-03-24 20:29:38,782 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:29:40,699 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:29:46,196 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:29:46,198 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:29:58,573 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:29:59,748 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:29:59,752 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:30:21,847 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:30:51,100 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:30:51,104 [WARNING] Attempt 3/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:30:51,105 [ERROR] All retries exhausted for gemini
+2026-03-24 20:30:51,106 [ERROR] Skipping paper 86 — all retries failed.
+2026-03-24 20:30:51,107 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:30:52,822 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:31:03,091 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 20:31:03,103 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-24 20:31:15,056 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:31:21,769 [WARNING] Interrupted — progress saved.
+2026-03-24 20:31:21,771 [INFO] === Session Summary ===
+2026-03-24 20:31:21,771 [INFO]   Generated : 0
+2026-03-24 20:31:21,771 [INFO]   Failed    : 2
+2026-03-24 20:31:21,771 [INFO]   Total done (my range): 0 / 84
+2026-03-24 20:31:21,772 [INFO]   Re-run the script to continue from where it left off.
+2026-03-24 20:34:54,337 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-24 20:34:54,339 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-24 20:34:54,341 [INFO] Already done : 0 / 84
+2026-03-24 20:34:54,342 [INFO] Pending      : 84
+2026-03-24 20:34:54,342 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-24 20:34:55,967 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:35:07,109 [WARNING] Attempt 1/3 failed [gemini]: [Errno 11001] getaddrinfo failed
+2026-03-24 20:35:18,424 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:36:00,108 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:36:00,566 [INFO]   Saved fake_paper_085.txt (2636 words)
+2026-03-24 20:36:04,567 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-24 20:36:06,186 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:36:56,751 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:36:56,779 [INFO]   Saved fake_paper_086.txt (242 words)
+2026-03-24 20:37:00,789 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-24 20:37:02,644 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:37:57,462 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:37:57,468 [INFO]   Saved fake_paper_087.txt (2592 words)
+2026-03-24 20:38:01,469 [INFO] [88/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-03-24 20:38:03,000 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:38:46,044 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:38:46,065 [INFO]   Saved fake_paper_088.txt (506 words)
+2026-03-24 20:38:50,070 [INFO] [89/250] gemini | Relational Hyperbolic Embeddings for Knowledge Graph Complet
+2026-03-24 20:38:52,132 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:39:37,252 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:39:37,264 [INFO]   Saved fake_paper_089.txt (2313 words)
+2026-03-24 20:39:41,264 [INFO] [90/250] gemini | Differentiable Architecture Search with Hardware-Aware Effic
+2026-03-24 20:39:42,989 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:40:27,021 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:40:27,080 [INFO]   Saved fake_paper_090.txt (3662 words)
+2026-03-24 20:40:31,081 [INFO] [91/250] gemini | Dynamic Graph Attention Networks for Session-Based Recommend
+2026-03-24 20:40:32,642 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-24 20:41:16,168 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-24 20:41:16,221 [INFO]   Saved fake_paper_091.txt (3367 words)
+2026-03-24 20:41:19,058 [WARNING] Interrupted — progress saved.
+2026-03-24 20:41:19,060 [INFO] === Session Summary ===
+2026-03-24 20:41:19,061 [INFO]   Generated : 7
+2026-03-24 20:41:19,061 [INFO]   Failed    : 0
+2026-03-24 20:41:19,062 [INFO]   Total done (my range): 7 / 84
+2026-03-24 20:41:19,063 [INFO]   Re-run the script to continue from where it left off.
+2026-03-31 02:38:42,909 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-31 02:38:42,910 [INFO] Assigned range: papers 85–168 (84 papers)
+2026-03-31 02:38:42,913 [INFO] Already done : 0 / 84
+2026-03-31 02:38:42,913 [INFO] Pending      : 84
+2026-03-31 02:38:42,913 [INFO] [85/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-31 02:38:44,394 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:39:16,453 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:39:16,486 [INFO]   Saved fake_paper_085.txt (2942 words)
+2026-03-31 02:39:20,489 [INFO] [86/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-31 02:39:21,891 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:40:00,618 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:40:00,640 [INFO]   Saved fake_paper_086.txt (2345 words)
+2026-03-31 02:40:04,641 [INFO] [87/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-31 02:40:06,435 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:40:32,692 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:40:32,715 [INFO]   Saved fake_paper_087.txt (2482 words)
+2026-03-31 02:40:36,718 [INFO] [88/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-03-31 02:40:39,254 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:41:01,777 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:41:01,796 [INFO]   Saved fake_paper_088.txt (1975 words)
+2026-03-31 02:41:05,809 [INFO] [89/250] gemini | Relational Hyperbolic Embeddings for Knowledge Graph Complet
+2026-03-31 02:41:07,922 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:41:39,807 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:41:40,170 [INFO]   Saved fake_paper_089.txt (2361 words)
+2026-03-31 02:41:44,295 [INFO] [90/250] gemini | Differentiable Architecture Search with Hardware-Aware Effic
+2026-03-31 02:41:46,221 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:42:12,542 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:42:12,561 [INFO]   Saved fake_paper_090.txt (2324 words)
+2026-03-31 02:42:16,564 [INFO] [91/250] gemini | Dynamic Graph Attention Networks for Session-Based Recommend
+2026-03-31 02:42:18,661 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:42:37,833 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 02:42:37,836 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 02:42:49,209 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:43:14,640 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:43:14,652 [INFO]   Saved fake_paper_091.txt (2298 words)
+2026-03-31 02:43:18,653 [INFO] [92/250] gemini | PointFlow: Normalizing Flows for 3D Point Cloud Generation
+2026-03-31 02:43:20,288 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:43:43,134 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:43:43,147 [INFO]   Saved fake_paper_092.txt (2227 words)
+2026-03-31 02:43:47,149 [INFO] [93/250] gemini | Contrastive Self-Supervised Learning for Low-Resource Speech
+2026-03-31 02:43:49,117 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:44:12,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:44:12,676 [INFO]   Saved fake_paper_093.txt (2141 words)
+2026-03-31 02:44:16,677 [INFO] [94/250] gemini | Cross-Modal Contrastive Alignment for Vision-Language Pretra
+2026-03-31 02:44:18,123 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:44:41,171 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:44:41,177 [INFO]   Saved fake_paper_094.txt (2171 words)
+2026-03-31 02:44:45,178 [INFO] [95/250] gemini | Conservative Policy Optimization for Offline Reinforcement L
+2026-03-31 02:44:46,633 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:45:17,626 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:45:17,643 [INFO]   Saved fake_paper_095.txt (2291 words)
+2026-03-31 02:45:21,644 [INFO] [96/250] gemini | Gradient-Based Saliency Maps with Causal Attribution for Med
+2026-03-31 02:45:24,073 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:45:59,327 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:45:59,350 [INFO]   Saved fake_paper_096.txt (2380 words)
+2026-03-31 02:46:03,357 [INFO] [97/250] gemini | Attention Flow Analysis for Interpretable Text Classificatio
+2026-03-31 02:46:07,253 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:46:30,312 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:46:30,328 [INFO]   Saved fake_paper_097.txt (2144 words)
+2026-03-31 02:46:34,330 [INFO] [98/250] gemini | Differentially Private Gradient Aggregation in Cross-Silo Fe
+2026-03-31 02:46:36,299 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:46:53,468 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:46:53,477 [INFO]   Saved fake_paper_098.txt (1703 words)
+2026-03-31 02:46:57,480 [INFO] [99/250] gemini | Masked Autoencoders with Hierarchical Token Prediction for D
+2026-03-31 02:46:58,924 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:47:22,796 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:47:22,809 [INFO]   Saved fake_paper_099.txt (2276 words)
+2026-03-31 02:47:26,810 [INFO] [100/250] gemini | Audio-Visual Source Separation via Cross-Modal Attention Fus
+2026-03-31 02:47:28,268 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:47:58,098 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:47:58,104 [INFO]   Saved fake_paper_100.txt (2621 words)
+2026-03-31 02:48:02,105 [INFO] [101/250] gemini | Probabilistic Transformer Forecasting with Conformal Predict
+2026-03-31 02:48:03,488 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:48:34,304 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:48:34,315 [INFO]   Saved fake_paper_101.txt (2318 words)
+2026-03-31 02:48:38,316 [INFO] [102/250] gemini | Prototype Calibration Networks for Few-Shot Image Classifica
+2026-03-31 02:48:39,706 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:49:04,803 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:49:04,809 [INFO]   Saved fake_paper_102.txt (2092 words)
+2026-03-31 02:49:08,809 [INFO] [103/250] gemini | Conditional Wasserstein GANs for Tabular Data Augmentation
+2026-03-31 02:49:10,167 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:49:40,028 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:49:40,036 [INFO]   Saved fake_paper_103.txt (2602 words)
+2026-03-31 02:49:44,037 [INFO] [104/250] gemini | Cross-Lingual Transfer Learning for Low-Resource Named Entit
+2026-03-31 02:49:45,388 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 02:50:12,919 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 02:50:12,930 [INFO]   Saved fake_paper_104.txt (2484 words)
+2026-03-31 02:50:16,475 [WARNING] Interrupted — progress saved.
+2026-03-31 02:50:16,480 [INFO] === Session Summary ===
+2026-03-31 02:50:16,481 [INFO]   Generated : 20
+2026-03-31 02:50:16,484 [INFO]   Failed    : 0
+2026-03-31 02:50:16,485 [INFO]   Total done (my range): 20 / 84
+2026-03-31 02:50:16,486 [INFO]   Re-run the script to continue from where it left off.
+2026-03-31 09:54:29,385 [INFO] === PaperTrap Generator | Member 2 ===
+2026-03-31 09:54:29,386 [INFO] Assigned range: papers 105–168 (64 papers)
+2026-03-31 09:54:29,389 [INFO] Already done : 0 / 64
+2026-03-31 09:54:29,389 [INFO] Pending      : 64
+2026-03-31 09:54:29,389 [INFO] [105/250] gemini | Heterogeneous Graph Transformers for Biomedical Relation Ext
+2026-03-31 09:54:30,901 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:54:40,146 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 09:54:40,152 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 09:54:51,535 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:55:11,721 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:55:11,738 [INFO]   Saved fake_paper_105.txt (1944 words)
+2026-03-31 09:55:15,742 [INFO] [106/250] gemini | Causal Representation Learning for Out-of-Distribution Gener
+2026-03-31 09:55:17,766 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:55:56,169 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 09:55:56,170 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 09:56:07,581 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:56:33,601 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:56:33,648 [INFO]   Saved fake_paper_106.txt (2432 words)
+2026-03-31 09:56:37,651 [INFO] [107/250] gemini | TabNet Revisited: Gated Feature Selection with Self-Supervis
+2026-03-31 09:56:39,310 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:57:02,446 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 09:57:02,449 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 09:57:14,068 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:57:42,649 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:57:42,665 [INFO]   Saved fake_paper_107.txt (2592 words)
+2026-03-31 09:57:46,667 [INFO] [108/250] gemini | Sparse Mixture-of-Experts Attention for Long-Document Summar
+2026-03-31 09:57:48,146 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:58:19,800 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:58:19,809 [INFO]   Saved fake_paper_108.txt (2147 words)
+2026-03-31 09:58:23,809 [INFO] [109/250] gemini | Neurosymbolic Integration for Commonsense Inference in Open-
+2026-03-31 09:58:25,401 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:58:58,692 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:58:58,700 [INFO]   Saved fake_paper_109.txt (2368 words)
+2026-03-31 09:59:02,700 [INFO] [110/250] gemini | Mitigating Demographic Bias in Large Language Models via Con
+2026-03-31 09:59:04,591 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 09:59:29,686 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 09:59:29,694 [INFO]   Saved fake_paper_110.txt (2496 words)
+2026-03-31 09:59:33,695 [INFO] [111/250] gemini | Self-Supervised Change Detection in Multitemporal Satellite 
+2026-03-31 09:59:35,141 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:00:02,499 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:00:02,515 [INFO]   Saved fake_paper_111.txt (1751 words)
+2026-03-31 10:00:06,516 [INFO] [112/250] gemini | Anchor-Free Object Detection with Deformable Convolutional F
+2026-03-31 10:00:07,954 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:00:35,857 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:00:35,863 [INFO]   Saved fake_paper_112.txt (2616 words)
+2026-03-31 10:00:39,864 [INFO] [113/250] gemini | Hierarchical Reinforcement Learning for Multi-Step Manipulat
+2026-03-31 10:00:41,277 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:00:46,287 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:00:46,288 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:00:57,629 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:01:22,796 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:01:22,796 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:01:44,153 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:02:22,603 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:02:22,634 [INFO]   Saved fake_paper_113.txt (2431 words)
+2026-03-31 10:02:26,635 [INFO] [114/250] gemini | Graph Neural Networks for Supply Chain Anomaly Detection
+2026-03-31 10:02:28,288 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:02:44,399 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:02:44,403 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:02:55,763 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:03:17,244 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:03:17,268 [INFO]   Saved fake_paper_114.txt (2198 words)
+2026-03-31 10:03:21,270 [INFO] [115/250] gemini | Grounded Visual Question Answering with Scene Graph Supervis
+2026-03-31 10:03:22,761 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:03:50,821 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:03:50,835 [INFO]   Saved fake_paper_115.txt (2884 words)
+2026-03-31 10:03:54,838 [INFO] [116/250] gemini | Elastic Weight Consolidation with Dynamic Memory Replay for 
+2026-03-31 10:03:56,344 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:04:27,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:04:27,567 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:04:38,993 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:05:07,658 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:05:07,666 [INFO]   Saved fake_paper_116.txt (2023 words)
+2026-03-31 10:05:11,666 [INFO] [117/250] gemini | Improving Transformer Efficiency Using Dynamic Token Pruning
+2026-03-31 10:05:14,068 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:05:33,529 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:05:33,543 [INFO]   Saved fake_paper_117.txt (1819 words)
+2026-03-31 10:05:37,546 [INFO] [118/250] gemini | Temporal Convolutional Networks with Attention for Multivari
+2026-03-31 10:05:39,126 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:06:02,824 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:06:02,831 [INFO]   Saved fake_paper_118.txt (2103 words)
+2026-03-31 10:06:06,833 [INFO] [119/250] gemini | Adaptive Gradient Clipping for Training Stability in Large-S
+2026-03-31 10:06:08,366 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:06:34,758 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:06:34,770 [INFO]   Saved fake_paper_119.txt (2427 words)
+2026-03-31 10:06:38,781 [INFO] [120/250] gemini | Federated Learning for Privacy-Preserving Medical Image Segm
+2026-03-31 10:06:40,451 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:07:02,945 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:07:02,963 [INFO]   Saved fake_paper_120.txt (2154 words)
+2026-03-31 10:07:06,965 [INFO] [121/250] gemini | Test-Time Adaptation via Self-Supervised Auxiliary Tasks und
+2026-03-31 10:07:08,838 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:07:33,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:07:33,151 [INFO]   Saved fake_paper_121.txt (2006 words)
+2026-03-31 10:07:37,151 [INFO] [122/250] gemini | Latent Diffusion Models for High-Fidelity Medical Image Synt
+2026-03-31 10:07:38,680 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:07:56,259 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:07:56,266 [INFO]   Saved fake_paper_122.txt (1864 words)
+2026-03-31 10:08:00,267 [INFO] [123/250] gemini | Persona-Consistent Response Generation with Memory-Augmented
+2026-03-31 10:08:02,031 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:08:23,948 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:08:23,959 [INFO]   Saved fake_paper_123.txt (2047 words)
+2026-03-31 10:08:27,960 [INFO] [124/250] gemini | Sparse Gating Mechanisms for Conditional Computation in Visi
+2026-03-31 10:08:29,459 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:08:54,131 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:08:54,145 [INFO]   Saved fake_paper_124.txt (2304 words)
+2026-03-31 10:08:58,147 [INFO] [125/250] gemini | Layout-Aware Multimodal Transformers for Document Informatio
+2026-03-31 10:09:00,024 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:09:21,862 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:09:21,884 [INFO]   Saved fake_paper_125.txt (1993 words)
+2026-03-31 10:09:25,885 [INFO] [126/250] gemini | Transformer-Based Extraction of Adverse Drug Events from Cli
+2026-03-31 10:09:27,332 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:09:41,551 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:09:41,568 [INFO]   Saved fake_paper_126.txt (1980 words)
+2026-03-31 10:09:45,569 [INFO] [127/250] gemini | Chain-of-Thought Distillation for Multi-Hop Question Answeri
+2026-03-31 10:09:47,080 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:10:13,482 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:10:13,490 [INFO]   Saved fake_paper_127.txt (2210 words)
+2026-03-31 10:10:17,493 [INFO] [128/250] gemini | Parameter-Efficient Fine-Tuning of Large Language Models via
+2026-03-31 10:10:19,947 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:10:40,300 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:10:40,315 [INFO]   Saved fake_paper_128.txt (2099 words)
+2026-03-31 10:10:44,319 [INFO] [129/250] gemini | Boundary-Aware Transformer for Weakly Supervised Semantic Se
+2026-03-31 10:10:46,301 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:11:13,750 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:11:13,759 [INFO]   Saved fake_paper_129.txt (2931 words)
+2026-03-31 10:11:17,760 [INFO] [130/250] gemini | Certified Adversarial Robustness via Randomized Smoothing wi
+2026-03-31 10:11:20,303 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:11:43,244 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:11:43,263 [INFO]   Saved fake_paper_130.txt (2390 words)
+2026-03-31 10:11:47,265 [INFO] [131/250] gemini | Learned Image Compression with Entropy Coding and Hyperprior
+2026-03-31 10:11:49,170 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:12:11,755 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:12:11,773 [INFO]   Saved fake_paper_131.txt (1945 words)
+2026-03-31 10:12:15,776 [INFO] [132/250] gemini | Task-Agnostic Meta-Learning via Latent Space Optimization
+2026-03-31 10:12:17,638 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:12:47,218 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:12:47,242 [INFO]   Saved fake_paper_132.txt (2734 words)
+2026-03-31 10:12:51,256 [INFO] [133/250] gemini | Execution-Guided Neural Program Synthesis with Type-Constrai
+2026-03-31 10:12:52,768 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:13:16,533 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:13:16,553 [INFO]   Saved fake_paper_133.txt (2056 words)
+2026-03-31 10:13:20,571 [INFO] [134/250] gemini | Scalable Bayesian Neural Networks via Structured Variational
+2026-03-31 10:13:22,014 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:13:44,371 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:13:44,391 [INFO]   Saved fake_paper_134.txt (2423 words)
+2026-03-31 10:13:48,395 [INFO] [135/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-03-31 10:13:49,967 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:14:18,434 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:14:18,442 [INFO]   Saved fake_paper_135.txt (2269 words)
+2026-03-31 10:14:22,443 [INFO] [136/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-03-31 10:14:24,537 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:14:48,042 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:14:48,056 [INFO]   Saved fake_paper_136.txt (2213 words)
+2026-03-31 10:14:52,057 [INFO] [137/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-03-31 10:14:53,498 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:15:35,415 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:15:35,435 [INFO]   Saved fake_paper_137.txt (2053 words)
+2026-03-31 10:15:39,436 [INFO] [138/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-03-31 10:15:41,184 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:16:02,614 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:16:02,632 [INFO]   Saved fake_paper_138.txt (2056 words)
+2026-03-31 10:16:06,635 [INFO] [139/250] gemini | Relational Hyperbolic Embeddings for Knowledge Graph Complet
+2026-03-31 10:16:08,120 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:16:27,122 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:16:27,142 [INFO]   Saved fake_paper_139.txt (2144 words)
+2026-03-31 10:16:31,144 [INFO] [140/250] gemini | Differentiable Architecture Search with Hardware-Aware Effic
+2026-03-31 10:16:32,682 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:16:50,657 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:16:50,658 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:17:02,082 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:17:27,950 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:17:27,960 [INFO]   Saved fake_paper_140.txt (2942 words)
+2026-03-31 10:17:31,960 [INFO] [141/250] gemini | Dynamic Graph Attention Networks for Session-Based Recommend
+2026-03-31 10:17:33,418 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:18:02,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:18:02,577 [INFO]   Saved fake_paper_141.txt (2213 words)
+2026-03-31 10:18:06,584 [INFO] [142/250] gemini | PointFlow: Normalizing Flows for 3D Point Cloud Generation
+2026-03-31 10:18:08,088 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:18:22,015 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:18:22,017 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:18:34,128 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:18:54,602 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:18:54,612 [INFO]   Saved fake_paper_142.txt (2360 words)
+2026-03-31 10:18:58,613 [INFO] [143/250] gemini | Contrastive Self-Supervised Learning for Low-Resource Speech
+2026-03-31 10:19:00,263 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:19:28,158 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:19:28,177 [INFO]   Saved fake_paper_143.txt (2608 words)
+2026-03-31 10:19:32,181 [INFO] [144/250] gemini | Cross-Modal Contrastive Alignment for Vision-Language Pretra
+2026-03-31 10:19:33,903 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:20:04,371 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:20:04,375 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:20:15,946 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:20:42,125 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:20:42,126 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:21:03,667 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:21:33,179 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:21:33,180 [WARNING] Attempt 3/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:21:33,183 [ERROR] All retries exhausted for gemini
+2026-03-31 10:21:33,184 [ERROR] Skipping paper 144 — all retries failed.
+2026-03-31 10:21:33,186 [INFO] [145/250] gemini | Conservative Policy Optimization for Offline Reinforcement L
+2026-03-31 10:21:34,846 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:21:38,749 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:21:38,752 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:21:50,457 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:22:16,068 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:22:16,083 [INFO]   Saved fake_paper_145.txt (2409 words)
+2026-03-31 10:22:20,085 [INFO] [146/250] gemini | Gradient-Based Saliency Maps with Causal Attribution for Med
+2026-03-31 10:22:21,826 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:22:37,785 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:22:37,798 [INFO]   Saved fake_paper_146.txt (1799 words)
+2026-03-31 10:22:41,799 [INFO] [147/250] gemini | Attention Flow Analysis for Interpretable Text Classificatio
+2026-03-31 10:22:43,419 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:23:06,067 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:23:06,084 [INFO]   Saved fake_paper_147.txt (2260 words)
+2026-03-31 10:23:10,086 [INFO] [148/250] gemini | Differentially Private Gradient Aggregation in Cross-Silo Fe
+2026-03-31 10:23:11,756 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:23:35,554 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:23:35,571 [INFO]   Saved fake_paper_148.txt (2380 words)
+2026-03-31 10:23:39,576 [INFO] [149/250] gemini | Masked Autoencoders with Hierarchical Token Prediction for D
+2026-03-31 10:23:41,750 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:24:06,317 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:24:06,329 [INFO]   Saved fake_paper_149.txt (2245 words)
+2026-03-31 10:24:10,330 [INFO] [150/250] gemini | Audio-Visual Source Separation via Cross-Modal Attention Fus
+2026-03-31 10:24:12,050 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:24:35,953 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:24:35,967 [INFO]   Saved fake_paper_150.txt (2135 words)
+2026-03-31 10:24:39,968 [INFO] [151/250] gemini | Probabilistic Transformer Forecasting with Conformal Predict
+2026-03-31 10:24:41,653 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:25:00,790 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:25:00,807 [INFO]   Saved fake_paper_151.txt (1476 words)
+2026-03-31 10:25:04,808 [INFO] [152/250] gemini | Prototype Calibration Networks for Few-Shot Image Classifica
+2026-03-31 10:25:06,381 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:25:29,362 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:25:29,381 [INFO]   Saved fake_paper_152.txt (2660 words)
+2026-03-31 10:25:33,383 [INFO] [153/250] gemini | Conditional Wasserstein GANs for Tabular Data Augmentation
+2026-03-31 10:25:34,958 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:25:55,696 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:25:55,713 [INFO]   Saved fake_paper_153.txt (1850 words)
+2026-03-31 10:25:59,736 [INFO] [154/250] gemini | Cross-Lingual Transfer Learning for Low-Resource Named Entit
+2026-03-31 10:26:01,202 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:26:27,617 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:26:27,634 [INFO]   Saved fake_paper_154.txt (2378 words)
+2026-03-31 10:26:31,636 [INFO] [155/250] gemini | Heterogeneous Graph Transformers for Biomedical Relation Ext
+2026-03-31 10:26:33,154 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:26:55,784 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:26:55,798 [INFO]   Saved fake_paper_155.txt (2203 words)
+2026-03-31 10:26:59,800 [INFO] [156/250] gemini | Causal Representation Learning for Out-of-Distribution Gener
+2026-03-31 10:27:01,319 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:27:21,987 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:27:22,005 [INFO]   Saved fake_paper_156.txt (2255 words)
+2026-03-31 10:27:26,006 [INFO] [157/250] gemini | TabNet Revisited: Gated Feature Selection with Self-Supervis
+2026-03-31 10:27:27,461 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:27:41,388 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-31 10:27:41,390 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-03-31 10:27:52,774 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:28:12,410 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:28:12,428 [INFO]   Saved fake_paper_157.txt (2217 words)
+2026-03-31 10:28:16,435 [INFO] [158/250] gemini | Sparse Mixture-of-Experts Attention for Long-Document Summar
+2026-03-31 10:28:17,850 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:28:42,684 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:28:42,695 [INFO]   Saved fake_paper_158.txt (2230 words)
+2026-03-31 10:28:46,696 [INFO] [159/250] gemini | Neurosymbolic Integration for Commonsense Inference in Open-
+2026-03-31 10:28:48,139 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:29:06,284 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:29:06,293 [INFO]   Saved fake_paper_159.txt (1894 words)
+2026-03-31 10:29:10,295 [INFO] [160/250] gemini | Mitigating Demographic Bias in Large Language Models via Con
+2026-03-31 10:29:12,184 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:29:33,698 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:29:33,712 [INFO]   Saved fake_paper_160.txt (1993 words)
+2026-03-31 10:29:37,713 [INFO] [161/250] gemini | Self-Supervised Change Detection in Multitemporal Satellite 
+2026-03-31 10:29:39,156 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:30:09,107 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:30:09,123 [INFO]   Saved fake_paper_161.txt (2376 words)
+2026-03-31 10:30:13,126 [INFO] [162/250] gemini | Anchor-Free Object Detection with Deformable Convolutional F
+2026-03-31 10:30:14,570 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:30:34,556 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:30:34,575 [INFO]   Saved fake_paper_162.txt (2105 words)
+2026-03-31 10:30:38,577 [INFO] [163/250] gemini | Hierarchical Reinforcement Learning for Multi-Step Manipulat
+2026-03-31 10:30:40,014 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:31:07,939 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:31:07,949 [INFO]   Saved fake_paper_163.txt (2598 words)
+2026-03-31 10:31:11,950 [INFO] [164/250] gemini | Graph Neural Networks for Supply Chain Anomaly Detection
+2026-03-31 10:31:13,518 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:31:40,673 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:31:40,688 [INFO]   Saved fake_paper_164.txt (2023 words)
+2026-03-31 10:31:44,690 [INFO] [165/250] gemini | Grounded Visual Question Answering with Scene Graph Supervis
+2026-03-31 10:31:46,585 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:32:05,721 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:32:05,728 [INFO]   Saved fake_paper_165.txt (2099 words)
+2026-03-31 10:32:09,729 [INFO] [166/250] gemini | Elastic Weight Consolidation with Dynamic Memory Replay for 
+2026-03-31 10:32:11,177 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:32:30,994 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:32:31,006 [INFO]   Saved fake_paper_166.txt (2249 words)
+2026-03-31 10:32:35,007 [INFO] [167/250] gemini | Improving Transformer Efficiency Using Dynamic Token Pruning
+2026-03-31 10:32:36,449 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:32:59,369 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:32:59,381 [INFO]   Saved fake_paper_167.txt (1977 words)
+2026-03-31 10:33:03,382 [INFO] [168/250] gemini | Temporal Convolutional Networks with Attention for Multivari
+2026-03-31 10:33:04,821 [INFO] AFC is enabled with max remote calls: 10.
+2026-03-31 10:33:20,809 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-03-31 10:33:20,822 [INFO]   Saved fake_paper_168.txt (2272 words)
+2026-03-31 10:33:24,884 [INFO] === Session Summary ===
+2026-03-31 10:33:24,884 [INFO]   Generated : 63
+2026-03-31 10:33:24,884 [INFO]   Failed    : 1
+2026-03-31 10:33:24,884 [INFO]   Total done (my range): 63 / 64
+2026-03-31 10:33:24,885 [INFO]   Re-run the script to continue from where it left off.
+2026-04-02 12:49:24,066 [INFO] === PaperTrap Generator | Member 3 ===
+2026-04-02 12:49:24,067 [INFO] Assigned range: papers 169–250 (82 papers)
+2026-04-02 12:49:24,070 [INFO] Already done : 82 / 82
+2026-04-02 12:49:24,071 [INFO] Pending      : 82
+2026-04-02 12:49:24,071 [INFO] [169/250] gemini | Adaptive Gradient Clipping for Training Stability in Large-S
+2026-04-02 12:49:25,678 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:49:50,041 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:49:50,066 [INFO]   Saved fake_paper_169.txt (2384 words)
+2026-04-02 12:49:54,068 [INFO] [170/250] gemini | Federated Learning for Privacy-Preserving Medical Image Segm
+2026-04-02 12:49:55,455 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:50:22,050 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 12:50:22,058 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 12:50:33,410 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:50:55,035 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:50:55,047 [INFO]   Saved fake_paper_170.txt (1898 words)
+2026-04-02 12:50:59,048 [INFO] [171/250] gemini | Test-Time Adaptation via Self-Supervised Auxiliary Tasks und
+2026-04-02 12:51:00,461 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:51:24,213 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:51:24,234 [INFO]   Saved fake_paper_171.txt (2092 words)
+2026-04-02 12:51:28,241 [INFO] [172/250] gemini | Latent Diffusion Models for High-Fidelity Medical Image Synt
+2026-04-02 12:51:31,071 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:52:15,315 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:52:15,324 [INFO]   Saved fake_paper_172.txt (2215 words)
+2026-04-02 12:52:19,328 [INFO] [173/250] gemini | Persona-Consistent Response Generation with Memory-Augmented
+2026-04-02 12:52:22,202 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:52:43,497 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:52:43,634 [INFO]   Saved fake_paper_173.txt (1953 words)
+2026-04-02 12:52:47,768 [INFO] [174/250] gemini | Sparse Gating Mechanisms for Conditional Computation in Visi
+2026-04-02 12:52:50,862 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:53:39,442 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:53:39,456 [INFO]   Saved fake_paper_174.txt (2331 words)
+2026-04-02 12:53:43,457 [INFO] [175/250] gemini | Layout-Aware Multimodal Transformers for Document Informatio
+2026-04-02 12:53:45,567 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:54:10,089 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:54:10,105 [INFO]   Saved fake_paper_175.txt (2254 words)
+2026-04-02 12:54:14,106 [INFO] [176/250] gemini | Transformer-Based Extraction of Adverse Drug Events from Cli
+2026-04-02 12:54:16,183 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:54:43,023 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:54:43,050 [INFO]   Saved fake_paper_176.txt (2497 words)
+2026-04-02 12:54:47,071 [INFO] [177/250] gemini | Chain-of-Thought Distillation for Multi-Hop Question Answeri
+2026-04-02 12:54:48,554 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:55:31,793 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:55:31,807 [INFO]   Saved fake_paper_177.txt (2243 words)
+2026-04-02 12:55:35,808 [INFO] [178/250] gemini | Parameter-Efficient Fine-Tuning of Large Language Models via
+2026-04-02 12:55:37,865 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:56:10,116 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 12:56:10,122 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 12:56:22,324 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:57:00,157 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:57:00,175 [INFO]   Saved fake_paper_178.txt (2086 words)
+2026-04-02 12:57:04,177 [INFO] [179/250] gemini | Boundary-Aware Transformer for Weakly Supervised Semantic Se
+2026-04-02 12:57:05,603 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:57:29,250 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:57:29,261 [INFO]   Saved fake_paper_179.txt (2080 words)
+2026-04-02 12:57:33,264 [INFO] [180/250] gemini | Certified Adversarial Robustness via Randomized Smoothing wi
+2026-04-02 12:57:35,607 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:57:57,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:57:57,688 [INFO]   Saved fake_paper_180.txt (2014 words)
+2026-04-02 12:58:01,691 [INFO] [181/250] gemini | Learned Image Compression with Entropy Coding and Hyperprior
+2026-04-02 12:58:04,451 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:58:29,139 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:58:29,152 [INFO]   Saved fake_paper_181.txt (2234 words)
+2026-04-02 12:58:33,157 [INFO] [182/250] gemini | Task-Agnostic Meta-Learning via Latent Space Optimization
+2026-04-02 12:58:34,758 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:59:00,797 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:59:00,819 [INFO]   Saved fake_paper_182.txt (2303 words)
+2026-04-02 12:59:04,821 [INFO] [183/250] gemini | Execution-Guided Neural Program Synthesis with Type-Constrai
+2026-04-02 12:59:06,702 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 12:59:25,831 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 12:59:25,837 [INFO]   Saved fake_paper_183.txt (1904 words)
+2026-04-02 12:59:29,838 [INFO] [184/250] gemini | Scalable Bayesian Neural Networks via Structured Variational
+2026-04-02 12:59:32,034 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:00:13,290 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:00:13,294 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:00:24,758 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:01:07,078 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:01:07,090 [INFO]   Saved fake_paper_184.txt (2383 words)
+2026-04-02 13:01:11,091 [INFO] [185/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-04-02 13:01:12,691 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:01:36,095 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:01:36,098 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:01:48,213 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:02:28,179 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:02:28,182 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:02:49,990 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:03:29,596 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:03:29,608 [INFO]   Saved fake_paper_185.txt (2779 words)
+2026-04-02 13:03:33,637 [INFO] [186/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-04-02 13:03:36,114 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:03:49,952 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:03:49,980 [INFO]   Saved fake_paper_186.txt (2166 words)
+2026-04-02 13:03:53,981 [INFO] [187/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-04-02 13:03:55,811 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:04:21,769 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:04:21,783 [INFO]   Saved fake_paper_187.txt (2258 words)
+2026-04-02 13:04:25,784 [INFO] [188/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-04-02 13:04:27,228 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:04:57,691 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:04:57,706 [INFO]   Saved fake_paper_188.txt (2805 words)
+2026-04-02 13:05:01,708 [INFO] [189/250] gemini | Relational Hyperbolic Embeddings for Knowledge Graph Complet
+2026-04-02 13:05:04,629 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:05:42,989 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:05:43,016 [INFO]   Saved fake_paper_189.txt (1886 words)
+2026-04-02 13:05:47,018 [INFO] [190/250] gemini | Differentiable Architecture Search with Hardware-Aware Effic
+2026-04-02 13:05:49,297 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:06:12,063 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:06:12,070 [INFO]   Saved fake_paper_190.txt (2079 words)
+2026-04-02 13:06:16,071 [INFO] [191/250] gemini | Dynamic Graph Attention Networks for Session-Based Recommend
+2026-04-02 13:06:17,938 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:06:43,742 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:06:43,756 [INFO]   Saved fake_paper_191.txt (2420 words)
+2026-04-02 13:06:47,759 [INFO] [192/250] gemini | PointFlow: Normalizing Flows for 3D Point Cloud Generation
+2026-04-02 13:06:50,403 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:07:15,598 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:07:15,616 [INFO]   Saved fake_paper_192.txt (2259 words)
+2026-04-02 13:07:19,618 [INFO] [193/250] gemini | Contrastive Self-Supervised Learning for Low-Resource Speech
+2026-04-02 13:07:21,161 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:07:52,233 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:07:52,240 [INFO]   Saved fake_paper_193.txt (2800 words)
+2026-04-02 13:07:56,241 [INFO] [194/250] gemini | Cross-Modal Contrastive Alignment for Vision-Language Pretra
+2026-04-02 13:07:58,096 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:08:26,567 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:08:26,583 [INFO]   Saved fake_paper_194.txt (2256 words)
+2026-04-02 13:08:30,587 [INFO] [195/250] gemini | Conservative Policy Optimization for Offline Reinforcement L
+2026-04-02 13:08:32,279 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:10:05,680 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:10:05,689 [INFO]   Saved fake_paper_195.txt (3083 words)
+2026-04-02 13:10:09,690 [INFO] [196/250] gemini | Gradient-Based Saliency Maps with Causal Attribution for Med
+2026-04-02 13:10:12,484 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:10:34,971 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:10:34,972 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:10:46,770 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:11:08,435 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:11:08,437 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:11:30,153 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:11:55,599 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:11:55,633 [INFO]   Saved fake_paper_196.txt (2261 words)
+2026-04-02 13:11:59,635 [INFO] [197/250] gemini | Attention Flow Analysis for Interpretable Text Classificatio
+2026-04-02 13:12:01,216 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:12:55,269 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:12:55,335 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:13:06,807 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:13:31,320 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:13:31,328 [INFO]   Saved fake_paper_197.txt (2160 words)
+2026-04-02 13:13:35,333 [INFO] [198/250] gemini | Differentially Private Gradient Aggregation in Cross-Silo Fe
+2026-04-02 13:13:37,833 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:14:04,400 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:14:04,418 [INFO]   Saved fake_paper_198.txt (2231 words)
+2026-04-02 13:14:08,421 [INFO] [199/250] gemini | Masked Autoencoders with Hierarchical Token Prediction for D
+2026-04-02 13:14:10,115 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:14:34,633 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:14:34,647 [INFO]   Saved fake_paper_199.txt (2248 words)
+2026-04-02 13:14:38,649 [INFO] [200/250] gemini | Audio-Visual Source Separation via Cross-Modal Attention Fus
+2026-04-02 13:14:40,190 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:15:03,718 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:15:03,734 [INFO]   Saved fake_paper_200.txt (2083 words)
+2026-04-02 13:15:07,735 [INFO] [201/250] gemini | Probabilistic Transformer Forecasting with Conformal Predict
+2026-04-02 13:15:09,304 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:15:38,650 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:15:38,659 [INFO]   Saved fake_paper_201.txt (2675 words)
+2026-04-02 13:15:42,660 [INFO] [202/250] gemini | Prototype Calibration Networks for Few-Shot Image Classifica
+2026-04-02 13:15:45,659 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:16:12,536 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:16:12,564 [INFO]   Saved fake_paper_202.txt (2272 words)
+2026-04-02 13:16:16,565 [INFO] [203/250] gemini | Conditional Wasserstein GANs for Tabular Data Augmentation
+2026-04-02 13:16:18,573 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:16:37,495 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:16:37,509 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:16:49,665 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:17:13,953 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:17:14,048 [INFO]   Saved fake_paper_203.txt (2018 words)
+2026-04-02 13:17:18,139 [INFO] [204/250] gemini | Cross-Lingual Transfer Learning for Low-Resource Named Entit
+2026-04-02 13:17:19,805 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:17:41,931 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:17:41,941 [INFO]   Saved fake_paper_204.txt (1981 words)
+2026-04-02 13:17:45,941 [INFO] [205/250] gemini | Heterogeneous Graph Transformers for Biomedical Relation Ext
+2026-04-02 13:17:47,736 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:18:17,665 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:18:17,667 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:18:29,470 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:18:57,091 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:18:57,099 [INFO]   Saved fake_paper_205.txt (2042 words)
+2026-04-02 13:19:01,100 [INFO] [206/250] gemini | Causal Representation Learning for Out-of-Distribution Gener
+2026-04-02 13:19:03,852 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:19:30,171 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:19:30,188 [INFO]   Saved fake_paper_206.txt (2066 words)
+2026-04-02 13:19:34,189 [INFO] [207/250] gemini | TabNet Revisited: Gated Feature Selection with Self-Supervis
+2026-04-02 13:19:36,035 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:20:04,220 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:20:04,221 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:20:15,662 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:20:32,835 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:20:32,836 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:20:54,980 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:21:38,189 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:21:38,198 [INFO]   Saved fake_paper_207.txt (2556 words)
+2026-04-02 13:21:42,199 [INFO] [208/250] gemini | Sparse Mixture-of-Experts Attention for Long-Document Summar
+2026-04-02 13:21:43,721 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:22:01,961 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:22:01,964 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:22:13,744 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:23:04,289 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:23:04,300 [INFO]   Saved fake_paper_208.txt (2968 words)
+2026-04-02 13:23:08,301 [INFO] [209/250] gemini | Neurosymbolic Integration for Commonsense Inference in Open-
+2026-04-02 13:23:09,828 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:23:51,530 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:23:51,549 [INFO]   Saved fake_paper_209.txt (2532 words)
+2026-04-02 13:23:55,554 [INFO] [210/250] gemini | Mitigating Demographic Bias in Large Language Models via Con
+2026-04-02 13:23:57,050 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:24:38,655 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:24:38,663 [INFO]   Saved fake_paper_210.txt (2528 words)
+2026-04-02 13:24:42,665 [INFO] [211/250] gemini | Self-Supervised Change Detection in Multitemporal Satellite 
+2026-04-02 13:24:44,170 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:25:09,040 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:25:09,066 [INFO]   Saved fake_paper_211.txt (2180 words)
+2026-04-02 13:25:13,076 [INFO] [212/250] gemini | Anchor-Free Object Detection with Deformable Convolutional F
+2026-04-02 13:25:14,921 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:25:49,607 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:25:49,617 [INFO]   Saved fake_paper_212.txt (2336 words)
+2026-04-02 13:25:53,618 [INFO] [213/250] gemini | Hierarchical Reinforcement Learning for Multi-Step Manipulat
+2026-04-02 13:25:55,125 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:26:20,051 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:26:20,065 [INFO]   Saved fake_paper_213.txt (2186 words)
+2026-04-02 13:26:24,066 [INFO] [214/250] gemini | Graph Neural Networks for Supply Chain Anomaly Detection
+2026-04-02 13:26:25,544 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:26:54,456 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:26:54,468 [INFO]   Saved fake_paper_214.txt (2352 words)
+2026-04-02 13:26:58,471 [INFO] [215/250] gemini | Grounded Visual Question Answering with Scene Graph Supervis
+2026-04-02 13:27:00,025 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:27:38,403 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:27:38,405 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:27:49,853 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:28:00,593 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:28:00,594 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:28:22,044 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:28:49,864 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:28:49,877 [INFO]   Saved fake_paper_215.txt (2524 words)
+2026-04-02 13:28:53,880 [INFO] [216/250] gemini | Elastic Weight Consolidation with Dynamic Memory Replay for 
+2026-04-02 13:28:55,374 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:29:51,724 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:29:51,735 [INFO]   Saved fake_paper_216.txt (2648 words)
+2026-04-02 13:29:55,736 [INFO] [217/250] gemini | Improving Transformer Efficiency Using Dynamic Token Pruning
+2026-04-02 13:29:57,289 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:30:25,139 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:30:25,146 [INFO]   Saved fake_paper_217.txt (2599 words)
+2026-04-02 13:30:29,147 [INFO] [218/250] gemini | Temporal Convolutional Networks with Attention for Multivari
+2026-04-02 13:30:30,717 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:31:10,201 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:31:10,205 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:31:21,616 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:31:47,789 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:31:47,790 [WARNING] Attempt 2/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:32:09,391 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:32:41,434 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:32:41,456 [INFO]   Saved fake_paper_218.txt (2202 words)
+2026-04-02 13:32:45,457 [INFO] [219/250] gemini | Adaptive Gradient Clipping for Training Stability in Large-S
+2026-04-02 13:32:47,222 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:33:14,615 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:33:14,630 [INFO]   Saved fake_paper_219.txt (1975 words)
+2026-04-02 13:33:18,633 [INFO] [220/250] gemini | Federated Learning for Privacy-Preserving Medical Image Segm
+2026-04-02 13:33:20,107 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:33:52,400 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:33:52,402 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:34:03,813 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:34:33,275 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:34:33,291 [INFO]   Saved fake_paper_220.txt (2246 words)
+2026-04-02 13:34:37,292 [INFO] [221/250] gemini | Test-Time Adaptation via Self-Supervised Auxiliary Tasks und
+2026-04-02 13:34:38,783 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:34:44,699 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:34:44,701 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:34:56,357 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:35:20,530 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:35:20,542 [INFO]   Saved fake_paper_221.txt (2260 words)
+2026-04-02 13:35:24,543 [INFO] [222/250] gemini | Latent Diffusion Models for High-Fidelity Medical Image Synt
+2026-04-02 13:35:26,138 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:35:43,299 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-04-02 13:35:43,300 [WARNING] Attempt 1/3 failed [gemini]: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-02 13:35:55,518 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:36:26,576 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:36:26,589 [INFO]   Saved fake_paper_222.txt (2998 words)
+2026-04-02 13:36:30,591 [INFO] [223/250] gemini | Persona-Consistent Response Generation with Memory-Augmented
+2026-04-02 13:36:33,052 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:36:48,126 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:36:48,143 [INFO]   Saved fake_paper_223.txt (2126 words)
+2026-04-02 13:36:52,144 [INFO] [224/250] gemini | Sparse Gating Mechanisms for Conditional Computation in Visi
+2026-04-02 13:36:53,824 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:37:31,032 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:37:31,051 [INFO]   Saved fake_paper_224.txt (1670 words)
+2026-04-02 13:37:35,054 [INFO] [225/250] gemini | Layout-Aware Multimodal Transformers for Document Informatio
+2026-04-02 13:37:37,522 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:38:02,480 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:38:02,488 [INFO]   Saved fake_paper_225.txt (2128 words)
+2026-04-02 13:38:06,491 [INFO] [226/250] gemini | Transformer-Based Extraction of Adverse Drug Events from Cli
+2026-04-02 13:38:08,073 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:38:37,183 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:38:37,201 [INFO]   Saved fake_paper_226.txt (2028 words)
+2026-04-02 13:38:41,217 [INFO] [227/250] gemini | Chain-of-Thought Distillation for Multi-Hop Question Answeri
+2026-04-02 13:38:43,391 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:39:06,503 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:39:06,511 [INFO]   Saved fake_paper_227.txt (2073 words)
+2026-04-02 13:39:10,513 [INFO] [228/250] gemini | Parameter-Efficient Fine-Tuning of Large Language Models via
+2026-04-02 13:39:12,177 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:39:33,350 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:39:33,360 [INFO]   Saved fake_paper_228.txt (1948 words)
+2026-04-02 13:39:37,361 [INFO] [229/250] gemini | Boundary-Aware Transformer for Weakly Supervised Semantic Se
+2026-04-02 13:39:39,029 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:39:55,482 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:39:55,491 [INFO]   Saved fake_paper_229.txt (2618 words)
+2026-04-02 13:39:59,492 [INFO] [230/250] gemini | Certified Adversarial Robustness via Randomized Smoothing wi
+2026-04-02 13:40:01,165 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:40:24,961 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:40:24,971 [INFO]   Saved fake_paper_230.txt (2273 words)
+2026-04-02 13:40:28,972 [INFO] [231/250] gemini | Learned Image Compression with Entropy Coding and Hyperprior
+2026-04-02 13:40:30,738 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:40:53,213 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:40:53,244 [INFO]   Saved fake_paper_231.txt (2204 words)
+2026-04-02 13:40:57,272 [INFO] [232/250] gemini | Task-Agnostic Meta-Learning via Latent Space Optimization
+2026-04-02 13:41:00,182 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:41:24,154 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:41:24,165 [INFO]   Saved fake_paper_232.txt (2195 words)
+2026-04-02 13:41:28,166 [INFO] [233/250] gemini | Execution-Guided Neural Program Synthesis with Type-Constrai
+2026-04-02 13:41:29,731 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:41:51,271 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:41:51,283 [INFO]   Saved fake_paper_233.txt (2052 words)
+2026-04-02 13:41:55,283 [INFO] [234/250] gemini | Scalable Bayesian Neural Networks via Structured Variational
+2026-04-02 13:41:56,972 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:42:11,153 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:42:11,161 [INFO]   Saved fake_paper_234.txt (1875 words)
+2026-04-02 13:42:15,163 [INFO] [235/250] gemini | Cooperative Multi-Agent Reinforcement Learning with Communic
+2026-04-02 13:42:17,087 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:42:43,402 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:42:43,415 [INFO]   Saved fake_paper_235.txt (2406 words)
+2026-04-02 13:42:47,416 [INFO] [236/250] gemini | Consistency Regularization with Stochastic Augmentation Grap
+2026-04-02 13:42:49,186 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:43:10,407 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:43:10,422 [INFO]   Saved fake_paper_236.txt (1960 words)
+2026-04-02 13:43:14,429 [INFO] [237/250] gemini | Variational Quantum Circuits for Binary Classification on NI
+2026-04-02 13:43:17,726 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:43:41,634 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:43:41,648 [INFO]   Saved fake_paper_237.txt (2443 words)
+2026-04-02 13:43:45,649 [INFO] [238/250] gemini | Secure Multi-Party Computation for Distributed Model Trainin
+2026-04-02 13:43:47,268 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:44:12,778 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:44:12,790 [INFO]   Saved fake_paper_238.txt (2355 words)
+2026-04-02 13:44:16,792 [INFO] [239/250] gemini | Relational Hyperbolic Embeddings for Knowledge Graph Complet
+2026-04-02 13:44:18,744 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:44:41,231 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:44:41,274 [INFO]   Saved fake_paper_239.txt (2114 words)
+2026-04-02 13:44:45,275 [INFO] [240/250] gemini | Differentiable Architecture Search with Hardware-Aware Effic
+2026-04-02 13:44:46,792 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:45:09,362 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:45:09,372 [INFO]   Saved fake_paper_240.txt (2209 words)
+2026-04-02 13:45:13,373 [INFO] [241/250] gemini | Dynamic Graph Attention Networks for Session-Based Recommend
+2026-04-02 13:45:14,892 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:45:41,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:45:41,994 [INFO]   Saved fake_paper_241.txt (2502 words)
+2026-04-02 13:45:45,995 [INFO] [242/250] gemini | PointFlow: Normalizing Flows for 3D Point Cloud Generation
+2026-04-02 13:45:47,527 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:46:10,340 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:46:10,354 [INFO]   Saved fake_paper_242.txt (2404 words)
+2026-04-02 13:46:14,356 [INFO] [243/250] gemini | Contrastive Self-Supervised Learning for Low-Resource Speech
+2026-04-02 13:46:16,117 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:46:36,851 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:46:36,860 [INFO]   Saved fake_paper_243.txt (2002 words)
+2026-04-02 13:46:40,862 [INFO] [244/250] gemini | Cross-Modal Contrastive Alignment for Vision-Language Pretra
+2026-04-02 13:46:42,911 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:47:04,479 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:47:04,513 [INFO]   Saved fake_paper_244.txt (1967 words)
+2026-04-02 13:47:08,521 [INFO] [245/250] gemini | Conservative Policy Optimization for Offline Reinforcement L
+2026-04-02 13:47:10,448 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:47:32,395 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:47:32,405 [INFO]   Saved fake_paper_245.txt (1950 words)
+2026-04-02 13:47:36,407 [INFO] [246/250] gemini | Gradient-Based Saliency Maps with Causal Attribution for Med
+2026-04-02 13:47:37,972 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:47:59,363 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:47:59,372 [INFO]   Saved fake_paper_246.txt (1998 words)
+2026-04-02 13:48:03,373 [INFO] [247/250] gemini | Attention Flow Analysis for Interpretable Text Classificatio
+2026-04-02 13:48:04,990 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:48:27,877 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:48:27,895 [INFO]   Saved fake_paper_247.txt (2355 words)
+2026-04-02 13:48:31,898 [INFO] [248/250] gemini | Differentially Private Gradient Aggregation in Cross-Silo Fe
+2026-04-02 13:48:33,455 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:48:47,637 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:48:47,683 [INFO]   Saved fake_paper_248.txt (1908 words)
+2026-04-02 13:48:51,697 [INFO] [249/250] gemini | Masked Autoencoders with Hierarchical Token Prediction for D
+2026-04-02 13:48:53,223 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:49:13,357 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:49:13,372 [INFO]   Saved fake_paper_249.txt (2112 words)
+2026-04-02 13:49:17,374 [INFO] [250/250] gemini | Audio-Visual Source Separation via Cross-Modal Attention Fus
+2026-04-02 13:49:18,893 [INFO] AFC is enabled with max remote calls: 10.
+2026-04-02 13:49:47,455 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent "HTTP/1.1 200 OK"
+2026-04-02 13:49:47,467 [INFO]   Saved fake_paper_250.txt (2972 words)
+2026-04-02 13:49:51,552 [INFO] === Session Summary ===
+2026-04-02 13:49:51,553 [INFO]   Generated : 82
+2026-04-02 13:49:51,553 [INFO]   Failed    : 0
+2026-04-02 13:49:51,553 [INFO]   Total done (my range): 82 / 82
+2026-04-02 13:49:51,554 [INFO]   All papers in your range generated.

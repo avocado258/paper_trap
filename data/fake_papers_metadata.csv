@@ -1,0 +1,254 @@
+id,filename,label,provider,domain,topic,word_count,timestamp
+1,fake_paper_001.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,1234,2026-03-20T20:20:36.890195
+2,fake_paper_002.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,1199,2026-03-20T20:20:53.173541
+3,fake_paper_003.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,1334,2026-03-20T20:21:11.037570
+4,fake_paper_004.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,1481,2026-03-20T20:21:32.505780
+1,fake_paper_001.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,2131,2026-03-20T20:41:29.820394
+2,fake_paper_002.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,1841,2026-03-20T20:41:51.505278
+3,fake_paper_003.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,2362,2026-03-20T20:42:17.685368
+4,fake_paper_004.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,2157,2026-03-20T20:42:44.157223
+5,fake_paper_005.txt,AI,gemini,Graph Neural Networks / Natural Language Processing,Heterogeneous Graph Transformers for Biomedical Relation Extraction,2108,2026-03-20T20:43:09.283843
+6,fake_paper_006.txt,AI,gemini,Causal Inference / Machine Learning,Causal Representation Learning for Out-of-Distribution Generalization,2721,2026-03-20T20:43:38.636208
+7,fake_paper_007.txt,AI,gemini,Tabular Machine Learning,TabNet Revisited: Gated Feature Selection with Self-Supervised Pretraining,2100,2026-03-20T20:44:04.821969
+8,fake_paper_008.txt,AI,gemini,Natural Language Processing / Efficient Transformers,Sparse Mixture-of-Experts Attention for Long-Document Summarization,1968,2026-03-20T20:44:28.353047
+9,fake_paper_009.txt,AI,gemini,Commonsense Reasoning,Neurosymbolic Integration for Commonsense Inference in Open-Domain QA,2029,2026-03-20T20:44:53.625777
+10,fake_paper_010.txt,AI,gemini,Fairness in Machine Learning,Mitigating Demographic Bias in Large Language Models via Contrastive Fine-Tuning,2456,2026-03-20T20:45:19.388085
+11,fake_paper_011.txt,AI,gemini,Computer Vision / Remote Sensing,Self-Supervised Change Detection in Multitemporal Satellite Imagery,2339,2026-03-20T20:45:44.178009
+12,fake_paper_012.txt,AI,gemini,Computer Vision / Object Detection,Anchor-Free Object Detection with Deformable Convolutional Feature Pyramids,2136,2026-03-20T20:46:08.999466
+13,fake_paper_013.txt,AI,gemini,Reinforcement Learning / Robotics,Hierarchical Reinforcement Learning for Multi-Step Manipulation Tasks,2252,2026-03-20T20:46:31.224435
+14,fake_paper_014.txt,AI,gemini,Graph Neural Networks / Anomaly Detection,Graph Neural Networks for Supply Chain Anomaly Detection,1709,2026-03-20T20:46:50.055567
+15,fake_paper_015.txt,AI,gemini,Multimodal Learning / Vision-Language,Grounded Visual Question Answering with Scene Graph Supervision,2653,2026-03-20T20:47:18.123605
+16,fake_paper_016.txt,AI,gemini,Continual Learning,Elastic Weight Consolidation with Dynamic Memory Replay for Continual Learning,2356,2026-03-20T20:47:43.975484
+17,fake_paper_017.txt,AI,gemini,Natural Language Processing / Transformers,Improving Transformer Efficiency Using Dynamic Token Pruning,1469,2026-03-20T20:48:01.403438
+18,fake_paper_018.txt,AI,gemini,Time Series Analysis / Anomaly Detection,Temporal Convolutional Networks with Attention for Multivariate Anomaly Detection,2512,2026-03-20T20:48:31.288548
+19,fake_paper_019.txt,AI,gemini,Optimization / Deep Learning,Adaptive Gradient Clipping for Training Stability in Large-Scale Neural Networks,2658,2026-03-20T20:49:20.826178
+20,fake_paper_020.txt,AI,gemini,Federated Learning / Medical Image Analysis,Federated Learning for Privacy-Preserving Medical Image Segmentation,1900,2026-03-20T20:49:42.604674
+21,fake_paper_021.txt,AI,gemini,Distribution Shift,Test-Time Adaptation via Self-Supervised Auxiliary Tasks under Covariate Shift,2354,2026-03-20T20:50:05.806922
+22,fake_paper_022.txt,AI,gemini,Generative Models / Diffusion,Latent Diffusion Models for High-Fidelity Medical Image Synthesis,1795,2026-03-20T20:50:25.030550
+23,fake_paper_023.txt,AI,gemini,NLP / Dialogue Systems,Persona-Consistent Response Generation with Memory-Augmented Transformers,1539,2026-03-20T20:50:43.279032
+24,fake_paper_024.txt,AI,gemini,Mixture of Experts,Sparse Gating Mechanisms for Conditional Computation in Vision Transformers,2583,2026-03-20T20:51:10.338734
+25,fake_paper_025.txt,AI,gemini,Multimodal Learning / Document Understanding,Layout-Aware Multimodal Transformers for Document Information Extraction,2390,2026-03-20T20:51:33.541385
+26,fake_paper_026.txt,AI,gemini,NLP / Clinical Text Mining,Transformer-Based Extraction of Adverse Drug Events from Clinical Notes,2748,2026-03-20T20:52:05.193923
+27,fake_paper_027.txt,AI,gemini,Neural Reasoning,Chain-of-Thought Distillation for Multi-Hop Question Answering,2224,2026-03-20T20:52:34.785675
+28,fake_paper_028.txt,AI,gemini,Large Language Models,Parameter-Efficient Fine-Tuning of Large Language Models via Adaptive LoRA,1501,2026-03-20T20:52:56.472908
+29,fake_paper_029.txt,AI,gemini,Computer Vision / Semantic Segmentation,Boundary-Aware Transformer for Weakly Supervised Semantic Segmentation,2529,2026-03-20T20:53:21.118600
+30,fake_paper_030.txt,AI,gemini,Adversarial Robustness,Certified Adversarial Robustness via Randomized Smoothing with Tight Bounds,2593,2026-03-20T20:53:45.740753
+31,fake_paper_031.txt,AI,gemini,Neural Compression,Learned Image Compression with Entropy Coding and Hyperprior Models,2294,2026-03-20T20:54:10.425896
+32,fake_paper_032.txt,AI,gemini,Meta-Learning,Task-Agnostic Meta-Learning via Latent Space Optimization,2517,2026-03-20T20:54:38.824804
+33,fake_paper_033.txt,AI,gemini,NLP / Code Generation,Execution-Guided Neural Program Synthesis with Type-Constrained Decoding,1751,2026-03-20T20:55:00.763076
+34,fake_paper_034.txt,AI,gemini,Bayesian Deep Learning,Scalable Bayesian Neural Networks via Structured Variational Inference,2393,2026-03-20T20:55:26.961125
+35,fake_paper_035.txt,AI,gemini,Reinforcement Learning / Multi-Agent Systems,Cooperative Multi-Agent Reinforcement Learning with Communication Constraints,2452,2026-03-20T20:55:54.356508
+36,fake_paper_036.txt,AI,gemini,Semi-Supervised Learning,Consistency Regularization with Stochastic Augmentation Graphs for SSL,2274,2026-03-20T20:56:18.484126
+37,fake_paper_037.txt,AI,gemini,Quantum Machine Learning,Variational Quantum Circuits for Binary Classification on NISQ Devices,2011,2026-03-20T20:56:40.575029
+38,fake_paper_038.txt,AI,gemini,Privacy-Preserving Machine Learning,Secure Multi-Party Computation for Distributed Model Training,2302,2026-03-20T20:57:09.845005
+39,fake_paper_039.txt,AI,gemini,Knowledge Graph Embedding,Relational Hyperbolic Embeddings for Knowledge Graph Completion,2091,2026-03-20T20:57:35.696686
+40,fake_paper_040.txt,AI,gemini,Neural Architecture Search,Differentiable Architecture Search with Hardware-Aware Efficiency Constraints,2739,2026-03-20T20:58:11.102167
+41,fake_paper_041.txt,AI,gemini,Graph Neural Networks / Recommendation Systems,Dynamic Graph Attention Networks for Session-Based Recommendation,2286,2026-03-20T20:58:35.761697
+42,fake_paper_042.txt,AI,gemini,Computer Vision / 3D Point Clouds,PointFlow: Normalizing Flows for 3D Point Cloud Generation,2260,2026-03-20T20:58:56.980385
+43,fake_paper_043.txt,AI,gemini,Self-Supervised Learning / Speech Processing,Contrastive Self-Supervised Learning for Low-Resource Speech Recognition,1990,2026-03-20T20:59:17.720307
+44,fake_paper_044.txt,AI,gemini,Contrastive Learning / Multi-Modal,Cross-Modal Contrastive Alignment for Vision-Language Pretraining,2243,2026-03-20T20:59:42.550368
+45,fake_paper_045.txt,AI,gemini,Offline Reinforcement Learning,Conservative Policy Optimization for Offline Reinforcement Learning,2187,2026-03-20T21:00:07.228280
+46,fake_paper_046.txt,AI,gemini,Explainable AI / Computer Vision,Gradient-Based Saliency Maps with Causal Attribution for Medical Diagnosis,2210,2026-03-20T21:00:35.465201
+47,fake_paper_047.txt,AI,gemini,Explainable AI / NLP,Attention Flow Analysis for Interpretable Text Classification,2110,2026-03-20T21:00:58.367908
+48,fake_paper_048.txt,AI,gemini,Federated Learning / Differential Privacy,Differentially Private Gradient Aggregation in Cross-Silo Federated Learning,2271,2026-03-20T21:01:22.898686
+49,fake_paper_049.txt,AI,gemini,Self-Supervised Learning / Computer Vision,Masked Autoencoders with Hierarchical Token Prediction for Dense Prediction,2064,2026-03-20T21:01:45.676646
+50,fake_paper_050.txt,AI,gemini,Multimodal Learning / Audio-Visual,Audio-Visual Source Separation via Cross-Modal Attention Fusion,2375,2026-03-20T21:02:13.934963
+51,fake_paper_051.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,1591,2026-03-20T21:02:31.525104
+52,fake_paper_052.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,1932,2026-03-20T21:02:53.223131
+53,fake_paper_053.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,2613,2026-03-20T21:03:19.270485
+54,fake_paper_054.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,4386,2026-03-20T21:03:52.039129
+55,fake_paper_055.txt,AI,gemini,Graph Neural Networks / Natural Language Processing,Heterogeneous Graph Transformers for Biomedical Relation Extraction,1718,2026-03-20T21:04:12.945464
+56,fake_paper_056.txt,AI,gemini,Causal Inference / Machine Learning,Causal Representation Learning for Out-of-Distribution Generalization,3064,2026-03-20T21:04:46.258309
+57,fake_paper_057.txt,AI,gemini,Tabular Machine Learning,TabNet Revisited: Gated Feature Selection with Self-Supervised Pretraining,1975,2026-03-20T21:05:09.746877
+58,fake_paper_058.txt,AI,gemini,Natural Language Processing / Efficient Transformers,Sparse Mixture-of-Experts Attention for Long-Document Summarization,3067,2026-03-20T21:05:43.165541
+59,fake_paper_059.txt,AI,gemini,Commonsense Reasoning,Neurosymbolic Integration for Commonsense Inference in Open-Domain QA,2582,2026-03-20T21:06:10.724363
+60,fake_paper_060.txt,AI,gemini,Fairness in Machine Learning,Mitigating Demographic Bias in Large Language Models via Contrastive Fine-Tuning,1956,2026-03-20T21:06:37.887582
+61,fake_paper_061.txt,AI,gemini,Computer Vision / Remote Sensing,Self-Supervised Change Detection in Multitemporal Satellite Imagery,2066,2026-03-20T21:07:00.678310
+62,fake_paper_062.txt,AI,gemini,Computer Vision / Object Detection,Anchor-Free Object Detection with Deformable Convolutional Feature Pyramids,3116,2026-03-20T21:07:30.182806
+63,fake_paper_063.txt,AI,gemini,Reinforcement Learning / Robotics,Hierarchical Reinforcement Learning for Multi-Step Manipulation Tasks,2523,2026-03-20T21:07:56.137519
+64,fake_paper_064.txt,AI,gemini,Graph Neural Networks / Anomaly Detection,Graph Neural Networks for Supply Chain Anomaly Detection,2206,2026-03-20T21:08:21.400134
+65,fake_paper_065.txt,AI,gemini,Multimodal Learning / Vision-Language,Grounded Visual Question Answering with Scene Graph Supervision,2200,2026-03-20T21:08:43.449240
+66,fake_paper_066.txt,AI,gemini,Continual Learning,Elastic Weight Consolidation with Dynamic Memory Replay for Continual Learning,2430,2026-03-20T21:09:08.966850
+67,fake_paper_067.txt,AI,gemini,Natural Language Processing / Transformers,Improving Transformer Efficiency Using Dynamic Token Pruning,1584,2026-03-20T21:09:30.077210
+68,fake_paper_068.txt,AI,gemini,Time Series Analysis / Anomaly Detection,Temporal Convolutional Networks with Attention for Multivariate Anomaly Detection,2493,2026-03-20T21:09:54.054884
+69,fake_paper_069.txt,AI,gemini,Optimization / Deep Learning,Adaptive Gradient Clipping for Training Stability in Large-Scale Neural Networks,2566,2026-03-20T21:10:20.791983
+70,fake_paper_070.txt,AI,gemini,Federated Learning / Medical Image Analysis,Federated Learning for Privacy-Preserving Medical Image Segmentation,2561,2026-03-20T21:10:46.098850
+71,fake_paper_071.txt,AI,gemini,Distribution Shift,Test-Time Adaptation via Self-Supervised Auxiliary Tasks under Covariate Shift,1975,2026-03-20T21:11:06.894177
+72,fake_paper_072.txt,AI,gemini,Generative Models / Diffusion,Latent Diffusion Models for High-Fidelity Medical Image Synthesis,2431,2026-03-20T21:11:34.984054
+73,fake_paper_073.txt,AI,gemini,NLP / Dialogue Systems,Persona-Consistent Response Generation with Memory-Augmented Transformers,2588,2026-03-20T21:12:03.557251
+74,fake_paper_074.txt,AI,gemini,Mixture of Experts,Sparse Gating Mechanisms for Conditional Computation in Vision Transformers,2384,2026-03-20T21:12:31.388757
+75,fake_paper_075.txt,AI,gemini,Multimodal Learning / Document Understanding,Layout-Aware Multimodal Transformers for Document Information Extraction,1829,2026-03-20T21:12:49.961512
+76,fake_paper_076.txt,AI,gemini,NLP / Clinical Text Mining,Transformer-Based Extraction of Adverse Drug Events from Clinical Notes,2089,2026-03-20T21:13:15.544213
+77,fake_paper_077.txt,AI,gemini,Neural Reasoning,Chain-of-Thought Distillation for Multi-Hop Question Answering,2482,2026-03-20T21:13:40.419434
+78,fake_paper_078.txt,AI,gemini,Large Language Models,Parameter-Efficient Fine-Tuning of Large Language Models via Adaptive LoRA,2238,2026-03-20T21:14:04.519812
+79,fake_paper_079.txt,AI,gemini,Computer Vision / Semantic Segmentation,Boundary-Aware Transformer for Weakly Supervised Semantic Segmentation,1967,2026-03-20T21:14:24.838447
+80,fake_paper_080.txt,AI,gemini,Adversarial Robustness,Certified Adversarial Robustness via Randomized Smoothing with Tight Bounds,2413,2026-03-20T21:14:49.847532
+81,fake_paper_081.txt,AI,gemini,Neural Compression,Learned Image Compression with Entropy Coding and Hyperprior Models,2102,2026-03-20T21:15:14.747843
+82,fake_paper_082.txt,AI,gemini,Meta-Learning,Task-Agnostic Meta-Learning via Latent Space Optimization,2107,2026-03-20T21:15:39.260321
+83,fake_paper_083.txt,AI,gemini,NLP / Code Generation,Execution-Guided Neural Program Synthesis with Type-Constrained Decoding,2453,2026-03-20T21:16:09.096217
+84,fake_paper_084.txt,AI,gemini,Bayesian Deep Learning,Scalable Bayesian Neural Networks via Structured Variational Inference,2023,2026-03-20T21:16:29.495037
+85,fake_paper_085.txt,AI,gemini,Reinforcement Learning / Multi-Agent Systems,Cooperative Multi-Agent Reinforcement Learning with Communication Constraints,2638,2026-03-24T09:24:30.957456
+86,fake_paper_086.txt,AI,gemini,Semi-Supervised Learning,Consistency Regularization with Stochastic Augmentation Graphs for SSL,2345,2026-03-30T21:40:00.639559
+87,fake_paper_087.txt,AI,gemini,Quantum Machine Learning,Variational Quantum Circuits for Binary Classification on NISQ Devices,2482,2026-03-30T21:40:32.714083
+88,fake_paper_088.txt,AI,gemini,Privacy-Preserving Machine Learning,Secure Multi-Party Computation for Distributed Model Training,1975,2026-03-30T21:41:01.795229
+89,fake_paper_089.txt,AI,gemini,Knowledge Graph Embedding,Relational Hyperbolic Embeddings for Knowledge Graph Completion,2361,2026-03-30T21:41:40.163643
+90,fake_paper_090.txt,AI,gemini,Neural Architecture Search,Differentiable Architecture Search with Hardware-Aware Efficiency Constraints,2324,2026-03-30T21:42:12.560262
+91,fake_paper_091.txt,AI,gemini,Graph Neural Networks / Recommendation Systems,Dynamic Graph Attention Networks for Session-Based Recommendation,2298,2026-03-30T21:43:14.651391
+92,fake_paper_092.txt,AI,gemini,Computer Vision / 3D Point Clouds,PointFlow: Normalizing Flows for 3D Point Cloud Generation,2227,2026-03-30T21:43:43.146425
+93,fake_paper_093.txt,AI,gemini,Self-Supervised Learning / Speech Processing,Contrastive Self-Supervised Learning for Low-Resource Speech Recognition,2141,2026-03-30T21:44:12.676352
+94,fake_paper_094.txt,AI,gemini,Contrastive Learning / Multi-Modal,Cross-Modal Contrastive Alignment for Vision-Language Pretraining,2171,2026-03-30T21:44:41.176723
+95,fake_paper_095.txt,AI,gemini,Offline Reinforcement Learning,Conservative Policy Optimization for Offline Reinforcement Learning,2291,2026-03-30T21:45:17.643029
+96,fake_paper_096.txt,AI,gemini,Explainable AI / Computer Vision,Gradient-Based Saliency Maps with Causal Attribution for Medical Diagnosis,2380,2026-03-30T21:45:59.348002
+97,fake_paper_097.txt,AI,gemini,Explainable AI / NLP,Attention Flow Analysis for Interpretable Text Classification,2144,2026-03-30T21:46:30.326846
+98,fake_paper_098.txt,AI,gemini,Federated Learning / Differential Privacy,Differentially Private Gradient Aggregation in Cross-Silo Federated Learning,1703,2026-03-30T21:46:53.476900
+99,fake_paper_099.txt,AI,gemini,Self-Supervised Learning / Computer Vision,Masked Autoencoders with Hierarchical Token Prediction for Dense Prediction,2276,2026-03-30T21:47:22.808915
+100,fake_paper_100.txt,AI,gemini,Multimodal Learning / Audio-Visual,Audio-Visual Source Separation via Cross-Modal Attention Fusion,2621,2026-03-30T21:47:58.103826
+101,fake_paper_101.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,2318,2026-03-30T21:48:34.315111
+102,fake_paper_102.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,2092,2026-03-30T21:49:04.808427
+103,fake_paper_103.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,2602,2026-03-30T21:49:40.035422
+104,fake_paper_104.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,2484,2026-03-30T21:50:12.929754
+105,fake_paper_105.txt,AI,gemini,Graph Neural Networks / Natural Language Processing,Heterogeneous Graph Transformers for Biomedical Relation Extraction,1944,2026-03-31T04:55:11.736865
+106,fake_paper_106.txt,AI,gemini,Causal Inference / Machine Learning,Causal Representation Learning for Out-of-Distribution Generalization,2432,2026-03-31T04:56:33.642240
+107,fake_paper_107.txt,AI,gemini,Tabular Machine Learning,TabNet Revisited: Gated Feature Selection with Self-Supervised Pretraining,2592,2026-03-31T04:57:42.664546
+108,fake_paper_108.txt,AI,gemini,Natural Language Processing / Efficient Transformers,Sparse Mixture-of-Experts Attention for Long-Document Summarization,2147,2026-03-31T04:58:19.808260
+109,fake_paper_109.txt,AI,gemini,Commonsense Reasoning,Neurosymbolic Integration for Commonsense Inference in Open-Domain QA,2368,2026-03-31T04:58:58.699340
+110,fake_paper_110.txt,AI,gemini,Fairness in Machine Learning,Mitigating Demographic Bias in Large Language Models via Contrastive Fine-Tuning,2496,2026-03-31T04:59:29.694322
+111,fake_paper_111.txt,AI,gemini,Computer Vision / Remote Sensing,Self-Supervised Change Detection in Multitemporal Satellite Imagery,1751,2026-03-31T05:00:02.514052
+112,fake_paper_112.txt,AI,gemini,Computer Vision / Object Detection,Anchor-Free Object Detection with Deformable Convolutional Feature Pyramids,2616,2026-03-31T05:00:35.862569
+113,fake_paper_113.txt,AI,gemini,Reinforcement Learning / Robotics,Hierarchical Reinforcement Learning for Multi-Step Manipulation Tasks,2431,2026-03-31T05:02:22.633883
+114,fake_paper_114.txt,AI,gemini,Graph Neural Networks / Anomaly Detection,Graph Neural Networks for Supply Chain Anomaly Detection,2198,2026-03-31T05:03:17.266899
+115,fake_paper_115.txt,AI,gemini,Multimodal Learning / Vision-Language,Grounded Visual Question Answering with Scene Graph Supervision,2884,2026-03-31T05:03:50.834506
+116,fake_paper_116.txt,AI,gemini,Continual Learning,Elastic Weight Consolidation with Dynamic Memory Replay for Continual Learning,2023,2026-03-31T05:05:07.665345
+117,fake_paper_117.txt,AI,gemini,Natural Language Processing / Transformers,Improving Transformer Efficiency Using Dynamic Token Pruning,1819,2026-03-31T05:05:33.542709
+118,fake_paper_118.txt,AI,gemini,Time Series Analysis / Anomaly Detection,Temporal Convolutional Networks with Attention for Multivariate Anomaly Detection,2103,2026-03-31T05:06:02.831028
+119,fake_paper_119.txt,AI,gemini,Optimization / Deep Learning,Adaptive Gradient Clipping for Training Stability in Large-Scale Neural Networks,2427,2026-03-31T05:06:34.768431
+120,fake_paper_120.txt,AI,gemini,Federated Learning / Medical Image Analysis,Federated Learning for Privacy-Preserving Medical Image Segmentation,2154,2026-03-31T05:07:02.961614
+121,fake_paper_121.txt,AI,gemini,Distribution Shift,Test-Time Adaptation via Self-Supervised Auxiliary Tasks under Covariate Shift,2006,2026-03-31T05:07:33.150560
+122,fake_paper_122.txt,AI,gemini,Generative Models / Diffusion,Latent Diffusion Models for High-Fidelity Medical Image Synthesis,1864,2026-03-31T05:07:56.265640
+123,fake_paper_123.txt,AI,gemini,NLP / Dialogue Systems,Persona-Consistent Response Generation with Memory-Augmented Transformers,2047,2026-03-31T05:08:23.957979
+124,fake_paper_124.txt,AI,gemini,Mixture of Experts,Sparse Gating Mechanisms for Conditional Computation in Vision Transformers,2304,2026-03-31T05:08:54.144007
+125,fake_paper_125.txt,AI,gemini,Multimodal Learning / Document Understanding,Layout-Aware Multimodal Transformers for Document Information Extraction,1993,2026-03-31T05:09:21.883645
+126,fake_paper_126.txt,AI,gemini,NLP / Clinical Text Mining,Transformer-Based Extraction of Adverse Drug Events from Clinical Notes,1980,2026-03-31T05:09:41.567323
+127,fake_paper_127.txt,AI,gemini,Neural Reasoning,Chain-of-Thought Distillation for Multi-Hop Question Answering,2210,2026-03-31T05:10:13.489664
+128,fake_paper_128.txt,AI,gemini,Large Language Models,Parameter-Efficient Fine-Tuning of Large Language Models via Adaptive LoRA,2099,2026-03-31T05:10:40.313366
+129,fake_paper_129.txt,AI,gemini,Computer Vision / Semantic Segmentation,Boundary-Aware Transformer for Weakly Supervised Semantic Segmentation,2931,2026-03-31T05:11:13.758365
+130,fake_paper_130.txt,AI,gemini,Adversarial Robustness,Certified Adversarial Robustness via Randomized Smoothing with Tight Bounds,2390,2026-03-31T05:11:43.261642
+131,fake_paper_131.txt,AI,gemini,Neural Compression,Learned Image Compression with Entropy Coding and Hyperprior Models,1945,2026-03-31T05:12:11.771906
+132,fake_paper_132.txt,AI,gemini,Meta-Learning,Task-Agnostic Meta-Learning via Latent Space Optimization,2734,2026-03-31T05:12:47.239557
+133,fake_paper_133.txt,AI,gemini,NLP / Code Generation,Execution-Guided Neural Program Synthesis with Type-Constrained Decoding,2056,2026-03-31T05:13:16.552571
+134,fake_paper_134.txt,AI,gemini,Bayesian Deep Learning,Scalable Bayesian Neural Networks via Structured Variational Inference,2423,2026-03-31T05:13:44.389562
+135,fake_paper_135.txt,AI,gemini,Reinforcement Learning / Multi-Agent Systems,Cooperative Multi-Agent Reinforcement Learning with Communication Constraints,2269,2026-03-31T05:14:18.441343
+136,fake_paper_136.txt,AI,gemini,Semi-Supervised Learning,Consistency Regularization with Stochastic Augmentation Graphs for SSL,2213,2026-03-31T05:14:48.054924
+137,fake_paper_137.txt,AI,gemini,Quantum Machine Learning,Variational Quantum Circuits for Binary Classification on NISQ Devices,2053,2026-03-31T05:15:35.434671
+138,fake_paper_138.txt,AI,gemini,Privacy-Preserving Machine Learning,Secure Multi-Party Computation for Distributed Model Training,2056,2026-03-31T05:16:02.631628
+139,fake_paper_139.txt,AI,gemini,Knowledge Graph Embedding,Relational Hyperbolic Embeddings for Knowledge Graph Completion,2144,2026-03-31T05:16:27.140861
+140,fake_paper_140.txt,AI,gemini,Neural Architecture Search,Differentiable Architecture Search with Hardware-Aware Efficiency Constraints,2942,2026-03-31T05:17:27.959001
+141,fake_paper_141.txt,AI,gemini,Graph Neural Networks / Recommendation Systems,Dynamic Graph Attention Networks for Session-Based Recommendation,2213,2026-03-31T05:18:02.576861
+142,fake_paper_142.txt,AI,gemini,Computer Vision / 3D Point Clouds,PointFlow: Normalizing Flows for 3D Point Cloud Generation,2360,2026-03-31T05:18:54.611373
+143,fake_paper_143.txt,AI,gemini,Self-Supervised Learning / Speech Processing,Contrastive Self-Supervised Learning for Low-Resource Speech Recognition,2608,2026-03-31T05:19:28.175443
+145,fake_paper_145.txt,AI,gemini,Offline Reinforcement Learning,Conservative Policy Optimization for Offline Reinforcement Learning,2409,2026-03-31T05:22:16.082871
+146,fake_paper_146.txt,AI,gemini,Explainable AI / Computer Vision,Gradient-Based Saliency Maps with Causal Attribution for Medical Diagnosis,1799,2026-03-31T05:22:37.796902
+147,fake_paper_147.txt,AI,gemini,Explainable AI / NLP,Attention Flow Analysis for Interpretable Text Classification,2260,2026-03-31T05:23:06.083898
+148,fake_paper_148.txt,AI,gemini,Federated Learning / Differential Privacy,Differentially Private Gradient Aggregation in Cross-Silo Federated Learning,2380,2026-03-31T05:23:35.570158
+149,fake_paper_149.txt,AI,gemini,Self-Supervised Learning / Computer Vision,Masked Autoencoders with Hierarchical Token Prediction for Dense Prediction,2245,2026-03-31T05:24:06.328697
+150,fake_paper_150.txt,AI,gemini,Multimodal Learning / Audio-Visual,Audio-Visual Source Separation via Cross-Modal Attention Fusion,2135,2026-03-31T05:24:35.967057
+151,fake_paper_151.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,1476,2026-03-31T05:25:00.806572
+152,fake_paper_152.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,2660,2026-03-31T05:25:29.379620
+153,fake_paper_153.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,1850,2026-03-31T05:25:55.712346
+154,fake_paper_154.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,2378,2026-03-31T05:26:27.632562
+155,fake_paper_155.txt,AI,gemini,Graph Neural Networks / Natural Language Processing,Heterogeneous Graph Transformers for Biomedical Relation Extraction,2203,2026-03-31T05:26:55.798051
+156,fake_paper_156.txt,AI,gemini,Causal Inference / Machine Learning,Causal Representation Learning for Out-of-Distribution Generalization,2255,2026-03-31T05:27:22.004285
+157,fake_paper_157.txt,AI,gemini,Tabular Machine Learning,TabNet Revisited: Gated Feature Selection with Self-Supervised Pretraining,2217,2026-03-31T05:28:12.427046
+158,fake_paper_158.txt,AI,gemini,Natural Language Processing / Efficient Transformers,Sparse Mixture-of-Experts Attention for Long-Document Summarization,2230,2026-03-31T05:28:42.694185
+159,fake_paper_159.txt,AI,gemini,Commonsense Reasoning,Neurosymbolic Integration for Commonsense Inference in Open-Domain QA,1894,2026-03-31T05:29:06.291450
+160,fake_paper_160.txt,AI,gemini,Fairness in Machine Learning,Mitigating Demographic Bias in Large Language Models via Contrastive Fine-Tuning,1993,2026-03-31T05:29:33.711223
+161,fake_paper_161.txt,AI,gemini,Computer Vision / Remote Sensing,Self-Supervised Change Detection in Multitemporal Satellite Imagery,2376,2026-03-31T05:30:09.122045
+162,fake_paper_162.txt,AI,gemini,Computer Vision / Object Detection,Anchor-Free Object Detection with Deformable Convolutional Feature Pyramids,2105,2026-03-31T05:30:34.574262
+163,fake_paper_163.txt,AI,gemini,Reinforcement Learning / Robotics,Hierarchical Reinforcement Learning for Multi-Step Manipulation Tasks,2598,2026-03-31T05:31:07.948456
+164,fake_paper_164.txt,AI,gemini,Graph Neural Networks / Anomaly Detection,Graph Neural Networks for Supply Chain Anomaly Detection,2023,2026-03-31T05:31:40.687592
+165,fake_paper_165.txt,AI,gemini,Multimodal Learning / Vision-Language,Grounded Visual Question Answering with Scene Graph Supervision,2099,2026-03-31T05:32:05.727293
+166,fake_paper_166.txt,AI,gemini,Continual Learning,Elastic Weight Consolidation with Dynamic Memory Replay for Continual Learning,2249,2026-03-31T05:32:31.005213
+167,fake_paper_167.txt,AI,gemini,Natural Language Processing / Transformers,Improving Transformer Efficiency Using Dynamic Token Pruning,1977,2026-03-31T05:32:59.380189
+168,fake_paper_168.txt,AI,gemini,Time Series Analysis / Anomaly Detection,Temporal Convolutional Networks with Attention for Multivariate Anomaly Detection,2272,2026-03-31T05:33:20.821324
+169,fake_paper_169.txt,AI,gemini,Optimization / Deep Learning,Adaptive Gradient Clipping for Training Stability in Large-Scale Neural Networks,2384,2026-04-02T07:49:50.065526
+170,fake_paper_170.txt,AI,gemini,Federated Learning / Medical Image Analysis,Federated Learning for Privacy-Preserving Medical Image Segmentation,1898,2026-04-02T07:50:55.047039
+171,fake_paper_171.txt,AI,gemini,Distribution Shift,Test-Time Adaptation via Self-Supervised Auxiliary Tasks under Covariate Shift,2092,2026-04-02T07:51:24.233886
+172,fake_paper_172.txt,AI,gemini,Generative Models / Diffusion,Latent Diffusion Models for High-Fidelity Medical Image Synthesis,2215,2026-04-02T07:52:15.322957
+173,fake_paper_173.txt,AI,gemini,NLP / Dialogue Systems,Persona-Consistent Response Generation with Memory-Augmented Transformers,1953,2026-04-02T07:52:43.634254
+174,fake_paper_174.txt,AI,gemini,Mixture of Experts,Sparse Gating Mechanisms for Conditional Computation in Vision Transformers,2331,2026-04-02T07:53:39.455260
+175,fake_paper_175.txt,AI,gemini,Multimodal Learning / Document Understanding,Layout-Aware Multimodal Transformers for Document Information Extraction,2254,2026-04-02T07:54:10.104378
+176,fake_paper_176.txt,AI,gemini,NLP / Clinical Text Mining,Transformer-Based Extraction of Adverse Drug Events from Clinical Notes,2497,2026-04-02T07:54:43.048633
+177,fake_paper_177.txt,AI,gemini,Neural Reasoning,Chain-of-Thought Distillation for Multi-Hop Question Answering,2243,2026-04-02T07:55:31.806698
+178,fake_paper_178.txt,AI,gemini,Large Language Models,Parameter-Efficient Fine-Tuning of Large Language Models via Adaptive LoRA,2086,2026-04-02T07:57:00.173123
+179,fake_paper_179.txt,AI,gemini,Computer Vision / Semantic Segmentation,Boundary-Aware Transformer for Weakly Supervised Semantic Segmentation,2080,2026-04-02T07:57:29.260581
+180,fake_paper_180.txt,AI,gemini,Adversarial Robustness,Certified Adversarial Robustness via Randomized Smoothing with Tight Bounds,2014,2026-04-02T07:57:57.687158
+181,fake_paper_181.txt,AI,gemini,Neural Compression,Learned Image Compression with Entropy Coding and Hyperprior Models,2234,2026-04-02T07:58:29.148391
+182,fake_paper_182.txt,AI,gemini,Meta-Learning,Task-Agnostic Meta-Learning via Latent Space Optimization,2303,2026-04-02T07:59:00.817243
+183,fake_paper_183.txt,AI,gemini,NLP / Code Generation,Execution-Guided Neural Program Synthesis with Type-Constrained Decoding,1904,2026-04-02T07:59:25.836558
+184,fake_paper_184.txt,AI,gemini,Bayesian Deep Learning,Scalable Bayesian Neural Networks via Structured Variational Inference,2383,2026-04-02T08:01:07.089699
+185,fake_paper_185.txt,AI,gemini,Reinforcement Learning / Multi-Agent Systems,Cooperative Multi-Agent Reinforcement Learning with Communication Constraints,2779,2026-04-02T08:03:29.603873
+186,fake_paper_186.txt,AI,gemini,Semi-Supervised Learning,Consistency Regularization with Stochastic Augmentation Graphs for SSL,2166,2026-04-02T08:03:49.978197
+187,fake_paper_187.txt,AI,gemini,Quantum Machine Learning,Variational Quantum Circuits for Binary Classification on NISQ Devices,2258,2026-04-02T08:04:21.782435
+188,fake_paper_188.txt,AI,gemini,Privacy-Preserving Machine Learning,Secure Multi-Party Computation for Distributed Model Training,2805,2026-04-02T08:04:57.705762
+189,fake_paper_189.txt,AI,gemini,Knowledge Graph Embedding,Relational Hyperbolic Embeddings for Knowledge Graph Completion,1886,2026-04-02T08:05:43.015258
+190,fake_paper_190.txt,AI,gemini,Neural Architecture Search,Differentiable Architecture Search with Hardware-Aware Efficiency Constraints,2079,2026-04-02T08:06:12.069567
+191,fake_paper_191.txt,AI,gemini,Graph Neural Networks / Recommendation Systems,Dynamic Graph Attention Networks for Session-Based Recommendation,2420,2026-04-02T08:06:43.755521
+192,fake_paper_192.txt,AI,gemini,Computer Vision / 3D Point Clouds,PointFlow: Normalizing Flows for 3D Point Cloud Generation,2259,2026-04-02T08:07:15.614587
+193,fake_paper_193.txt,AI,gemini,Self-Supervised Learning / Speech Processing,Contrastive Self-Supervised Learning for Low-Resource Speech Recognition,2800,2026-04-02T08:07:52.239401
+194,fake_paper_194.txt,AI,gemini,Contrastive Learning / Multi-Modal,Cross-Modal Contrastive Alignment for Vision-Language Pretraining,2256,2026-04-02T08:08:26.582461
+195,fake_paper_195.txt,AI,gemini,Offline Reinforcement Learning,Conservative Policy Optimization for Offline Reinforcement Learning,3083,2026-04-02T08:10:05.688127
+196,fake_paper_196.txt,AI,gemini,Explainable AI / Computer Vision,Gradient-Based Saliency Maps with Causal Attribution for Medical Diagnosis,2261,2026-04-02T08:11:55.632178
+197,fake_paper_197.txt,AI,gemini,Explainable AI / NLP,Attention Flow Analysis for Interpretable Text Classification,2160,2026-04-02T08:13:31.326812
+198,fake_paper_198.txt,AI,gemini,Federated Learning / Differential Privacy,Differentially Private Gradient Aggregation in Cross-Silo Federated Learning,2231,2026-04-02T08:14:04.417097
+199,fake_paper_199.txt,AI,gemini,Self-Supervised Learning / Computer Vision,Masked Autoencoders with Hierarchical Token Prediction for Dense Prediction,2248,2026-04-02T08:14:34.646198
+200,fake_paper_200.txt,AI,gemini,Multimodal Learning / Audio-Visual,Audio-Visual Source Separation via Cross-Modal Attention Fusion,2083,2026-04-02T08:15:03.733298
+201,fake_paper_201.txt,AI,gemini,Time Series Analysis / Forecasting,Probabilistic Transformer Forecasting with Conformal Prediction Intervals,2675,2026-04-02T08:15:38.658981
+202,fake_paper_202.txt,AI,gemini,Computer Vision / Few-Shot Learning,Prototype Calibration Networks for Few-Shot Image Classification,2272,2026-04-02T08:16:12.563279
+203,fake_paper_203.txt,AI,gemini,Generative Models / GANs,Conditional Wasserstein GANs for Tabular Data Augmentation,2018,2026-04-02T08:17:14.046416
+204,fake_paper_204.txt,AI,gemini,Natural Language Processing / Low-Resource NLP,Cross-Lingual Transfer Learning for Low-Resource Named Entity Recognition,1981,2026-04-02T08:17:41.940136
+205,fake_paper_205.txt,AI,gemini,Graph Neural Networks / Natural Language Processing,Heterogeneous Graph Transformers for Biomedical Relation Extraction,2042,2026-04-02T08:18:57.099214
+206,fake_paper_206.txt,AI,gemini,Causal Inference / Machine Learning,Causal Representation Learning for Out-of-Distribution Generalization,2066,2026-04-02T08:19:30.186885
+207,fake_paper_207.txt,AI,gemini,Tabular Machine Learning,TabNet Revisited: Gated Feature Selection with Self-Supervised Pretraining,2556,2026-04-02T08:21:38.196761
+208,fake_paper_208.txt,AI,gemini,Natural Language Processing / Efficient Transformers,Sparse Mixture-of-Experts Attention for Long-Document Summarization,2968,2026-04-02T08:23:04.299340
+209,fake_paper_209.txt,AI,gemini,Commonsense Reasoning,Neurosymbolic Integration for Commonsense Inference in Open-Domain QA,2532,2026-04-02T08:23:51.548694
+210,fake_paper_210.txt,AI,gemini,Fairness in Machine Learning,Mitigating Demographic Bias in Large Language Models via Contrastive Fine-Tuning,2528,2026-04-02T08:24:38.662778
+211,fake_paper_211.txt,AI,gemini,Computer Vision / Remote Sensing,Self-Supervised Change Detection in Multitemporal Satellite Imagery,2180,2026-04-02T08:25:09.063968
+212,fake_paper_212.txt,AI,gemini,Computer Vision / Object Detection,Anchor-Free Object Detection with Deformable Convolutional Feature Pyramids,2336,2026-04-02T08:25:49.616096
+213,fake_paper_213.txt,AI,gemini,Reinforcement Learning / Robotics,Hierarchical Reinforcement Learning for Multi-Step Manipulation Tasks,2186,2026-04-02T08:26:20.064415
+214,fake_paper_214.txt,AI,gemini,Graph Neural Networks / Anomaly Detection,Graph Neural Networks for Supply Chain Anomaly Detection,2352,2026-04-02T08:26:54.467033
+215,fake_paper_215.txt,AI,gemini,Multimodal Learning / Vision-Language,Grounded Visual Question Answering with Scene Graph Supervision,2524,2026-04-02T08:28:49.877004
+216,fake_paper_216.txt,AI,gemini,Continual Learning,Elastic Weight Consolidation with Dynamic Memory Replay for Continual Learning,2648,2026-04-02T08:29:51.734883
+217,fake_paper_217.txt,AI,gemini,Natural Language Processing / Transformers,Improving Transformer Efficiency Using Dynamic Token Pruning,2599,2026-04-02T08:30:25.145327
+218,fake_paper_218.txt,AI,gemini,Time Series Analysis / Anomaly Detection,Temporal Convolutional Networks with Attention for Multivariate Anomaly Detection,2202,2026-04-02T08:32:41.455265
+219,fake_paper_219.txt,AI,gemini,Optimization / Deep Learning,Adaptive Gradient Clipping for Training Stability in Large-Scale Neural Networks,1975,2026-04-02T08:33:14.629205
+220,fake_paper_220.txt,AI,gemini,Federated Learning / Medical Image Analysis,Federated Learning for Privacy-Preserving Medical Image Segmentation,2246,2026-04-02T08:34:33.289314
+221,fake_paper_221.txt,AI,gemini,Distribution Shift,Test-Time Adaptation via Self-Supervised Auxiliary Tasks under Covariate Shift,2260,2026-04-02T08:35:20.540125
+222,fake_paper_222.txt,AI,gemini,Generative Models / Diffusion,Latent Diffusion Models for High-Fidelity Medical Image Synthesis,2998,2026-04-02T08:36:26.588094
+223,fake_paper_223.txt,AI,gemini,NLP / Dialogue Systems,Persona-Consistent Response Generation with Memory-Augmented Transformers,2126,2026-04-02T08:36:48.141112
+224,fake_paper_224.txt,AI,gemini,Mixture of Experts,Sparse Gating Mechanisms for Conditional Computation in Vision Transformers,1670,2026-04-02T08:37:31.050493
+225,fake_paper_225.txt,AI,gemini,Multimodal Learning / Document Understanding,Layout-Aware Multimodal Transformers for Document Information Extraction,2128,2026-04-02T08:38:02.487788
+226,fake_paper_226.txt,AI,gemini,NLP / Clinical Text Mining,Transformer-Based Extraction of Adverse Drug Events from Clinical Notes,2028,2026-04-02T08:38:37.200587
+227,fake_paper_227.txt,AI,gemini,Neural Reasoning,Chain-of-Thought Distillation for Multi-Hop Question Answering,2073,2026-04-02T08:39:06.510822
+228,fake_paper_228.txt,AI,gemini,Large Language Models,Parameter-Efficient Fine-Tuning of Large Language Models via Adaptive LoRA,1948,2026-04-02T08:39:33.359976
+229,fake_paper_229.txt,AI,gemini,Computer Vision / Semantic Segmentation,Boundary-Aware Transformer for Weakly Supervised Semantic Segmentation,2618,2026-04-02T08:39:55.490804
+230,fake_paper_230.txt,AI,gemini,Adversarial Robustness,Certified Adversarial Robustness via Randomized Smoothing with Tight Bounds,2273,2026-04-02T08:40:24.970796
+231,fake_paper_231.txt,AI,gemini,Neural Compression,Learned Image Compression with Entropy Coding and Hyperprior Models,2204,2026-04-02T08:40:53.241916
+232,fake_paper_232.txt,AI,gemini,Meta-Learning,Task-Agnostic Meta-Learning via Latent Space Optimization,2195,2026-04-02T08:41:24.164777
+233,fake_paper_233.txt,AI,gemini,NLP / Code Generation,Execution-Guided Neural Program Synthesis with Type-Constrained Decoding,2052,2026-04-02T08:41:51.281936
+234,fake_paper_234.txt,AI,gemini,Bayesian Deep Learning,Scalable Bayesian Neural Networks via Structured Variational Inference,1875,2026-04-02T08:42:11.161182
+235,fake_paper_235.txt,AI,gemini,Reinforcement Learning / Multi-Agent Systems,Cooperative Multi-Agent Reinforcement Learning with Communication Constraints,2406,2026-04-02T08:42:43.414257
+236,fake_paper_236.txt,AI,gemini,Semi-Supervised Learning,Consistency Regularization with Stochastic Augmentation Graphs for SSL,1960,2026-04-02T08:43:10.420563
+237,fake_paper_237.txt,AI,gemini,Quantum Machine Learning,Variational Quantum Circuits for Binary Classification on NISQ Devices,2443,2026-04-02T08:43:41.646108
+238,fake_paper_238.txt,AI,gemini,Privacy-Preserving Machine Learning,Secure Multi-Party Computation for Distributed Model Training,2355,2026-04-02T08:44:12.789477
+239,fake_paper_239.txt,AI,gemini,Knowledge Graph Embedding,Relational Hyperbolic Embeddings for Knowledge Graph Completion,2114,2026-04-02T08:44:41.273656
+240,fake_paper_240.txt,AI,gemini,Neural Architecture Search,Differentiable Architecture Search with Hardware-Aware Efficiency Constraints,2209,2026-04-02T08:45:09.371367
+241,fake_paper_241.txt,AI,gemini,Graph Neural Networks / Recommendation Systems,Dynamic Graph Attention Networks for Session-Based Recommendation,2502,2026-04-02T08:45:41.993548
+242,fake_paper_242.txt,AI,gemini,Computer Vision / 3D Point Clouds,PointFlow: Normalizing Flows for 3D Point Cloud Generation,2404,2026-04-02T08:46:10.353558
+243,fake_paper_243.txt,AI,gemini,Self-Supervised Learning / Speech Processing,Contrastive Self-Supervised Learning for Low-Resource Speech Recognition,2002,2026-04-02T08:46:36.859399
+244,fake_paper_244.txt,AI,gemini,Contrastive Learning / Multi-Modal,Cross-Modal Contrastive Alignment for Vision-Language Pretraining,1967,2026-04-02T08:47:04.512710
+245,fake_paper_245.txt,AI,gemini,Offline Reinforcement Learning,Conservative Policy Optimization for Offline Reinforcement Learning,1950,2026-04-02T08:47:32.405012
+246,fake_paper_246.txt,AI,gemini,Explainable AI / Computer Vision,Gradient-Based Saliency Maps with Causal Attribution for Medical Diagnosis,1998,2026-04-02T08:47:59.371017
+247,fake_paper_247.txt,AI,gemini,Explainable AI / NLP,Attention Flow Analysis for Interpretable Text Classification,2355,2026-04-02T08:48:27.893778
+248,fake_paper_248.txt,AI,gemini,Federated Learning / Differential Privacy,Differentially Private Gradient Aggregation in Cross-Silo Federated Learning,1908,2026-04-02T08:48:47.682639
+249,fake_paper_249.txt,AI,gemini,Self-Supervised Learning / Computer Vision,Masked Autoencoders with Hierarchical Token Prediction for Dense Prediction,2112,2026-04-02T08:49:13.370590
+250,fake_paper_250.txt,AI,gemini,Multimodal Learning / Audio-Visual,Audio-Visual Source Separation via Cross-Modal Attention Fusion,2972,2026-04-02T08:49:47.467024
