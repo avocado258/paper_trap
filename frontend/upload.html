@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PaperTrap — Upload & Analyze</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page Layout ─────────────────────────────────────── */
+    .upload-page {
+      min-height: 100vh;
+      padding-top: 88px;
+      padding-bottom: 5rem;
+    }
+
+    .upload-header {
+      text-align: center;
+      padding: 3.5rem 0 3rem;
+    }
+    .upload-header .section-tag { justify-content: center; }
+    .upload-header .section-title { margin-bottom: 0.75rem; }
+    .upload-header .section-sub { margin: 0 auto; text-align: center; }
+
+    /* ── Two-column layout ───────────────────────────────── */
+    .upload-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Dropzone ────────────────────────────────────────── */
+    .dropzone-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .dropzone-header {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dropzone-header-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #dropzone {
+      margin: 1.75rem;
+      border: 2px dashed rgba(0, 229, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      background: rgba(0, 229, 255, 0.02);
+    }
+    #dropzone:hover,
+    #dropzone.drag-over {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 229, 255, 0.05);
+      box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
+    }
+    #dropzone.drag-over .dz-icon { transform: scale(1.15) translateY(-4px); }
+    #dropzone input[type="file"] { display: none; }
+
+    .dz-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.25rem;
+      display: block;
+      transition: transform var(--transition-slow);
+      filter: drop-shadow(0 0 16px rgba(0,229,255,0.3));
+    }
+    .dz-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .dz-sub {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .dz-formats {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .dz-format-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: var(--radius-sm);
+      color: var(--accent-cyan);
+    }
+    .dz-or {
+      position: relative;
+      margin: 1.5rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .dz-or::before,
+    .dz-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── File preview (after selection) ──────────────────── */
+    .file-preview {
+      display: none;
+      margin: 0 1.75rem 1.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      align-items: center;
+      gap: 1rem;
+    }
+    .file-preview.visible { display: flex; }
+    .file-icon-big {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,77,109,0.12);
+      border: 1px solid rgba(255,77,109,0.2);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .file-info { flex: 1; min-width: 0; }
+    .file-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+    .file-remove {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color var(--transition), background var(--transition);
+      cursor: pointer;
+    }
+    .file-remove:hover { color: var(--accent-red); background: rgba(255,77,109,0.1); }
+
+    /* ── Analysis Options ─────────────────────────────────── */
+    .options-section {
+      padding: 0 1.75rem 1.75rem;
+    }
+    .options-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .option-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: border-color var(--transition);
+      gap: 0.5rem;
+    }
+    .option-toggle:hover { border-color: var(--border-hover); }
+    .option-toggle.active { border-color: rgba(0,229,255,0.35); background: rgba(0,229,255,0.05); }
+    .option-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .option-toggle.active .option-label { color: var(--accent-cyan); }
+    .toggle-switch {
+      width: 32px; height: 18px;
+      border-radius: 9px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      position: relative;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .option-toggle.active .toggle-switch {
+      background: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      top: 2px; left: 2px;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .option-toggle.active .toggle-switch::after {
+      transform: translateX(14px);
+      background: var(--bg-base);
+    }
+
+    /* ── Submit Button ────────────────────────────────────── */
+    .analyze-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: calc(100% - 3.5rem);
+      margin: 0 1.75rem 1.75rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+      color: var(--bg-base);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .analyze-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    .analyze-btn:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,229,255,0.35);
+    }
+    .analyze-btn .btn-shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+    }
+    .analyze-btn:not(:disabled):hover .btn-shine {
+      animation: shine 0.6s ease forwards;
+    }
+    @keyframes shine {
+      to { transform: translateX(100%); }
+    }
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .sidebar-card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-card-header .header-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .sidebar-card-body { padding: 1.25rem; }
+
+    /* Checklist */
+    .checklist { display: flex; flex-direction: column; gap: 0.6rem; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .check-icon {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(0,255,157,0.12);
+      border: 1px solid rgba(0,255,157,0.25);
+      color: var(--accent-green);
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Feature pillars */
+    .feature-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+    }
+    .feature-pill:last-child { border-bottom: none; }
+    .pill-name { color: var(--text-secondary); }
+    .pill-count { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan); }
+
+    /* Recent scans */
+    .scan-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: padding-left var(--transition);
+    }
+    .scan-item:last-child { border-bottom: none; }
+    .scan-item:hover { padding-left: 4px; }
+    .scan-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .scan-dot.ai  { background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red); }
+    .scan-dot.human { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+    .scan-name {
+      flex: 1;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .scan-score {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .scan-score.ai    { color: var(--accent-red); }
+    .scan-score.human { color: var(--accent-green); }
+
+    /* ── Loading Overlay ─────────────────────────────────── */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 12, 18, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 5000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .loading-overlay.active { display: flex; }
+
+    .loading-orb {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orb-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--accent-cyan);
+      animation: spin 1s linear infinite;
+    }
+    .orb-ring:nth-child(2) {
+      inset: 8px;
+      border-top-color: var(--accent-green);
+      animation-duration: 1.4s;
+      animation-direction: reverse;
+    }
+    .orb-ring:nth-child(3) {
+      inset: 16px;
+      border-top-color: var(--accent-cyan);
+      opacity: 0.5;
+      animation-duration: 0.8s;
+    }
+    .orb-core {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-cyan), var(--accent-green));
+      animation: pulse 1.5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .loading-stages { display: flex; flex-direction: column; gap: 0.4rem; width: 320px; }
+    .loading-stage {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+    }
+    .loading-stage.active {
+      color: var(--accent-cyan);
+      background: rgba(0,229,255,0.07);
+    }
+    .loading-stage.done { color: var(--accent-green); }
+    .stage-icon { font-size: 0.8rem; width: 16px; text-align: center; }
+
+    .loading-bar-wrap {
+      width: 320px;
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .loading-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Skeleton cards for drag hover tip ───────────────── */
+    .tip-box {
+      margin: 0 1.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 183, 0, 0.05);
+      border: 1px solid rgba(255, 183, 0, 0.15);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      color: var(--accent-amber);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .upload-layout { grid-template-columns: 1fr; }
+      .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .sidebar { display: flex; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+<!-- ══ Navbar ═══════════════════════════════════════════════ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo" data-transition>
+    <div class="logo-icon">PT</div>
+    <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-transition>Home</a></li>
+    <li><a href="upload.html" class="active" data-transition>Analyze</a></li>
+    <li><a href="dashboard.html" data-transition>Dashboard</a></li>
+    <li><a href="about.html" data-transition>About</a></li>
+    <li><a href="upload.html" class="nav-cta" data-transition>Try Free →</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ Loading Overlay ══════════════════════════════════════ -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-orb">
+    <div class="orb-ring"></div>
+    <div class="orb-ring"></div>
+    <div class="orb-ring"></div>
+    <div class="orb-core"></div>
+  </div>
+
+  <div class="loading-stages" id="loadingStages">
+    <div class="loading-stage" data-stage="0">
+      <span class="stage-icon">◈</span> Parsing PDF document…
+    </div>
+    <div class="loading-stage" data-stage="1">
+      <span class="stage-icon">◈</span> Extracting clean text body…
+    </div>
+    <div class="loading-stage" data-stage="2">
+      <span class="stage-icon">◈</span> Computing perplexity score…
+    </div>
+    <div class="loading-stage" data-stage="3">
+      <span class="stage-icon">◈</span> Running stylometric analysis…
+    </div>
+    <div class="loading-stage" data-stage="4">
+      <span class="stage-icon">◈</span> Ensemble inference (RF + GB)…
+    </div>
+    <div class="loading-stage" data-stage="5">
+      <span class="stage-icon">◈</span> Generating SHAP explanations…
+    </div>
+  </div>
+
+  <div class="loading-bar-wrap">
+    <div class="loading-bar-fill" id="loadingBar"></div>
+  </div>
+
+  <p style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted)">
+    Analyzing manuscript — please wait
+  </p>
+</div>
+
+<!-- ══ Page ══════════════════════════════════════════════════ -->
+<main class="upload-page">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="upload-header animate-fade-up">
+      <div class="section-tag">Submit Manuscript</div>
+      <h1 class="section-title">Upload &amp; <span class="highlight">Analyze</span></h1>
+      <p class="section-sub">Drop any English-language computer science paper in PDF format. Results delivered in under 10 seconds.</p>
+    </div>
+
+    <!-- Layout -->
+    <div class="upload-layout">
+
+      <!-- ── Left: Drop zone + options ──────────────────── -->
+      <div class="animate-fade-up delay-1">
+        <div class="dropzone-wrapper">
+          <div class="dropzone-header">
+            <span class="dropzone-header-title">// manuscript_upload</span>
+            <div class="badge badge-cyan badge-dot">Ready</div>
+          </div>
+
+          <!-- Drop zone -->
+          <div id="dropzone">
+            <input type="file" id="fileInput" accept=".pdf,.txt,.docx" />
+            <span class="dz-icon">📄</span>
+            <div class="dz-title">Drop your paper here</div>
+            <div class="dz-sub">or click to browse your files</div>
+            <div class="dz-formats">
+              <span class="dz-format-tag">.PDF</span>
+              <span class="dz-format-tag">.TXT</span>
+              <span class="dz-format-tag">.DOCX</span>
+              <span class="dz-format-tag">max 20MB</span>
+            </div>
+          </div>
+
+          <div class="dz-or">or paste a URL</div>
+
+          <!-- URL input -->
+          <div style="margin: 0 1.75rem 1.5rem; display:flex; gap:0.75rem;">
+            <input
+              type="url"
+              id="urlInput"
+              placeholder="https://arxiv.org/pdf/…"
+              style="
+                flex:1; padding:0.7rem 1rem;
+                background:var(--bg-raised); border:1px solid var(--border);
+                border-radius:var(--radius-sm); color:var(--text-primary);
+                font-size:0.88rem; font-family:var(--font-sans);
+                outline:none; transition:border-color var(--transition);
+              "
+              onfocus="this.style.borderColor='var(--accent-cyan)'"
+              onblur="this.style.borderColor='var(--border)'"
+            />
+            <button class="btn btn-outline btn-sm" onclick="handleUrl()">Fetch</button>
+          </div>
+
+          <!-- File Preview -->
+          <div class="file-preview" id="filePreview">
+            <div class="file-icon-big">📑</div>
+            <div class="file-info">
+              <div class="file-name" id="fileName">paper.pdf</div>
+              <div class="file-meta" id="fileMeta">0 KB · PDF Document</div>
+            </div>
+            <button class="file-remove" id="fileRemove" title="Remove file">✕</button>
+          </div>
+
+          <div class="tip-box">
+            <span>💡</span>
+            <span>For best results, upload the full paper including abstract and references. The system requires at least 500 words of body text.</span>
+          </div>
+
+          <!-- Analysis Options -->
+          <div class="options-section">
+            <div class="options-title">// analysis_config</div>
+            <div class="options-grid" id="optionsGrid">
+              <div class="option-toggle active" data-option="perplexity">
+                <span class="option-label">Perplexity Scoring</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="option-toggle active" data-option="stylometry">
+                <span class="option-label">Stylometric Analysis</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="option-toggle active" data-option="shap">
+                <span class="option-label">SHAP Explainability</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="option-toggle active" data-option="citation">
+                <span class="option-label">Citation Analysis</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="option-toggle" data-option="adversarial">
+                <span class="option-label">Adversarial Check</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="option-toggle" data-option="ngram">
+                <span class="option-label">N-gram Distribution</span>
+                <div class="toggle-switch"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analyze Button -->
+          <button class="analyze-btn" id="analyzeBtn" disabled>
+            <span class="btn-shine"></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            Analyze Manuscript
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Right: Sidebar ─────────────────────────────── -->
+      <aside class="sidebar animate-fade-up delay-2">
+
+        <!-- What we check -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <span class="header-dot"></span>
+            Detection Pipeline
+          </div>
+          <div class="sidebar-card-body">
+            <div class="checklist">
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>Perplexity &amp; predictability scoring via language model</span>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>Flesch-Kincaid &amp; vocabulary richness (TTR) indices</span>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>POS tagging &amp; syntactic dependency analysis</span>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>N-gram distributions &amp; function-word ratios</span>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>Citation density &amp; structural section ratios</span>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <span>Ensemble RF + GB soft-voting classification</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature breakdown -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <span class="header-dot"></span>
+            Feature Groups
+          </div>
+          <div class="sidebar-card-body" style="padding-top:0.75rem">
+            <div class="feature-pill">
+              <span class="pill-name">Linguistic</span>
+              <span class="pill-count">18 signals</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-name">Statistical</span>
+              <span class="pill-count">14 signals</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-name">Stylometric</span>
+              <span class="pill-count">16 signals</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-name">Structural</span>
+              <span class="pill-count">12 signals</span>
+            </div>
+            <div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.82rem;color:var(--text-muted)">Total signals</span>
+              <span style="font-family:var(--font-mono);color:var(--accent-cyan);font-weight:700">60 features</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent scans -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <span class="header-dot"></span>
+            Recent Scans
+          </div>
+          <div class="sidebar-card-body" style="padding-top:0.75rem">
+            <div class="scan-item" onclick="PaperTrap.PageTransition.navigateTo('results.html')">
+              <span class="scan-dot ai"></span>
+              <span class="scan-name">attention_mechanism_v2.pdf</span>
+              <span class="scan-score ai">94.7%</span>
+            </div>
+            <div class="scan-item" onclick="PaperTrap.PageTransition.navigateTo('results.html')">
+              <span class="scan-dot human"></span>
+              <span class="scan-name">bert_pretraining_study.pdf</span>
+              <span class="scan-score human">8.2%</span>
+            </div>
+            <div class="scan-item" onclick="PaperTrap.PageTransition.navigateTo('results.html')">
+              <span class="scan-dot ai"></span>
+              <span class="scan-name">quantum_ml_survey.pdf</span>
+              <span class="scan-score ai">87.1%</span>
+            </div>
+            <div class="scan-item" onclick="PaperTrap.PageTransition.navigateTo('results.html')">
+              <span class="scan-dot human"></span>
+              <span class="scan-name">federated_learning_2024.pdf</span>
+              <span class="scan-score human">12.5%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accuracy stat -->
+        <div class="sidebar-card" style="background: linear-gradient(135deg, rgba(0,229,255,0.05), rgba(0,255,157,0.04));">
+          <div class="sidebar-card-body" style="text-align:center; padding: 1.5rem;">
+            <div style="font-family:var(--font-mono);font-size:2.5rem;font-weight:700;color:var(--accent-cyan);line-height:1">92%</div>
+            <div style="font-size:0.82rem;color:var(--text-secondary);margin-top:0.35rem">Detection Accuracy</div>
+            <div class="divider"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:center;">
+              <div>
+                <div style="font-family:var(--font-mono);font-weight:700;color:var(--accent-green)">96%</div>
+                <div style="font-size:0.75rem;color:var(--text-muted)">Precision</div>
+              </div>
+              <div>
+                <div style="font-family:var(--font-mono);font-weight:700;color:var(--accent-amber)">88%</div>
+                <div style="font-size:0.75rem;color:var(--text-muted)">Recall</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ══ Footer (minimal) ═════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2024 PaperTrap · Academic Integrity System</span>
+      <span>Analysis is for screening purposes only — not a definitive legal determination</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let selectedFile = null;
+
+  const dropzone    = document.getElementById('dropzone');
+  const fileInput   = document.getElementById('fileInput');
+  const filePreview = document.getElementById('filePreview');
+  const fileName    = document.getElementById('fileName');
+  const fileMeta    = document.getElementById('fileMeta');
+  const fileRemove  = document.getElementById('fileRemove');
+  const analyzeBtn  = document.getElementById('analyzeBtn');
+  const overlay     = document.getElementById('loadingOverlay');
+  const loadingBar  = document.getElementById('loadingBar');
+  const stages      = document.querySelectorAll('.loading-stage');
+
+  // ── File dropzone ──────────────────────────────────────────
+  PaperTrap.FileDropzone.init('dropzone', handleFile);
+
+  function handleFile(file) {
+    selectedFile = file;
+    fileName.textContent = PaperTrap.Utils.truncate(file.name, 36);
+    fileMeta.textContent = `${PaperTrap.Utils.formatBytes(file.size)} · ${file.type || 'Document'}`;
+    filePreview.classList.add('visible');
+    analyzeBtn.disabled = false;
+    PaperTrap.Toast.show(`"${PaperTrap.Utils.truncate(file.name, 28)}" ready for analysis`, 'success');
+  }
+
+  fileRemove.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectedFile = null;
+    filePreview.classList.remove('visible');
+    analyzeBtn.disabled = true;
+    fileInput.value = '';
+  });
+
+  // ── Option toggles ─────────────────────────────────────────
+  document.querySelectorAll('.option-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => toggle.classList.toggle('active'));
+  });
+
+  // ── URL fetch (demo) ───────────────────────────────────────
+  window.handleUrl = function() {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) { PaperTrap.Toast.show('Please enter a valid URL', 'warning'); return; }
+    PaperTrap.Toast.show('Fetching paper from URL…', 'info');
+    setTimeout(() => {
+      const fakeName = url.split('/').pop() || 'paper.pdf';
+      handleFile({ name: fakeName, size: 1240000, type: 'application/pdf' });
+    }, 1200);
+  };
+
+  // ── Analysis loading sequence ──────────────────────────────
+  analyzeBtn.addEventListener('click', () => {
+    if (!selectedFile) return;
+    startAnalysis();
+  });
+
+  function startAnalysis() {
+    overlay.classList.add('active');
+    stages.forEach(s => s.classList.remove('active', 'done'));
+    loadingBar.style.width = '0%';
+
+    const durations = [600, 700, 900, 800, 1000, 700];
+    let current = 0;
+    let elapsed = 0;
+    const total = durations.reduce((a, b) => a + b, 0);
+
+    function runStage(i) {
+      if (i >= stages.length) {
+        loadingBar.style.width = '100%';
+        setTimeout(() => {
+          overlay.classList.remove('active');
+          PaperTrap.PageTransition.navigateTo('results.html');
+        }, 600);
+        return;
+      }
+      stages[i].classList.add('active');
+      stages[i].querySelector('.stage-icon').textContent = '▶';
+
+      setTimeout(() => {
+        elapsed += durations[i];
+        stages[i].classList.remove('active');
+        stages[i].classList.add('done');
+        stages[i].querySelector('.stage-icon').textContent = '✓';
+        loadingBar.style.width = `${Math.round((elapsed / total) * 100)}%`;
+        runStage(i + 1);
+      }, durations[i]);
+    }
+
+    runStage(0);
+  }
+});
+</script>
+</body>
+</html>
