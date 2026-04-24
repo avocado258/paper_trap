@@ -8,12 +8,16 @@
   <style>
     /* ── Hero ─────────────────────────────────────────────── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  padding: 0 5vw;
+}
+
     #hero-canvas {
       position: absolute;
       inset: 0;
@@ -131,12 +135,16 @@
 
     /* ── Mockup terminal card ─────────────────────────────── */
     .hero-visual {
-      position: absolute;
-      right: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 440px;
-      animation: fadeIn 1s 0.4s ease both, float 7s ease-in-out infinite 1s;
-    }
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: none;
+  width: 100%;
+  max-width: 440px;
+  justify-self: end;
+  animation: fadeIn 1s 0.4s ease both, float 7s ease-in-out infinite 1s;
+}
+
     .terminal-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
