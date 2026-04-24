@@ -12,7 +12,7 @@ dataset = pd.concat([real, fake], ignore_index=True)
 dataset = dataset.sample(frac=1, random_state=42).reset_index(drop=True)
 
 # Save
-dataset.to_csv('../../data/final_dataset.csv', index=False)
+dataset.to_csv('../../data/final_dataset_2.csv', index=False,quoting=1,escapechar='\\')
 
 print(f"Final dataset: {len(dataset)} papers")
 print(dataset['label'].value_counts())
