@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PaperTrap — Detection Results</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page ─────────────────────────────────────────────── */
+    .results-page {
+      min-height: 100vh;
+      padding-top: 88px;
+      padding-bottom: 5rem;
+    }
+
+    /* ── Verdict Banner ───────────────────────────────────── */
+    .verdict-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      background: linear-gradient(135deg, rgba(255,77,109,0.07) 0%, rgba(255,77,109,0.03) 100%);
+      padding: 2.5rem 2.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    .verdict-banner.human {
+      border-color: rgba(0,255,157,0.3);
+      background: linear-gradient(135deg, rgba(0,255,157,0.07) 0%, rgba(0,255,157,0.02) 100%);
+    }
+    .verdict-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,77,109,0.15), transparent 65%);
+      pointer-events: none;
+    }
+    .verdict-banner.human::before {
+      background: radial-gradient(circle, rgba(0,255,157,0.12), transparent 65%);
+    }
+
+    .verdict-icon-wrap {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,77,109,0.12);
+      border: 2px solid rgba(255,77,109,0.3);
+      display: grid;
+      place-items: center;
+      font-size: 1.9rem;
+      flex-shrink: 0;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .verdict-banner.human .verdict-icon-wrap {
+      background: rgba(0,255,157,0.12);
+      border-color: rgba(0,255,157,0.3);
+    }
+
+    .verdict-text h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--accent-red);
+      margin-bottom: 0.3rem;
+    }
+    .verdict-banner.human .verdict-text h2 { color: var(--accent-green); }
+    .verdict-text p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+    .verdict-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+    .verdict-score {
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-red);
+      line-height: 1;
+    }
+    .verdict-banner.human .verdict-score { color: var(--accent-green); }
+    .verdict-score-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Confidence meter */
+    .confidence-meter {
+      grid-column: 1 / -1;
+      margin-top: 0.5rem;
+    }
+    .meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .meter-track {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .meter-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent-amber), var(--accent-red));
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .verdict-banner.human .meter-fill {
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+    }
+    .meter-marker {
+      position: absolute;
+      top: 0; height: 100%;
+      width: 2px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* ── Results Grid ─────────────────────────────────────── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .results-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Metric Card ──────────────────────────────────────── */
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: all var(--transition);
+    }
+    .metric-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .metric-value.red    { color: var(--accent-red); }
+    .metric-value.green  { color: var(--accent-green); }
+    .metric-value.cyan   { color: var(--accent-cyan); }
+    .metric-value.amber  { color: var(--accent-amber); }
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── SHAP Panel ───────────────────────────────────────── */
+    .shap-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-title-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+    }
+    .panel-body { padding: 1.5rem; }
+
+    /* SHAP bars */
+    .shap-list { display: flex; flex-direction: column; gap: 1rem; }
+    .shap-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 70px;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .shap-feature {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .shap-bar-track {
+      height: 20px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+    .shap-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .shap-bar-fill.positive {
+      background: linear-gradient(90deg, rgba(255,77,109,0.6), var(--accent-red));
+    }
+    .shap-bar-fill.negative {
+      background: linear-gradient(90deg, rgba(0,229,255,0.6), var(--accent-cyan));
+      margin-left: auto;
+    }
+    .shap-val {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-align: right;
+    }
+    .shap-val.positive { color: var(--accent-red); }
+    .shap-val.negative { color: var(--accent-cyan); }
+
+    .shap-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .shap-legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-swatch { width: 24px; height: 8px; border-radius: 2px; }
+
+    /* ── Feature Heatmap ─────────────────────────────────── */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+    .heatmap-cell {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform var(--transition);
+    }
+    .heatmap-cell:hover { transform: scale(1.03); }
+    .heatmap-cell-val {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .heatmap-cell-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    /* Risk color classes */
+    .risk-high   { background: rgba(255,77,109,0.08); border-color: rgba(255,77,109,0.2); }
+    .risk-high .heatmap-cell-val { color: var(--accent-red); }
+    .risk-med    { background: rgba(255,183,0,0.06); border-color: rgba(255,183,0,0.18); }
+    .risk-med .heatmap-cell-val { color: var(--accent-amber); }
+    .risk-low    { background: rgba(0,229,255,0.05); border-color: rgba(0,229,255,0.15); }
+    .risk-low .heatmap-cell-val { color: var(--accent-cyan); }
+    .risk-safe   { background: rgba(0,255,157,0.05); border-color: rgba(0,255,157,0.15); }
+    .risk-safe .heatmap-cell-val { color: var(--accent-green); }
+
+    /* ── Classifier breakdown ────────────────────────────── */
+    .classifier-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 80px;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .classifier-row:last-child { border-bottom: none; }
+    .clf-name { font-size: 0.88rem; font-weight: 500; }
+    .clf-val  { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; text-align: right; }
+
+    /* ── Section Tab ─────────────────────────────────────── */
+    .tab-row {
+      display: flex;
+      gap: 0.35rem;
+      margin-bottom: 1.25rem;
+      background: var(--bg-surface);
+      padding: 0.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .tab {
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+      background: none;
+    }
+    .tab.active {
+      background: var(--bg-card);
+      color: var(--accent-cyan);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ── Actions bar ─────────────────────────────────────── */
+    .actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .actions-left { display: flex; align-items: center; gap: 1rem; }
+    .paper-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+    }
+    .paper-tag-icon { font-size: 1rem; }
+    .actions-right { display: flex; gap: 0.75rem; }
+
+    /* ── Text snippet ─────────────────────────────────────── */
+    .snippet-panel {
+      background: var(--bg-base);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      max-height: 160px;
+      overflow-y: auto;
+      position: relative;
+    }
+    .snippet-highlight {
+      background: rgba(255,77,109,0.15);
+      border-bottom: 1px solid rgba(255,77,109,0.4);
+      color: var(--text-primary);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* ── Summary badges ──────────────────────────────────── */
+    .summary-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    /* ── Mini radar chart (SVG) ──────────────────────────── */
+    .radar-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .results-grid   { grid-template-columns: 1fr; }
+      .results-grid-3 { grid-template-columns: 1fr 1fr; }
+      .verdict-banner { grid-template-columns: auto 1fr; }
+      .verdict-meta   { display: none; }
+    }
+    @media (max-width: 600px) {
+      .results-grid-3 { grid-template-columns: 1fr; }
+      .shap-row       { grid-template-columns: 130px 1fr 55px; }
+      .verdict-banner { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+<!-- ══ Navbar ═══════════════════════════════════════════════ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo" data-transition>
+    <div class="logo-icon">PT</div>
+    <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-transition>Home</a></li>
+    <li><a href="upload.html" data-transition>Analyze</a></li>
+    <li><a href="dashboard.html" data-transition>Dashboard</a></li>
+    <li><a href="about.html" data-transition>About</a></li>
+    <li><a href="upload.html" class="nav-cta" data-transition>Try Free →</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ Page ══════════════════════════════════════════════════ -->
+<main class="results-page">
+  <div class="container">
+
+    <!-- ── Actions bar ──────────────────────────────────── -->
+    <div class="actions-bar animate-fade-up">
+      <div class="actions-left">
+        <a href="upload.html" class="btn btn-ghost btn-sm" data-transition>
+          ← New Analysis
+        </a>
+        <div class="paper-tag">
+          <span class="paper-tag-icon">📄</span>
+          <span id="paperNameDisplay">attention_mechanism_v2.pdf</span>
+        </div>
+        <div class="badge badge-amber badge-dot">Analysis Complete</div>
+      </div>
+      <div class="actions-right">
+        <button class="btn btn-ghost btn-sm" onclick="copyReport()">⎘ Copy Report</button>
+        <button class="btn btn-outline btn-sm" onclick="downloadPDF()">↓ Export PDF</button>
+      </div>
+    </div>
+
+    <!-- ── Verdict Banner ───────────────────────────────── -->
+    <div class="verdict-banner animate-fade-up delay-1" id="verdictBanner">
+      <div class="verdict-icon-wrap">⚠️</div>
+      <div class="verdict-text">
+        <h2>AI-Generated — Synthetic Manuscript</h2>
+        <p>
+          High-confidence detection across multiple feature categories. Low perplexity score,
+          repetitive syntactic patterns, and atypical citation density strongly indicate
+          machine-generated content. Manual expert review recommended.
+        </p>
+        <div class="summary-row">
+          <span class="badge badge-red badge-dot">Low Perplexity</span>
+          <span class="badge badge-red badge-dot">Flat Syntax</span>
+          <span class="badge badge-amber badge-dot">Citation Anomaly</span>
+          <span class="badge badge-red badge-dot">Low TTR</span>
+        </div>
+      </div>
+      <div class="verdict-meta">
+        <div class="verdict-score" id="verdictScore">94.7%</div>
+        <div class="verdict-score-label">AI Confidence</div>
+        <div class="badge badge-red" style="margin-top:0.5rem">SYNTHETIC</div>
+      </div>
+      <div class="confidence-meter">
+        <div class="meter-labels">
+          <span>0% — Definitely Human</span>
+          <span>50% — Borderline</span>
+          <span>100% — Definitely AI</span>
+        </div>
+        <div class="meter-track">
+          <div class="meter-marker" style="left:50%"></div>
+          <div class="meter-fill" id="meterFill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Key Metrics ──────────────────────────────────── -->
+    <div class="results-grid-3 animate-fade-up delay-2">
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Perplexity Score</span>
+          <span class="badge badge-red">Low = AI Risk</span>
+        </div>
+        <div class="metric-value red" data-count="18.3" data-suffix="">0</div>
+        <div class="metric-sub">Avg human paper: 65–120 · AI threshold: &lt;30</div>
+        <div class="progress-bar" style="margin-top:0.75rem">
+          <div class="progress-fill danger" data-width="18%" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Vocabulary Richness</span>
+          <span class="badge badge-amber">TTR Score</span>
+        </div>
+        <div class="metric-value amber" data-count="0.41" data-suffix="">0</div>
+        <div class="metric-sub">Type-Token Ratio — human avg: 0.68+</div>
+        <div class="progress-bar" style="margin-top:0.75rem">
+          <div class="progress-fill danger" data-width="41%" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-label">Readability Index</span>
+          <span class="badge badge-cyan">Flesch-Kincaid</span>
+        </div>
+        <div class="metric-value cyan" data-count="72.4" data-suffix="">0</div>
+        <div class="metric-sub">Unusually high readability for CS research</div>
+        <div class="progress-bar" style="margin-top:0.75rem">
+          <div class="progress-fill" data-width="72%" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SHAP Explainability + Classifier ─────────────── -->
+    <div class="results-grid animate-fade-up delay-3">
+
+      <!-- SHAP Panel -->
+      <div class="shap-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <div class="panel-title-dot"></div>
+            SHAP Feature Importance
+          </div>
+          <div class="tab-row">
+            <button class="tab active" onclick="switchTab(this,'top')">Top Features</button>
+            <button class="tab" onclick="switchTab(this,'all')">All 60</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="shap-legend">
+            <div class="shap-legend-item">
+              <div class="legend-swatch" style="background:var(--accent-red)"></div>
+              <span>Pushes toward AI</span>
+            </div>
+            <div class="shap-legend-item">
+              <div class="legend-swatch" style="background:var(--accent-cyan)"></div>
+              <span>Pushes toward Human</span>
+            </div>
+          </div>
+          <div class="shap-list" id="shapList">
+            <!-- rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: classifier + heatmap -->
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+        <!-- Classifier Breakdown -->
+        <div class="shap-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-title-dot"></div>
+              Ensemble Breakdown
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="classifier-row">
+              <span class="clf-name">Random Forest</span>
+              <div class="progress-bar">
+                <div class="progress-fill danger" data-width="92%" style="width:0%"></div>
+              </div>
+              <span class="clf-val" style="color:var(--accent-red)">92.1%</span>
+            </div>
+            <div class="classifier-row">
+              <span class="clf-name">Gradient Boosting</span>
+              <div class="progress-bar">
+                <div class="progress-fill danger" data-width="97%" style="width:0%"></div>
+              </div>
+              <span class="clf-val" style="color:var(--accent-red)">97.3%</span>
+            </div>
+            <div class="classifier-row">
+              <span class="clf-name">Soft Voting (Final)</span>
+              <div class="progress-bar">
+                <div class="progress-fill danger" data-width="94.7%" style="width:0%"></div>
+              </div>
+              <span class="clf-val" style="color:var(--accent-red)">94.7%</span>
+            </div>
+            <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+              <div style="font-size:0.82rem;color:var(--text-muted); margin-bottom:0.6rem;">Prediction Agreement</div>
+              <div style="display:flex;gap:0.5rem;">
+                <div style="flex:9.2;height:12px;background:var(--accent-red);border-radius:3px 0 0 3px;opacity:0.85"></div>
+                <div style="flex:0.8;height:12px;background:var(--accent-green);border-radius:0 3px 3px 0;opacity:0.6"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-family:var(--font-mono);color:var(--text-muted);margin-top:0.3rem">
+                <span>AI votes: 92%</span><span>Human votes: 8%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar chart: category scores -->
+        <div class="shap-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-title-dot"></div>
+              Category Risk Scores
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="radar-wrap">
+              <svg viewBox="0 0 240 220" width="240" height="220" id="radarSvg">
+                <!-- Rendered by JS -->
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Feature Heatmap ──────────────────────────────── -->
+    <div class="shap-panel animate-fade-up delay-4">
+      <div class="panel-header">
+        <div class="panel-title">
+          <div class="panel-title-dot"></div>
+          Feature Signal Heatmap
+        </div>
+        <span class="badge badge-cyan">60 signals computed</span>
+      </div>
+      <div class="panel-body">
+        <div class="heatmap-grid" id="heatmapGrid">
+          <!-- rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Flagged Text Snippets ────────────────────────── -->
+    <div class="shap-panel animate-fade-up delay-5">
+      <div class="panel-header">
+        <div class="panel-title">
+          <div class="panel-title-dot"></div>
+          Flagged Text Segments
+        </div>
+        <span class="badge badge-red">3 high-risk passages</span>
+      </div>
+      <div class="panel-body" style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <div>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;">
+            <span class="badge badge-red">Passage 1 — Abstract</span>
+            <span style="font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)">perplexity: 12.1</span>
+          </div>
+          <div class="snippet-panel">
+            In this paper, we present <span class="snippet-highlight">a novel and comprehensive framework</span> for addressing
+            the <span class="snippet-highlight">critical challenge</span> of machine learning in resource-constrained environments.
+            Our approach <span class="snippet-highlight">leverages state-of-the-art techniques</span> to achieve
+            <span class="snippet-highlight">significant improvements</span> over existing baselines, demonstrating
+            the <span class="snippet-highlight">effectiveness and efficiency</span> of the proposed methodology.
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;">
+            <span class="badge badge-red">Passage 2 — Introduction</span>
+            <span style="font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)">perplexity: 15.7</span>
+          </div>
+          <div class="snippet-panel">
+            The <span class="snippet-highlight">rapid advancement</span> of deep learning has led to
+            <span class="snippet-highlight">unprecedented breakthroughs</span> across numerous domains.
+            However, <span class="snippet-highlight">significant challenges remain</span> in ensuring
+            that these models can be <span class="snippet-highlight">effectively deployed</span> in
+            real-world scenarios where computational resources are limited.
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;">
+            <span class="badge badge-amber">Passage 3 — Conclusion</span>
+            <span style="font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)">perplexity: 21.3</span>
+          </div>
+          <div class="snippet-panel">
+            In conclusion, we have presented <span class="snippet-highlight">a comprehensive study</span> demonstrating
+            the <span class="snippet-highlight">effectiveness</span> of our proposed approach.
+            <span class="snippet-highlight">Extensive experiments</span> on multiple benchmark datasets
+            confirm that our method <span class="snippet-highlight">outperforms</span> all competing baselines
+            by a <span class="snippet-highlight">substantial margin</span>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Action Footer ────────────────────────────────── -->
+    <div style="display:flex;justify-content:center;gap:1rem;margin-top:2.5rem;" class="animate-fade-up delay-5">
+      <a href="upload.html" class="btn btn-primary btn-lg" data-transition>
+        ↑ Analyze Another Paper
+      </a>
+      <a href="dashboard.html" class="btn btn-outline btn-lg" data-transition>
+        View Dashboard →
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══ Footer ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2024 PaperTrap · Academic Integrity System</span>
+      <span>Results are probabilistic — not admissible as legal or disciplinary evidence</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Animate verdict meter ──────────────────────────────────
+  setTimeout(() => {
+    document.getElementById('meterFill').style.width = '94.7%';
+  }, 400);
+
+  // ── SHAP feature data ──────────────────────────────────────
+  const shapFeatures = [
+    { name: 'Perplexity Score',        val: +0.42, dir: 'positive' },
+    { name: 'Type-Token Ratio',        val: +0.38, dir: 'positive' },
+    { name: 'Avg Sentence Length',     val: +0.29, dir: 'positive' },
+    { name: 'Readability (FK)',        val: +0.25, dir: 'positive' },
+    { name: 'POS Noun Ratio',          val: +0.22, dir: 'positive' },
+    { name: 'Citation Density',        val: -0.18, dir: 'negative' },
+    { name: 'Bigram Entropy',          val: +0.17, dir: 'positive' },
+    { name: 'Function Word Ratio',     val: -0.14, dir: 'negative' },
+    { name: 'Hapax Legomena Rate',     val: +0.13, dir: 'positive' },
+    { name: 'Dependency Depth',        val: +0.11, dir: 'positive' },
+  ];
+
+  const maxVal = Math.max(...shapFeatures.map(f => Math.abs(f.val)));
+  const shapList = document.getElementById('shapList');
+  shapFeatures.forEach((f, i) => {
+    const pct = Math.round((Math.abs(f.val) / maxVal) * 100);
+    shapList.innerHTML += `
+      <div class="shap-row">
+        <div class="shap-feature">${f.name}</div>
+        <div class="shap-bar-track">
+          <div class="shap-bar-fill ${f.dir}" data-width="${pct}%" style="width:0%"></div>
+        </div>
+        <div class="shap-val ${f.dir}">${f.dir === 'positive' ? '+' : ''}${f.val.toFixed(2)}</div>
+      </div>
+    `;
+  });
+
+  // Trigger SHAP bar animations after mount
+  setTimeout(() => {
+    document.querySelectorAll('.shap-bar-fill').forEach(el => {
+      el.style.width = el.dataset.width;
+    });
+  }, 300);
+
+  // ── Heatmap data ───────────────────────────────────────────
+  const heatmapData = [
+    { label: 'Perplexity',    val: '18.3', risk: 'risk-high' },
+    { label: 'TTR',           val: '0.41', risk: 'risk-high' },
+    { label: 'FK Score',      val: '72.4', risk: 'risk-med'  },
+    { label: 'Sentence Len',  val: '22.1', risk: 'risk-high' },
+    { label: 'Noun Ratio',    val: '0.68', risk: 'risk-high' },
+    { label: 'Verb Ratio',    val: '0.19', risk: 'risk-med'  },
+    { label: 'Adv Ratio',     val: '0.08', risk: 'risk-low'  },
+    { label: 'Bigram Entr.',  val: '3.21', risk: 'risk-high' },
+    { label: 'Trigram Entr.', val: '2.88', risk: 'risk-med'  },
+    { label: 'Hapax Rate',    val: '0.31', risk: 'risk-med'  },
+    { label: 'Cite Density',  val: '0.04', risk: 'risk-med'  },
+    { label: 'Dep. Depth',    val: '4.72', risk: 'risk-high' },
+    { label: 'Clause Ratio',  val: '0.62', risk: 'risk-low'  },
+    { label: 'Stopword Rt.',  val: '0.44', risk: 'risk-safe' },
+    { label: 'Punct. Ratio',  val: '0.09', risk: 'risk-safe' },
+    { label: 'Avg Word Len',  val: '5.31', risk: 'risk-low'  },
+    { label: 'Sent. Variety', val: '0.22', risk: 'risk-high' },
+    { label: 'Para. Len',     val: '6.8',  risk: 'risk-med'  },
+  ];
+  const heatmapGrid = document.getElementById('heatmapGrid');
+  heatmapData.forEach(d => {
+    heatmapGrid.innerHTML += `
+      <div class="heatmap-cell ${d.risk}">
+        <div class="heatmap-cell-val">${d.val}</div>
+        <div class="heatmap-cell-label">${d.label}</div>
+      </div>
+    `;
+  });
+
+  // ── Radar chart ────────────────────────────────────────────
+  function drawRadar(svgEl) {
+    const categories = [
+      { label: 'Linguistic',  score: 0.88 },
+      { label: 'Statistical', score: 0.76 },
+      { label: 'Stylometric', score: 0.92 },
+      { label: 'Structural',  score: 0.61 },
+      { label: 'Adversarial', score: 0.74 },
+    ];
+    const cx = 120, cy = 110, R = 80, n = categories.length;
+    const angleStep = (Math.PI * 2) / n;
+    const startAngle = -Math.PI / 2;
+
+    function polar(i, r) {
+      const angle = startAngle + i * angleStep;
+      return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
+    }
+
+    let svg = '';
+    // Grid rings
+    [0.25, 0.5, 0.75, 1.0].forEach(t => {
+      const points = categories.map((_, i) => polar(i, R * t).join(',')).join(' ');
+      svg += `<polygon points="${points}" fill="none" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>`;
+    });
+
+    // Axes
+    categories.forEach((_, i) => {
+      const [x, y] = polar(i, R);
+      svg += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>`;
+    });
+
+    // Data polygon (animated via JS after insertion)
+    const dataPoints = categories.map((c, i) => polar(i, R * c.score));
+    const polyPts = dataPoints.map(p => p.join(',')).join(' ');
+    svg += `<polygon id="radarPoly" points="${polyPts}" fill="rgba(255,77,109,0.15)" stroke="var(--accent-red)" stroke-width="2"/>`;
+
+    // Dots + labels
+    dataPoints.forEach(([x, y], i) => {
+      svg += `<circle cx="${x}" cy="${y}" r="4" fill="var(--accent-red)" opacity="0.9"/>`;
+      const [lx, ly] = polar(i, R + 18);
+      svg += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="10" font-family="Space Mono, monospace" fill="rgba(122,143,166,0.9)">${categories[i].label}</text>`;
+      // Score label
+      const [sx, sy] = polar(i, R * categories[i].score - 12);
+      svg += `<text x="${sx}" y="${sy}" text-anchor="middle" dominant-baseline="middle" font-size="9" font-family="Space Mono, monospace" fill="var(--accent-red)">${Math.round(categories[i].score * 100)}%</text>`;
+    });
+
+    svgEl.innerHTML = svg;
+  }
+  drawRadar(document.getElementById('radarSvg'));
+
+  // ── Tab switch (demo) ──────────────────────────────────────
+  window.switchTab = function(el, mode) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    if (mode === 'all') PaperTrap.Toast.show('Showing all 60 feature signals', 'info');
+  };
+
+  // ── Actions ────────────────────────────────────────────────
+  window.copyReport = function() {
+    const report = `PaperTrap Analysis Report
+==========================
+File: attention_mechanism_v2.pdf
+Verdict: AI-Generated (SYNTHETIC)
+Confidence: 94.7%
+
+Key Metrics:
+- Perplexity Score: 18.3 (threshold: <30)
+- Type-Token Ratio: 0.41
+- Readability (FK): 72.4
+- Random Forest: 92.1%
+- Gradient Boosting: 97.3%
+- Soft Voting: 94.7%
+
+Top SHAP Features: Perplexity, TTR, Sentence Length
+`;
+    navigator.clipboard.writeText(report).then(() => {
+      PaperTrap.Toast.show('Report copied to clipboard', 'success');
+    });
+  };
+
+  window.downloadPDF = function() {
+    PaperTrap.Toast.show('Generating PDF report…', 'info');
+    setTimeout(() => PaperTrap.Toast.show('Report downloaded successfully', 'success'), 1800);
+  };
+
+  // ── Run counter animations ─────────────────────────────────
+  Counter.init();
+  ProgressAnimator.init();
+
+});
+</script>
+</body>
+</html>
