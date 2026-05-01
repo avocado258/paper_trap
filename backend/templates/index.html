@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+<style>
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero-glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .glow-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,229,255,0.12), transparent 70%);
+    top: -100px; right: -100px; animation: float 8s ease-in-out infinite;
+  }
+  .glow-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,255,157,0.08), transparent 70%);
+    bottom: -80px; left: -80px; animation: float 10s ease-in-out infinite reverse;
+  }
+  .hero-content { position: relative; z-index: 2; padding-top: 6rem; max-width: 760px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.35rem 1rem;
+    background: rgba(0,229,255,0.07); border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--accent-cyan); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.75rem; animation: fadeIn 0.6s ease both;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-green); animation: pulse 1.8s ease-in-out infinite;
+  }
+  .hero-title {
+    font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 700;
+    line-height: 1.08; letter-spacing: -0.04em; margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.1s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .hero-title .line-2 {
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-green) 60%, var(--accent-cyan) 100%);
+    background-size: 200% auto; -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+    animation: fadeUp 0.7s 0.1s cubic-bezier(0.4,0,0.2,1) both, gradientShift 4s linear infinite;
+  }
+  .hero-desc {
+    font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+    max-width: 580px; margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s 0.2s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+    margin-top: 5rem; background: var(--border);
+    border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;
+    animation: fadeUp 0.7s 0.5s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  .hero-stat { background: var(--bg-card); padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 4px; }
+  .hero-stat-val { font-family: var(--font-mono); font-size: 1.7rem; font-weight: 700; color: var(--accent-cyan); }
+  .hero-stat-val.green { color: var(--accent-green); }
+  .hero-stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero-visual {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 440px;
+    animation: fadeIn 1s 0.4s ease both, float 7s ease-in-out infinite 1s;
+  }
+  .terminal-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+    overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.6), var(--glow-cyan);
+  }
+  .terminal-bar {
+    display: flex; align-items: center; gap: 6px; padding: 0.75rem 1rem;
+    background: var(--bg-surface); border-bottom: 1px solid var(--border);
+  }
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t-dot.red   { background: #ff5f57; }
+  .t-dot.amber { background: #febc2e; }
+  .t-dot.green { background: #28c840; }
+  .t-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-left: 6px; }
+  .terminal-body { padding: 1.2rem; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.8; }
+  .t-line { display: flex; gap: 8px; }
+  .t-prompt { color: var(--accent-green); }
+  .t-output { color: var(--text-secondary); }
+  .t-val-red   { color: var(--accent-red); }
+  .t-val-green { color: var(--accent-green); }
+  .t-val-cyan  { color: var(--accent-cyan); }
+  .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--accent-cyan); vertical-align: middle; animation: blink 1.1s infinite; }
+  .scan-result { margin-top: 0.75rem; padding: 0.75rem; background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.2); border-radius: var(--radius-sm); }
+  .scan-verdict { font-size: 0.9rem; font-weight: 700; color: var(--accent-red); margin-bottom: 0.3rem; }
+  .scan-confidence { font-size: 0.75rem; color: var(--text-secondary); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.75rem; transition: all var(--transition); position: relative; overflow: hidden; }
+  .feature-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,229,255,0.04), transparent); opacity: 0; transition: opacity var(--transition); }
+  .feature-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--glow-cyan); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: grid; place-items: center; font-size: 1.2rem; margin-bottom: 1.1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.15); }
+  .feature-icon.green-icon { background: rgba(0,255,157,0.1); border-color: rgba(0,255,157,0.15); }
+  .feature-icon.amber-icon { background: rgba(255,183,0,0.1); border-color: rgba(255,183,0,0.15); }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+  .steps-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 3rem; position: relative; }
+  .steps-row::before { content: ''; position: absolute; top: 28px; left: 10%; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent); }
+  .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--border); display: grid; place-items: center; font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 1.25rem; position: relative; z-index: 1; transition: border-color var(--transition), box-shadow var(--transition); }
+  .step:hover .step-num { border-color: var(--accent-cyan); box-shadow: var(--glow-cyan); }
+  .step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .step p   { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
+  .cta-band { background: linear-gradient(135deg, rgba(0,229,255,0.06), rgba(0,255,157,0.04)); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 4rem 3rem; text-align: center; position: relative; overflow: hidden; }
+  .cta-band::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.1), transparent 70%); pointer-events: none; }
+  .cta-band h2 { font-size: clamp(1.6rem,4vw,2.5rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .cta-band p  { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.revealed { opacity: 1; transform: none; }
+  @media (max-width: 1100px) { .hero-visual { display: none; } .hero-content { max-width: 100%; } }
+  @media (max-width: 768px) { .steps-row { grid-template-columns: 1fr 1fr; gap: 2rem; } .steps-row::before { display: none; } .hero-stats { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .steps-row { grid-template-columns: 1fr; } .hero-stats { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- ══ Hero ════════════════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Ensemble ML · Explainable AI · Real-Time Detection
+      </div>
+      <h1 class="hero-title">
+        <span class="line-1">Unmask Synthetic</span><br>
+        <span class="line-2">Research Papers.</span>
+      </h1>
+      <p class="hero-desc">
+        PaperTrap deploys a forensic ensemble of Random Forest &amp; Gradient Boosting
+        classifiers trained on 60+ linguistic fingerprints — catching AI-generated
+        manuscripts before they corrupt the scholarly record.
+      </p>
+      <div class="hero-actions">
+        <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-lg" data-transition>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Analyze a Paper
+        </a>
+        <a href="{{ request.url_for('about') }}" class="btn btn-outline btn-lg" data-transition>How it works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="92" data-suffix="%">92%</span>
+          <span class="hero-stat-label">Detection Accuracy</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val green" data-count="500">500</span>
+          <span class="hero-stat-label">Training Samples</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="60">60</span>
+          <span class="hero-stat-label">Feature Signals</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="terminal-card">
+      <div class="terminal-bar">
+        <span class="t-dot red"></span><span class="t-dot amber"></span><span class="t-dot green"></span>
+        <span class="t-title">papertrap — analysis</span>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line"><span class="t-prompt">$</span><span> analyze paper.pdf</span></div>
+        <div class="t-line"><span class="t-output">  ▸ Extracting text …</span><span class="t-val-green"> OK</span></div>
+        <div class="t-line"><span class="t-output">  ▸ Computing perplexity …</span><span class="t-val-green"> OK</span></div>
+        <div class="t-line"><span class="t-output">  ▸ Stylometric analysis …</span><span class="t-val-green"> OK</span></div>
+        <div class="t-line"><span class="t-output">  ▸ Ensemble inference …</span><span class="t-val-green"> OK</span></div>
+        <div class="t-line"><span class="t-output">  ▸ SHAP explainability …</span><span class="t-val-green"> OK</span></div>
+        <div class="scan-result">
+          <div class="scan-verdict">⚠ SYNTHETIC — AI-Generated</div>
+          <div class="scan-confidence">Confidence: <span class="t-val-red">94.7%</span> · Perplexity: <span class="t-val-cyan">18.3</span></div>
+        </div>
+        <div class="t-line" style="margin-top:0.6rem"><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Features ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Core Capabilities</div>
+      <h2 class="section-title">Built for Forensic <span class="highlight">Precision</span></h2>
+      <p class="section-sub">Nine specialized subsystems work in concert to catch what human reviewers miss.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal delay-1"><div class="feature-icon">🧠</div><h3>Ensemble Classifier</h3><p>Soft-Voting ensemble of Random Forest + Gradient Boosting. Stable predictions across diverse writing styles.</p></div>
+      <div class="feature-card reveal delay-2"><div class="feature-icon green-icon">📊</div><h3>Perplexity Scoring</h3><p>Measures token-sequence predictability. AI models optimize for high probability, leaving a low-perplexity fingerprint.</p></div>
+      <div class="feature-card reveal delay-3"><div class="feature-icon amber-icon">🔤</div><h3>Stylometric Analysis</h3><p>POS distributions, syntactic dependency patterns, and function-word ratios reveal the "flat" writing style common in LLMs.</p></div>
+      <div class="feature-card reveal delay-1"><div class="feature-icon">📄</div><h3>PDF Ingestion Pipeline</h3><p>pdfplumber + PyPDF2 strips multi-column formatting, headers, and metadata for reliable NLP processing.</p></div>
+      <div class="feature-card reveal delay-2"><div class="feature-icon green-icon">💡</div><h3>SHAP Explainability</h3><p>Every prediction comes with SHAP visualization showing which features triggered the flag.</p></div>
+      <div class="feature-card reveal delay-3"><div class="feature-icon amber-icon">🛡️</div><h3>Adversarial Robustness</h3><p>Validated against T5-paraphrased content and SCIgen baselines. Minor rephrasing won't fool the detector.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ How It Works ════════════════════════════════════════ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="divider"></div>
+    <div style="margin-top:4rem" class="reveal">
+      <div class="section-tag">Workflow</div>
+      <h2 class="section-title">Four Steps to <span class="highlight">Certainty</span></h2>
+    </div>
+    <div class="steps-row">
+      <div class="step reveal delay-1"><div class="step-num">01</div><h4>Upload Paper</h4><p>Drop your PDF. The ingestion pipeline extracts clean text from any academic layout.</p></div>
+      <div class="step reveal delay-2"><div class="step-num">02</div><h4>Feature Extraction</h4><p>60+ signals computed — perplexity, readability, n-grams, POS ratios, citation density.</p></div>
+      <div class="step reveal delay-3"><div class="step-num">03</div><h4>Ensemble Inference</h4><p>Random Forest &amp; Gradient Boosting vote to produce a calibrated confidence score.</p></div>
+      <div class="step reveal delay-4"><div class="step-num">04</div><h4>SHAP Report</h4><p>Receive an explainable result — see exactly which linguistic markers triggered the verdict.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ═════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div class="badge badge-green badge-dot" style="margin-bottom:1.25rem">System Online</div>
+      <h2>Stop Synthetic Scholarship<br>Before It Spreads.</h2>
+      <p>Upload any research paper and receive a forensic-grade authenticity report in seconds.</p>
+      {% if user %}
+        <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-lg" data-transition>Analyze Your First Paper →</a>
+      {% else %}
+        <a href="{{ request.url_for('register_get') }}" class="btn btn-primary btn-lg" data-transition>Get Started Free →</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    PaperTrap.Particles.init('hero-canvas', { count: 50, speed: 0.25 });
+    Counter.init();
+  });
+</script>
+{% endblock %}
