@@ -17,18 +17,17 @@ import os
 # ── App setup ────────────────────────────────────────────────
 app = FastAPI(title="PaperTrap")
 
-# Session middleware (signs cookies with the secret key)
+# Session middleware 
 app.add_middleware(
     SessionMiddleware,
     secret_key="papertrap-secret-key-change-in-production",
     session_cookie="papertrap_session",
-    max_age=86400,          # 1 day
+    max_age=86400,        
     same_site="lax",
-    https_only=False,       # set True in production with HTTPS
+    https_only=False,      
 )
 
-# Static files and templates
-# Ensure these directories exist or the app will error on startup
+
 os.makedirs("static", exist_ok=True)
 os.makedirs("templates", exist_ok=True)
 
@@ -37,7 +36,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-# ── Database ─────────────────────────────────────────────────
+# Database
 DB_PATH = "users.db"
 
 def init_db():
@@ -59,7 +58,7 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
-# ── Auth helpers ─────────────────────────────────────────────
+# Auth helpers 
 def get_current_user(request: Request) -> dict | None:
     """Return session user dict or None."""
     username = request.session.get("username")
@@ -76,7 +75,7 @@ class HTTPException307(Exception):
 async def redirect_handler(request: Request, exc: HTTPException307):
     return RedirectResponse(exc.location, status_code=status.HTTP_303_SEE_OTHER)
 
-# ── Template context helper ───────────────────────────────────
+# Template context helper 
 def ctx(request: Request, **kwargs) -> dict:
     """Consolidates template context. Note: 'request' is required in the dict."""
     flash = request.session.pop("flash", None)
@@ -91,7 +90,7 @@ def flash_msg(request: Request, message: str, category: str = "info"):
     """Store a one-shot flash message in the session."""
     request.session["flash"] = {"msg": message, "category": category}
 
-# ── Public routes ─────────────────────────────────────────────
+# Public routes 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse(
@@ -104,7 +103,7 @@ async def about(request: Request):
         request=request, name="about.html", context=ctx(request)
     )
 
-# ── Register ──────────────────────────────────────────────────
+# Register 
 @app.get("/register", response_class=HTMLResponse)
 async def register_get(request: Request):
     if get_current_user(request):
@@ -161,7 +160,7 @@ async def register_post(
             context=ctx(request, errors=["Username or email already taken."], form={"username": username, "email": email})
         )
 
-# ── Login ─────────────────────────────────────────────────────
+# Login 
 @app.get("/login", response_class=HTMLResponse)
 async def login_get(request: Request):
     if get_current_user(request):
@@ -199,14 +198,14 @@ async def login_post(
             context=ctx(request, errors=["Invalid username or password."], form={"username": username})
         )
 
-# ── Logout ────────────────────────────────────────────────────
+# Logout
 @app.get("/logout")
 async def logout(request: Request):
     request.session.clear()
     flash_msg(request, "You have been logged out.", "success")
     return RedirectResponse("/login", status_code=303)
 
-# ── Protected routes ──────────────────────────────────────────
+# Protected routes
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request):
     user = get_current_user(request)
@@ -237,7 +236,7 @@ async def results(request: Request):
         request=request, name="results.html", context=ctx(request)
     )
 
-# ── Startup ───────────────────────────────────────────────────
+# Startup
 @app.on_event("startup")
 async def startup():
     init_db()
