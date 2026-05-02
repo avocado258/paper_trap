@@ -12,7 +12,8 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Models (large binary files)
-outputs/models/
+outputs/models/ensemble.pkl
+outputs/models/rf_component.pkl
 
 # OS
 .DS_Store
