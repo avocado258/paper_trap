@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block head %}
+<style>
+  .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 5rem 1.5rem 3rem; position: relative; overflow: hidden; }
+  .auth-glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .auth-glow-1 { width: 500px; height: 400px; background: radial-gradient(ellipse, rgba(0,255,157,0.09), transparent 70%); top: -60px; left: 50%; transform: translateX(-50%); }
+  .auth-glow-2 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(0,229,255,0.07), transparent 70%); bottom: 10%; left: 5%; animation: float 9s ease-in-out infinite reverse; }
+  .auth-card { position: relative; z-index: 1; width: 100%; max-width: 460px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; animation: fadeUp 0.6s ease both; box-shadow: 0 32px 80px rgba(0,0,0,0.4); }
+  .auth-card-top { padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border); text-align: center; background: linear-gradient(135deg, rgba(0,255,157,0.04), transparent); }
+  .auth-logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 1.25rem; }
+  .auth-logo .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan)); border-radius: var(--radius-sm); display: grid; place-items: center; font-size: 0.85rem; color: var(--bg-base); }
+  .auth-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+  .auth-sub   { font-size: 0.85rem; color: var(--text-secondary); }
+  .auth-body  { padding: 1.75rem 2rem 2rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.45rem; font-family: var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; }
+  .form-input { width: 100%; padding: 0.75rem 1rem; background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); outline: none; transition: border-color var(--transition), box-shadow var(--transition); }
+  .form-input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(0,229,255,0.1); }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-input.valid   { border-color: var(--accent-green); }
+  .form-input.invalid { border-color: var(--accent-red); }
+  .form-input.error   { border-color: var(--accent-red); }
+  .form-input-wrap { position: relative; }
+  .input-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; pointer-events: none; }
+  .form-input-wrap .form-input { padding-left: 2.4rem; }
+  .pw-toggle { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; padding: 2px; transition: color var(--transition); }
+  .pw-toggle:hover { color: var(--accent-cyan); }
+  .pw-strength { margin-top: 0.5rem; }
+  .pw-strength-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; margin-bottom: 0.3rem; }
+  .pw-strength-fill { height: 100%; border-radius: 2px; width: 0%; transition: width 0.3s ease, background 0.3s ease; }
+  .pw-strength-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); }
+  .pw-requirements { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .pw-req { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); transition: color var(--transition); }
+  .pw-req.met { color: var(--accent-green); }
+  .pw-req-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); flex-shrink: 0; transition: background var(--transition); }
+  .pw-req.met .pw-req-dot { background: var(--accent-green); }
+  .submit-btn { width: 100%; padding: 0.9rem; background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan)); color: var(--bg-base); font-size: 0.95rem; font-weight: 700; border: none; border-radius: var(--radius-sm); cursor: pointer; letter-spacing: 0.03em; transition: all var(--transition); margin-top: 0.5rem; }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,255,157,0.3); }
+  .error-banner { background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.25); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.84rem; color: var(--accent-red); display: flex; gap: 8px; align-items: flex-start; }
+  .terms-note { font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 1rem; line-height: 1.6; }
+  .auth-footer-text { text-align: center; font-size: 0.84rem; color: var(--text-secondary); margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+  .auth-footer-text a { color: var(--accent-cyan); }
+  .auth-footer-text a:hover { text-decoration: underline; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+  <div class="auth-glow auth-glow-1"></div>
+  <div class="auth-glow auth-glow-2"></div>
+
+  <div class="auth-card">
+    <div class="auth-card-top">
+      <div class="auth-logo">
+        <div class="logo-icon">PT</div>
+        <span style="color:var(--text-muted)">[</span>PaperTrap<span style="color:var(--text-muted)">]</span>
+      </div>
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-sub">Free forever — start detecting AI papers in seconds</p>
+    </div>
+
+    <div class="auth-body">
+      {% if errors %}
+        <div class="error-banner">
+          <span>✕</span>
+          <div>{% for e in errors %}{{ e }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>
+        </div>
+      {% endif %}
+
+      <form method="POST" action="{{ request.url_for('register_post') }}" id="registerForm" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <div class="form-input-wrap">
+            <span class="input-icon">◈</span>
+            <input class="form-input {% if errors %}error{% endif %}"
+              type="text" id="username" name="username"
+              placeholder="choose_a_username"
+              value="{{ form.username if form else '' }}"
+              required minlength="3" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <div class="form-input-wrap">
+            <span class="input-icon">@</span>
+            <input class="form-input {% if errors %}error{% endif %}"
+              type="email" id="email" name="email"
+              placeholder="you@university.edu"
+              value="{{ form.email if form else '' }}"
+              required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="form-input-wrap">
+            <span class="input-icon">🔒</span>
+            <input class="form-input" type="password" id="password" name="password"
+              placeholder="at least 6 characters"
+              required minlength="6" autocomplete="new-password"
+              oninput="checkStrength(this.value)" />
+            <button type="button" class="pw-toggle" id="pwToggle1"
+              onclick="togglePw('password','pwToggle1')">👁</button>
+          </div>
+          <div class="pw-strength">
+            <div class="pw-strength-bar"><div class="pw-strength-fill" id="strengthFill"></div></div>
+            <div class="pw-strength-label" id="strengthLabel">Enter a password</div>
+          </div>
+          <div class="pw-requirements">
+            <div class="pw-req" id="req-len"><span class="pw-req-dot"></span>At least 6 characters</div>
+            <div class="pw-req" id="req-upper"><span class="pw-req-dot"></span>One uppercase letter</div>
+            <div class="pw-req" id="req-num"><span class="pw-req-dot"></span>One number</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm">Confirm Password</label>
+          <div class="form-input-wrap">
+            <span class="input-icon">🔒</span>
+            <input class="form-input" type="password" id="confirm" name="confirm"
+              placeholder="repeat your password"
+              required autocomplete="new-password"
+              oninput="checkMatch()" />
+            <button type="button" class="pw-toggle" id="pwToggle2"
+              onclick="togglePw('confirm','pwToggle2')">👁</button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Create Account →</button>
+
+        <p class="terms-note">
+          By registering you agree to use PaperTrap for legitimate academic integrity purposes only.
+        </p>
+      </form>
+
+      <div class="auth-footer-text">
+        Already have an account?
+        <a href="{{ request.url_for('login_get') }}">Sign in →</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+<script>
+  function togglePw(inputId, btnId) {
+    const input = document.getElementById(inputId);
+    const btn   = document.getElementById(btnId);
+    input.type  = input.type === 'password' ? 'text' : 'password';
+    btn.textContent = input.type === 'password' ? '👁' : '🙈';
+  }
+
+  function checkStrength(val) {
+    const fill  = document.getElementById('strengthFill');
+    const label = document.getElementById('strengthLabel');
+    const hasLen   = val.length >= 6;
+    const hasUpper = /[A-Z]/.test(val);
+    const hasNum   = /[0-9]/.test(val);
+    document.getElementById('req-len').classList.toggle('met', hasLen);
+    document.getElementById('req-upper').classList.toggle('met', hasUpper);
+    document.getElementById('req-num').classList.toggle('met', hasNum);
+    const score = [hasLen, hasUpper, hasNum].filter(Boolean).length;
+    const cfgs = [
+      { w: '0%',   c: 'transparent',        t: 'Enter a password' },
+      { w: '33%',  c: 'var(--accent-red)',   t: 'Weak' },
+      { w: '66%',  c: 'var(--accent-amber)', t: 'Moderate' },
+      { w: '100%', c: 'var(--accent-green)', t: 'Strong' },
+    ];
+    const cfg = cfgs[val.length === 0 ? 0 : score];
+    fill.style.width      = cfg.w;
+    fill.style.background = cfg.c;
+    label.textContent     = cfg.t;
+    label.style.color     = cfg.c === 'transparent' ? 'var(--text-muted)' : cfg.c;
+  }
+
+  function checkMatch() {
+    const pw  = document.getElementById('password').value;
+    const cfm = document.getElementById('confirm');
+    cfm.classList.toggle('valid',   cfm.value.length > 0 && cfm.value === pw);
+    cfm.classList.toggle('invalid', cfm.value.length > 0 && cfm.value !== pw);
+  }
+</script>
+{% endblock %}

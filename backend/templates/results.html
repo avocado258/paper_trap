@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PaperTrap — Detection Results</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Page ─────────────────────────────────────────────── */
+{% extends "base.html" %}
+{% block title %}Detection Results{% endblock %}
+
+{% block head %}
+<style>
+/* ── Page ─────────────────────────────────────────────── */
     .results-page {
       min-height: 100vh;
       padding-top: 88px;
@@ -421,27 +418,12 @@
       .shap-row       { grid-template-columns: 130px 1fr 55px; }
       .verdict-banner { padding: 1.5rem; }
     }
-  </style>
-</head>
-<body class="grid-bg">
+</style>
+{% endblock %}
 
+{% block content %}
 <!-- ══ Navbar ═══════════════════════════════════════════════ -->
-<nav class="navbar">
-  <a href="index.html" class="nav-logo" data-transition>
-    <div class="logo-icon">PT</div>
-    <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" data-transition>Home</a></li>
-    <li><a href="upload.html" data-transition>Analyze</a></li>
-    <li><a href="dashboard.html" data-transition>Dashboard</a></li>
-    <li><a href="about.html" data-transition>About</a></li>
-    <li><a href="upload.html" class="nav-cta" data-transition>Try Free →</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+
 
 <!-- ══ Page ══════════════════════════════════════════════════ -->
 <main class="results-page">
@@ -450,7 +432,7 @@
     <!-- ── Actions bar ──────────────────────────────────── -->
     <div class="actions-bar animate-fade-up">
       <div class="actions-left">
-        <a href="upload.html" class="btn btn-ghost btn-sm" data-transition>
+        <a href="{{ request.url_for('upload') }}" class="btn btn-ghost btn-sm" data-transition>
           ← New Analysis
         </a>
         <div class="paper-tag">
@@ -711,10 +693,10 @@
 
     <!-- ── Action Footer ────────────────────────────────── -->
     <div style="display:flex;justify-content:center;gap:1rem;margin-top:2.5rem;" class="animate-fade-up delay-5">
-      <a href="upload.html" class="btn btn-primary btn-lg" data-transition>
+      <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-lg" data-transition>
         ↑ Analyze Another Paper
       </a>
-      <a href="dashboard.html" class="btn btn-outline btn-lg" data-transition>
+      <a href="{{ request.url_for('dashboard') }}" class="btn btn-outline btn-lg" data-transition>
         View Dashboard →
       </a>
     </div>
@@ -731,8 +713,9 @@
     </div>
   </div>
 </footer>
+{% endblock %}
 
-<script src="app.js"></script>
+{% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -899,5 +882,4 @@ Top SHAP Features: Perplexity, TTR, Sentence Length
 
 });
 </script>
-</body>
-</html>
+{% endblock %}

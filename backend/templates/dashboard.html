@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PaperTrap — Analytics Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Page Shell ──────────────────────────────────────── */
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard{% endblock %}
+
+{% block head %}
+<style>
+/* ── Page Shell ──────────────────────────────────────── */
     .dash-page {
       min-height: 100vh;
       padding-top: 64px;
@@ -497,27 +494,12 @@
     @media (max-width: 420px) {
       .kpi-row { grid-template-columns: 1fr; }
     }
-  </style>
-</head>
-<body class="grid-bg">
+</style>
+{% endblock %}
 
+{% block content %}
 <!-- ══ Navbar ═══════════════════════════════════════════════ -->
-<nav class="navbar">
-  <a href="index.html" class="nav-logo" data-transition>
-    <div class="logo-icon">PT</div>
-    <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" data-transition>Home</a></li>
-    <li><a href="upload.html" data-transition>Analyze</a></li>
-    <li><a href="dashboard.html" class="active" data-transition>Dashboard</a></li>
-    <li><a href="about.html" data-transition>About</a></li>
-    <li><a href="upload.html" class="nav-cta" data-transition>Try Free →</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+
 
 <div class="dash-page">
 
@@ -586,7 +568,7 @@
           <button class="date-btn" onclick="setRange(this)">90D</button>
           <button class="date-btn" onclick="setRange(this)">ALL</button>
         </div>
-        <a href="upload.html" class="btn btn-primary btn-sm" data-transition>+ New Scan</a>
+        <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-sm" data-transition>+ New Scan</a>
       </div>
     </div>
 
@@ -830,8 +812,12 @@
 
   </main>
 </div>
+{% endblock %}
 
-<script src="app.js"></script>
+{% block scripts %}
+<script>
+  const RESULTS_URL = "{{ request.url_for('results') }}";
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -1021,7 +1007,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTable(data) {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = data.map(r => `
-      <tr onclick="PaperTrap.PageTransition.navigateTo('results.html')">
+      <tr onclick="PaperTrap.PageTransition.navigateTo(RESULTS_URL)">
         <td class="td-name">${PaperTrap.Utils.truncate(r.name, 32)}<span>${r.sub}</span></td>
         <td><span class="verdict-pill ${r.verdict}">${r.verdict === 'ai' ? 'AI-Generated' : 'Human'}</span></td>
         <td><span class="confidence-cell ${confClass(r.verdict, r.conf)}">${r.conf}%</span></td>
@@ -1057,5 +1043,4 @@ document.addEventListener('DOMContentLoaded', () => {
   Counter.init();
 });
 </script>
-</body>
-</html>
+{% endblock %}

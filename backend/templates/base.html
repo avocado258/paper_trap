@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}PaperTrap{% endblock %} — AI Research Paper Detector</title>
+  <link rel="stylesheet" href="{{ request.url_for('static', path='css/style.css') }}" />
+  {% block head %}{% endblock %}
+</head>
+<body class="grid-bg">
+
+<!-- ══ Navbar ════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <a href="{{ request.url_for('index') }}" class="nav-logo" data-transition>
+    <div class="logo-icon">PT</div>
+    <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="{{ request.url_for('index') }}"
+           class="{% if request.url.path == '/' %}active{% endif %}"
+           data-transition>Home</a></li>
+    <li><a href="{{ request.url_for('upload') }}"
+           class="{% if request.url.path == '/upload' %}active{% endif %}"
+           data-transition>Analyze</a></li>
+    <li><a href="{{ request.url_for('dashboard') }}"
+           class="{% if request.url.path == '/dashboard' %}active{% endif %}"
+           data-transition>Dashboard</a></li>
+    <li><a href="{{ request.url_for('about') }}"
+           class="{% if request.url.path == '/about' %}active{% endif %}"
+           data-transition>About</a></li>
+
+    {% if user %}
+      <li style="display:flex;align-items:center;gap:0.75rem;">
+        <span style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted)">
+          ◈ {{ user.username }}
+        </span>
+        <a href="{{ request.url_for('logout') }}"
+           class="nav-cta"
+           style="background:rgba(255,77,109,0.15);color:var(--accent-red);border:1px solid rgba(255,77,109,0.3);">
+          Logout
+        </a>
+      </li>
+    {% else %}
+      <li><a href="{{ request.url_for('login_get') }}"
+             class="{% if request.url.path == '/login' %}active{% endif %}"
+             data-transition>Login</a></li>
+      <li><a href="{{ request.url_for('register_get') }}" class="nav-cta" data-transition>Sign Up →</a></li>
+    {% endif %}
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ Flash Message ═════════════════════════════════════════ -->
+{% if flash %}
+<div class="flash-container" id="flashContainer">
+  <div class="flash-msg flash-{{ flash.category }}">
+    <span class="flash-icon">
+      {% if flash.category == 'success' %}✓
+      {% elif flash.category == 'error' %}✕
+      {% else %}◈{% endif %}
+    </span>
+    {{ flash.msg }}
+    <button class="flash-close" onclick="this.parentElement.remove()">✕</button>
+  </div>
+</div>
+{% endif %}
+
+<!-- ══ Page Content ══════════════════════════════════════════ -->
+{% block content %}{% endblock %}
+
+<!-- ══ Footer ════════════════════════════════════════════════ -->
+{% block footer %}
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0.75rem">
+          <div class="logo-icon">PT</div>
+          <span class="bracket">[</span>PaperTrap<span class="bracket">]</span>
+        </div>
+        <p>Ensemble ML system for detecting AI-generated academic papers. Built for integrity in scholarly publishing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="{{ request.url_for('upload') }}"    data-transition>Analyze Paper</a></li>
+          <li><a href="{{ request.url_for('results') }}"   data-transition>Sample Results</a></li>
+          <li><a href="{{ request.url_for('dashboard') }}" data-transition>Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="{{ request.url_for('about') }}"          data-transition>How It Works</a></li>
+          <li><a href="{{ request.url_for('about') }}#team"     data-transition>Team</a></li>
+          <li><a href="{{ request.url_for('about') }}#methodology" data-transition>Methodology</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">scikit-learn</a></li>
+          <li><a href="#">SHAP</a></li>
+          <li><a href="#">pdfplumber</a></li>
+          <li><a href="#">GPT-2 / T5</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 PaperTrap · Academic Integrity System</span>
+      <span style="color:var(--text-muted)">Built with FastAPI &amp; ensemble ML</span>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+<script src="{{ request.url_for('static', path='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+
+<!-- Flash styles + auto-dismiss -->
+<style>
+  .flash-container {
+    position: fixed; top: 76px; right: 1.5rem;
+    z-index: 9000; display: flex; flex-direction: column;
+    gap: 0.6rem; max-width: 360px;
+  }
+  .flash-msg {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0.85rem 1.1rem; border-radius: var(--radius-sm);
+    font-size: 0.875rem; background: var(--bg-raised);
+    border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    animation: toastIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .flash-success { border-left: 3px solid var(--accent-green); }
+  .flash-success .flash-icon { color: var(--accent-green); }
+  .flash-error   { border-left: 3px solid var(--accent-red); }
+  .flash-error   .flash-icon { color: var(--accent-red); }
+  .flash-info    { border-left: 3px solid var(--accent-cyan); }
+  .flash-info    .flash-icon { color: var(--accent-cyan); }
+  .flash-icon { font-family: var(--font-mono); font-size: 0.8rem; flex-shrink: 0; }
+  .flash-close {
+    margin-left: auto; background: none; border: none;
+    color: var(--text-muted); cursor: pointer; font-size: 0.75rem;
+    padding: 2px 4px; border-radius: 3px;
+    transition: color var(--transition);
+  }
+  .flash-close:hover { color: var(--text-primary); }
+</style>
+<script>
+  document.querySelectorAll('.flash-msg').forEach(el => {
+    setTimeout(() => {
+      el.style.transition = 'all 0.3s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(20px)';
+      setTimeout(() => el.remove(), 300);
+    }, 4000);
+  });
+</script>
+
+</body>
+</html>
