@@ -1,0 +1,65 @@
+{
+  "cv": {
+    "accuracy": {
+      "mean": 0.9857142857142858,
+      "std": 0.009035079029052515
+    },
+    "precision": {
+      "mean": 0.9836336336336338,
+      "std": 0.021698644924324478
+    },
+    "recall": {
+      "mean": 0.9885714285714287,
+      "std": 0.01399708424447531
+    },
+    "f1": {
+      "mean": 0.9858304415867185,
+      "std": 0.008788357797936719
+    },
+    "roc_auc": {
+      "mean": 0.9996734693877551,
+      "std": 0.00039991669269929923
+    }
+  },
+  "val": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "roc_auc": 1.0
+  },
+  "test": {
+    "accuracy": 0.9866666666666667,
+    "precision": 1.0,
+    "recall": 0.972972972972973,
+    "f1": 0.9863013698630136,
+    "roc_auc": 0.9992887624466572
+  },
+  "best_rf_params": {
+    "max_depth": null,
+    "max_features": "sqrt",
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "feature_names": [
+    "mtld",
+    "flesch_ease",
+    "sent_len_mean",
+    "word_len_mean",
+    "function_word_ratio",
+    "pos_NOUN",
+    "pos_VERB",
+    "pos_ADJ",
+    "pos_ADV",
+    "pos_PRON",
+    "pos_DET",
+    "pos_ADP",
+    "pos_CCONJ",
+    "pos_SCONJ",
+    "pos_NUM",
+    "pos_PUNCT",
+    "passive_voice_rate",
+    "bigram_repetition_rate",
+    "trigram_repetition_rate"
+  ]
+}
