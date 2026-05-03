@@ -8,105 +8,260 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 1.5rem 3rem;
+    padding: 6rem 1.5rem 3rem;
     position: relative;
     overflow: hidden;
   }
-
+  .auth-glow {
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); pointer-events: none; z-index: 0;
+  }
+  .glow-top {
+    width: 560px; height: 420px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.10), transparent 70%);
+    top: -80px; left: 50%; transform: translateX(-50%);
+  }
+  .glow-br {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,255,157,0.08), transparent 70%);
+    bottom: 5%; right: 5%;
+    animation: float 9s ease-in-out infinite;
+  }
   .auth-card {
-    width: 100%;
-    max-width: 440px;
+    position: relative; z-index: 1;
+    width: 100%; max-width: 420px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 2rem;
-    animation: fadeUp 0.6s ease both;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,229,255,0.05);
+    animation: fadeUp 0.55s cubic-bezier(0.4,0,0.2,1) both;
   }
-
-  .form-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+  .auth-card.shake {
+    animation: fadeUp 0.55s cubic-bezier(0.4,0,0.2,1) both, shake 0.4s 0.6s ease;
   }
-
-  .form-input.error {
-    border-color: red;
+  .card-accent {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
   }
-
-  .submit-btn {
-    width: 100%;
-    padding: 0.9rem;
-    margin-top: 1rem;
-    background: cyan;
-    border: none;
-    cursor: pointer;
+  .card-top {
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(0,229,255,0.03) 0%, transparent 100%);
   }
-
+  .card-logo {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-mono); font-size: 1rem; font-weight: 700;
+    color: var(--accent-cyan); margin-bottom: 1.1rem; text-decoration: none;
+  }
+  .logo-sq {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    border-radius: 7px; display: grid; place-items: center;
+    font-size: 0.8rem; color: var(--bg-base);
+  }
+  .card-title {
+    font-size: 1.35rem; font-weight: 700; letter-spacing: -0.025em;
+    color: var(--text-primary); margin-bottom: 0.3rem;
+  }
+  .card-sub { font-size: 0.84rem; color: var(--text-secondary); }
+  .card-body { padding: 1.75rem 2rem 2rem; }
   .error-banner {
-    background: #ffdddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: red;
+    display: flex; gap: 10px; align-items: flex-start;
+    background: rgba(255,77,109,0.08);
+    border: 1px solid rgba(255,77,109,0.28);
+    border-left: 3px solid var(--accent-red);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem; margin-bottom: 1.25rem;
+    font-size: 0.84rem; color: var(--accent-red); line-height: 1.5;
   }
-
+  .error-icon { flex-shrink: 0; font-size: 0.85rem; margin-top: 1px; }
+  .form-group { margin-bottom: 1rem; }
+  .form-label {
+    display: block; font-family: var(--font-mono);
+    font-size: 0.72rem; font-weight: 700; color: var(--text-secondary);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.45rem;
+  }
+  .input-wrap { position: relative; }
+  .input-icon {
+    position: absolute; left: 0.9rem; top: 50%;
+    transform: translateY(-50%); color: var(--text-muted);
+    font-size: 0.88rem; pointer-events: none; line-height: 1;
+  }
+  .form-input {
+    width: 100%; padding: 0.72rem 0.9rem 0.72rem 2.5rem;
+    background: var(--bg-raised); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--text-primary);
+    font-size: 0.9rem; font-family: var(--font-sans);
+    outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 3px rgba(0,229,255,0.12);
+  }
+  .form-input.error {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(255,77,109,0.10);
+  }
+  .form-input.has-toggle { padding-right: 2.4rem; }
+  .pw-toggle {
+    position: absolute; right: 0.85rem; top: 50%;
+    transform: translateY(-50%); background: none; border: none;
+    color: var(--text-muted); cursor: pointer;
+    font-size: 0.85rem; padding: 2px; line-height: 1;
+    transition: color 0.2s ease;
+  }
+  .pw-toggle:hover { color: var(--accent-cyan); }
+  .form-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 0.25rem 0 1.4rem; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .check-label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.82rem; color: var(--text-secondary);
+    cursor: pointer; user-select: none;
+  }
+  .check-label input[type="checkbox"] { accent-color: var(--accent-cyan); width: 14px; height: 14px; }
+  .forgot-link {
+    font-size: 0.82rem; color: var(--accent-cyan);
+    text-decoration: none; transition: opacity 0.2s ease;
+  }
+  .forgot-link:hover { opacity: 0.72; text-decoration: underline; }
+  .submit-btn {
+    width: 100%; padding: 0.85rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    color: var(--bg-base); font-size: 0.92rem; font-weight: 700;
+    letter-spacing: 0.03em; border: none; border-radius: var(--radius-sm);
+    cursor: pointer; transition: transform 0.18s ease, box-shadow 0.18s ease;
+    position: relative; overflow: hidden;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,229,255,0.32); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+    transform: translateX(-100%); transition: transform 0.5s ease;
+  }
+  .submit-btn:hover::after { transform: translateX(100%); }
+  .auth-divider {
+    display: flex; align-items: center; gap: 0.85rem;
+    margin: 1.4rem 0; font-size: 0.78rem; color: var(--text-muted);
+  }
+  .auth-divider::before, .auth-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .auth-footer { text-align: center; font-size: 0.84rem; color: var(--text-secondary); }
+  .auth-footer a { color: var(--accent-cyan); font-weight: 600; text-decoration: none; }
+  .auth-footer a:hover { text-decoration: underline; }
+  .security-note {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 1.25rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);
+  }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes shake {
     0%,100% { transform: translateX(0); }
-    20%,60% { transform: translateX(-6px); }
-    40%,80% { transform: translateX(6px); }
+    20%,60%  { transform: translateX(-7px); }
+    40%,80%  { transform: translateX( 7px); }
   }
-
-  .shake {
-    animation: shake 0.4s;
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-14px); }
   }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="auth-page">
+  <div class="auth-glow glow-top"></div>
+  <div class="auth-glow glow-br"></div>
 
   <div class="auth-card {% if errors is defined and errors %}shake{% endif %}">
+    <div class="card-accent"></div>
 
-    <h2>Login</h2>
+    <div class="card-top">
+      <a href="{{ request.url_for('index') }}" class="card-logo">
+        <div class="logo-sq">PT</div>
+        <span>[PaperTrap]</span>
+      </a>
+      <h1 class="card-title">Welcome back</h1>
+      <p class="card-sub">Sign in to continue analyzing papers</p>
+    </div>
 
-    {% if errors is defined and errors %}
+    <div class="card-body">
+      {% if errors is defined and errors %}
       <div class="error-banner">
-        {% for e in errors %}
-          {{ e }}<br>
-        {% endfor %}
+        <span class="error-icon">✕</span>
+        <div>{% for e in errors %}{{ e }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>
       </div>
-    {% endif %}
+      {% endif %}
 
-    <form method="POST" action="{{ url_for('login_post') }}">
+      <form method="POST" action="{{ request.url_for('login_post') }}">
 
-      <input class="form-input {% if errors %}error{% endif %}"
-             type="text"
-             name="username"
-             placeholder="Username"
-             value="{{ form.get('username','') if form else '' }}"
-             required>
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <div class="input-wrap">
+            <span class="input-icon">◈</span>
+            <input class="form-input {% if errors is defined and errors %}error{% endif %}"
+              type="text" id="username" name="username"
+              placeholder="your_username"
+              value="{{ form['username'] if form else '' }}"
+              required autocomplete="username" />
+          </div>
+        </div>
 
-      <input class="form-input {% if errors %}error{% endif %}"
-             type="password"
-             name="password"
-             placeholder="Password"
-             required>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input class="form-input has-toggle {% if errors is defined and errors %}error{% endif %}"
+              type="password" id="password" name="password"
+              placeholder="••••••••" required autocomplete="current-password" />
+            <button type="button" class="pw-toggle" id="eyeBtn" onclick="togglePw()">👁</button>
+          </div>
+        </div>
 
-      <button type="submit" class="submit-btn">Login</button>
+        <div class="form-row">
+          <label class="check-label">
+            <input type="checkbox" name="remember" /> Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
 
-    </form>
+        <button type="submit" class="submit-btn">Sign In →</button>
+      </form>
 
-    <p>
-      Don't have an account?
-      <a href="{{ url_for('register_get') }}">Register</a>
-    </p>
+      <div class="auth-divider">or</div>
 
+      <div class="auth-footer">
+        Don't have an account?
+        <a href="{{ request.url_for('register_get') }}">Create one free →</a>
+      </div>
+
+      <div class="security-note">
+        🔐 Secured with bcrypt · Session-signed cookies
+      </div>
+    </div>
   </div>
-
 </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+<script>
+  function togglePw() {
+    const input = document.getElementById('password');
+    const btn   = document.getElementById('eyeBtn');
+    const hide  = input.type === 'password';
+    input.type      = hide ? 'text'     : 'password';
+    btn.textContent = hide ? '🙈' : '👁';
+  }
+</script>
 {% endblock %}

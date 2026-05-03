@@ -1,0 +1,505 @@
+{% extends "base.html" %}
+{% block title %}SHAP Explainability{% endblock %}
+
+{% block head %}
+<style>
+  .shap-page { min-height: 100vh; padding-top: 88px; padding-bottom: 5rem; }
+
+  /* ── Page header ──────────────────────────────────────────── */
+  .shap-header { padding: 2.5rem 0 2rem; }
+  .shap-breadcrumb {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--text-muted); margin-bottom: 1rem;
+  }
+  .shap-breadcrumb a { color: var(--accent-cyan); }
+  .shap-breadcrumb span { color: var(--text-muted); }
+
+  /* ── Verdict banner ───────────────────────────────────────── */
+  .verdict-strip {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 1.5rem 2rem; border-radius: var(--radius-md);
+    border: 1px solid; margin-bottom: 2rem; position: relative; overflow: hidden;
+  }
+  .verdict-strip.ai    { border-color: rgba(255,77,109,0.35); background: rgba(255,77,109,0.07); }
+  .verdict-strip.human { border-color: rgba(0,255,157,0.35);  background: rgba(0,255,157,0.06);  }
+  .verdict-strip::before {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,77,109,0.12), transparent 65%);
+    pointer-events: none;
+  }
+  .verdict-strip.human::before { background: radial-gradient(circle, rgba(0,255,157,0.1), transparent 65%); }
+  .verdict-left  { display: flex; align-items: center; gap: 1rem; }
+  .verdict-emoji { font-size: 2rem; }
+  .verdict-label { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+  .verdict-strip.ai    .verdict-label { color: var(--accent-red); }
+  .verdict-strip.human .verdict-label { color: var(--accent-green); }
+  .verdict-file  { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem; font-family: var(--font-mono); }
+  .verdict-right { text-align: right; }
+  .verdict-conf-num { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 700; line-height: 1; }
+  .verdict-strip.ai    .verdict-conf-num { color: var(--accent-red); }
+  .verdict-strip.human .verdict-conf-num { color: var(--accent-green); }
+  .verdict-conf-lbl { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Confidence meter */
+  .conf-meter { grid-column: 1/-1; margin-top: 0.5rem; }
+  .conf-meter-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .conf-meter-fill  { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .ai    .conf-meter-fill { background: linear-gradient(90deg, var(--accent-amber), var(--accent-red)); }
+  .human .conf-meter-fill { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); }
+  .conf-meter-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  .shap-layout { display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start; }
+
+  /* ── Panel ────────────────────────────────────────────────── */
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; }
+  .panel-hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.4rem; border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+  }
+  .panel-title {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .panel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-cyan); animation: pulse 2s ease-in-out infinite; }
+  .panel-body { padding: 1.4rem; }
+
+  /* ── SHAP waterfall bars ──────────────────────────────────── */
+  .shap-legend { display: flex; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.75rem; color: var(--text-muted); }
+  .shap-legend-item { display: flex; align-items: center; gap: 6px; }
+  .leg-swatch { width: 20px; height: 7px; border-radius: 2px; }
+
+  .shap-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+  .shap-row  { display: grid; grid-template-columns: 200px 1fr 70px; align-items: center; gap: 0.75rem; }
+  .shap-feat-name { font-size: 0.82rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .shap-bar-track { height: 22px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; position: relative; }
+  .shap-bar-fill  { height: 100%; border-radius: 3px; transition: width 1s cubic-bezier(0.4,0,0.2,1); min-width: 2px; }
+  .shap-bar-fill.positive,
+  .shap-bar-fill.pos { background: linear-gradient(90deg, rgba(255,77,109,0.5), var(--accent-red)); }
+  .shap-bar-fill.negative,
+  .shap-bar-fill.neg { background: linear-gradient(90deg, rgba(0,229,255,0.4), var(--accent-cyan)); }
+  .shap-val     { font-family: var(--font-mono); font-size: 0.78rem; text-align: right; }
+  .shap-val.positive,
+  .shap-val.pos { color: var(--accent-red); }
+  .shap-val.negative,
+  .shap-val.neg { color: var(--accent-cyan); }
+
+  /* ── Category radar ───────────────────────────────────────── */
+  .radar-wrap { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0; }
+
+  /* ── Model votes ──────────────────────────────────────────── */
+  .vote-row { display: grid; grid-template-columns: 150px 1fr 65px; align-items: center; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+  .vote-row:last-child { border-bottom: none; }
+  .vote-name { font-size: 0.86rem; font-weight: 500; }
+  .vote-val  { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; text-align: right; }
+
+  /* ── Category breakdown mini-cards ───────────────────────── */
+  .cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .cat-cell { padding: 0.9rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-raised); }
+  .cat-name  { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem; font-family: var(--font-mono); }
+  .cat-val   { font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; }
+  .cat-bar-wrap { margin-top: 0.5rem; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+  .cat-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+
+  /* ── Feature table ────────────────────────────────────────── */
+  .feat-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .feat-table th { padding: 0.55rem 0.85rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; background: var(--bg-surface); border-bottom: 1px solid var(--border); text-align: left; }
+  .feat-table td { padding: 0.55rem 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.03); color: var(--text-secondary); }
+  .feat-table tr:last-child td { border-bottom: none; }
+  .feat-table tr:hover td { background: rgba(0,229,255,0.03); }
+  .cat-badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 100px; font-size: 0.68rem; font-family: var(--font-mono); }
+  .cat-linguistic  { background: rgba(0,229,255,0.1);  color: var(--accent-cyan);  border: 1px solid rgba(0,229,255,0.2);  }
+  .cat-statistical { background: rgba(0,255,157,0.1);  color: var(--accent-green); border: 1px solid rgba(0,255,157,0.2);  }
+  .cat-stylometric { background: rgba(255,183,0,0.1);  color: var(--accent-amber); border: 1px solid rgba(255,183,0,0.2);  }
+  .cat-structural  { background: rgba(255,77,109,0.1); color: var(--accent-red);   border: 1px solid rgba(255,77,109,0.2); }
+
+  /* ── Actions bar ──────────────────────────────────────────── */
+  .actions-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .actions-right { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* ── Reveal ───────────────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.revealed { opacity: 1; transform: none; }
+
+  .shap-val {
+  font-family: var(--font-mono);
+}
+
+.shap-val.positive {
+  color: var(--accent-red);
+}
+
+.shap-val.negative {
+  color: var(--accent-cyan);
+}
+
+.vote-val.high { color: var(--accent-red); }
+.vote-val.low  { color: var(--accent-green); }
+
+
+.cat-cell {
+  background: var(--bg);
+  border-color: var(--color)33;
+}
+
+.cat-val {
+  color: var(--color);
+}
+
+.cat-bar-fill {
+  background: var(--color);
+}
+
+.verdict.ai    { color: var(--accent-red); }
+.verdict.human { color: var(--accent-green); }
+
+
+  @media (max-width: 960px) { .shap-layout { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .shap-row { grid-template-columns: 130px 1fr 55px; } .cat-grid { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="shap-page">
+  <div class="container">
+
+    <!-- Breadcrumb + actions -->
+    <div class="actions-bar animate-fade-up">
+      <div>
+        <div class="shap-breadcrumb">
+          <a href="{{ request.url_for('index') }}">Home</a>
+          <span>/</span>
+          <a href="{{ request.url_for('upload') }}">Upload</a>
+          <span>/</span>
+          <span style="color:var(--text-secondary)">SHAP Explainability</span>
+        </div>
+        <h1 class="section-title" style="font-size:1.6rem;margin-bottom:0">
+          SHAP <span class="highlight">Explainability</span> Dashboard
+        </h1>
+      </div>
+      <div class="actions-right">
+        <a href="{{ request.url_for('adversarial_get') }}" class="btn btn-outline btn-sm">
+          🛡 Run Adversarial Tests
+        </a>
+        <a href="{{ request.url_for('upload') }}" class="btn btn-ghost btn-sm">← New Scan</a>
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">↓ Export</button>
+      </div>
+    </div>
+
+    <!-- Verdict strip -->
+    <div class="verdict-strip {{ 'ai' if result.verdict == 'AI-Generated' else 'human' }} animate-fade-up delay-1">
+      <div class="verdict-left">
+        <span class="verdict-emoji">{{ '⚠️' if result.verdict == 'AI-Generated' else '✅' }}</span>
+        <div>
+          <div class="verdict-label">{{ result.verdict }}</div>
+          <div class="verdict-file">📄 {{ filename }}</div>
+        </div>
+      </div>
+      <div class="verdict-right">
+        <div class="verdict-conf-num">{{ result.confidence }}%</div>
+        <div class="verdict-conf-lbl">AI Confidence</div>
+      </div>
+      <div class="conf-meter" style="width:100%">
+        <div class="conf-meter-track">
+          <div class="conf-meter-fill" id="confFill" style="width:0%"
+               data-width="{{ result.confidence }}%"></div>
+        </div>
+        <div class="conf-meter-labels">
+          <span>0% — Definitely Human</span>
+          <span>50% — Borderline</span>
+          <span>100% — Definitely AI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main layout -->
+    <div class="shap-layout">
+
+      <!-- ── LEFT: SHAP bars + full feature table ──────────── -->
+      <div>
+
+        <!-- Top-10 SHAP waterfall -->
+        <div class="panel reveal delay-2">
+          <div class="panel-hdr">
+            <div class="panel-title"><div class="panel-dot"></div>Top Feature Contributions (SHAP)</div>
+            <div class="badge badge-cyan">{{ result.features | length }} signals</div>
+          </div>
+          <div class="panel-body">
+            <div class="shap-legend">
+              <div class="shap-legend-item">
+                <div class="leg-swatch" style="background:var(--accent-red)"></div>
+                Pushes toward AI-Generated
+              </div>
+              <div class="shap-legend-item">
+                <div class="leg-swatch" style="background:var(--accent-cyan)"></div>
+                Pushes toward Human-Authored
+              </div>
+            </div>
+            <div class="shap-bars" id="shapBars">
+              {% set top_features = result.features[:10] %}
+              {% set max_abs = (top_features | map(attribute='shap_value') | map('abs') | max) if top_features else 1 %}
+              {% for feat in top_features %}
+                {% set pct = ((feat.shap_value | abs) / max_abs * 100) | round | int if max_abs else 0 %}
+                <div class="shap-row">
+                  <div class="shap-feat-name" title="{{ feat.name }}">{{ feat.name }}</div>
+                  <div class="shap-bar-track">
+                    <div class="shap-bar-fill {{ feat.direction }} shap-animated"
+                         data-width="{{ pct }}%" style="width:0%"></div>
+                  </div>
+                  <div class="shap-val {{ feat.direction }}">
+                    {{ '+' if feat.shap_value > 0 else '' }}{{ '%.3f' | format(feat.shap_value) }}
+                  </div>
+                </div>
+              {% else %}
+                <div style="color:var(--text-secondary);font-size:0.85rem;line-height:1.6">
+                  No SHAP feature contributions are available for this analysis.
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Full feature table -->
+        <div class="panel reveal delay-3">
+          <div class="panel-hdr">
+            <div class="panel-title"><div class="panel-dot"></div>All Feature Signals</div>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <input id="featSearch" type="text" placeholder="Filter features…"
+                style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.3rem 0.7rem;font-size:0.78rem;color:var(--text-primary);outline:none;width:160px;"
+                oninput="filterTable(this.value)" />
+            </div>
+          </div>
+          <div style="overflow-x:auto;max-height:420px;overflow-y:auto;">
+            <table class="feat-table" id="featTable">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Category</th>
+                  <th>Raw Value</th>
+                  <th>SHAP</th>
+                  <th>Direction</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for feat in result.features %}
+                <tr data-name="{{ feat.name | lower }}" data-cat="{{ feat.category }}">
+                  <td style="color:var(--text-primary);font-weight:500">{{ feat.name }}</td>
+                  <td><span class="cat-badge cat-{{ feat.category }}">{{ feat.category }}</span></td>
+                  <td style="font-family:var(--font-mono)">{{ feat.value }}</td>
+                  <td class="shap-val {{ 'positive' if feat.shap_value > 0 else 'negative' }}">
+  {{ '+' if feat.shap_value > 0 else '' }}{{ '%.4f' | format(feat.shap_value) }}
+</td>
+
+                  <td>
+                    {% if feat.shap_value > 0 %}
+                      <span class="badge badge-red" style="font-size:0.65rem">→ AI</span>
+                    {% else %}
+                      <span class="badge badge-cyan" style="font-size:0.65rem">→ Human</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT: sidebar panels ─────────────────────────── -->
+      <aside>
+
+        <!-- Ensemble model votes -->
+        <div class="panel reveal delay-2">
+          <div class="panel-hdr">
+            <div class="panel-title"><div class="panel-dot"></div>Ensemble Votes</div>
+          </div>
+          <div class="panel-body" style="padding-top:0.75rem">
+            {% for model_name, conf in result.model_votes.items() %}
+            <div class="vote-row">
+              <span class="vote-name">{{ model_name }}</span>
+              <div class="progress-bar">
+                <div class="progress-fill {{ 'danger' if conf > 50 else '' }} animated-bar"
+                     data-width="{{ conf }}%" style="width:0%"></div>
+              </div>
+              <span class="vote-val {{ 'high' if conf > 50 else 'low' }}">
+  {{ conf }}%
+</span>
+
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Category risk scores -->
+        <div class="panel reveal delay-3">
+          <div class="panel-hdr">
+            <div class="panel-title"><div class="panel-dot"></div>Category Risk</div>
+          </div>
+          <div class="panel-body">
+            <div class="cat-grid">
+              {% set cat_colors = {
+                'linguistic':  ('var(--accent-cyan)',  'rgba(0,229,255,0.15)'),
+                'statistical': ('var(--accent-green)', 'rgba(0,255,157,0.12)'),
+                'stylometric': ('var(--accent-amber)', 'rgba(255,183,0,0.12)'),
+                'structural':  ('var(--accent-red)',   'rgba(255,77,109,0.12)')
+              } %}
+              {% for cat, score in result.category_scores.items() %}
+                {% set color, bg = cat_colors.get(cat, ('var(--accent-cyan)', 'rgba(0,229,255,0.12)')) %}
+                <div class="cat-cell" style="--bg: {{ bg }}; --color: {{ color }};">
+  <div class="cat-name">{{ cat }}</div>
+
+  <div class="cat-val">
+    {{ (score * 100) | round | int }}%
+  </div>
+
+  <div class="cat-bar-wrap">
+    <div class="cat-bar-fill animated-bar"
+         data-width="{{ (score * 100) | round | int }}%">
+    </div>
+  </div>
+</div>
+
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar chart: category risk -->
+        <div class="panel reveal delay-4">
+          <div class="panel-hdr">
+            <div class="panel-title"><div class="panel-dot"></div>Risk Radar</div>
+          </div>
+          <div class="panel-body">
+            <div class="radar-wrap">
+              <svg id="radarSvg" viewBox="0 0 240 220" width="240" height="220"></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Base value -->
+        <div class="panel reveal delay-5" style="background:linear-gradient(135deg,rgba(0,229,255,0.04),rgba(0,255,157,0.03))">
+          <div class="panel-body" style="text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.1em">
+              SHAP Base Value
+            </div>
+            <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--accent-cyan)">
+              {{ result.base_value }}
+            </div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);margin-top:0.3rem">
+              Model's prior (balanced dataset)
+            </div>
+            <div class="divider"></div>
+            <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6">
+              SHAP values sum to:
+              <span style="font-family:var(--font-mono);color:var(--accent-cyan)">
+                {{ '+' if result.confidence/100 - result.base_value > 0 else '' }}{{ '%.3f' | format(result.confidence/100 - result.base_value) }}
+              </span>
+              from the base value, reaching
+              <span class="verdict {{ 'ai' if result.verdict == 'AI-Generated' else 'human' }}">
+  {{ (result.confidence / 100) | round(3) }}
+</span>
+
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- CTA: run adversarial suite -->
+    <div style="text-align:center;padding:1.5rem 0 2rem;" class="reveal">
+      <div style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1rem">
+        Want to know if this result survives evasion attacks?
+      </div>
+      <a href="{{ request.url_for('adversarial_get') }}" class="btn btn-primary btn-lg">
+        🛡 Run Adversarial Test Suite →
+      </a>
+    </div>
+
+  </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+const RESULT = JSON.parse('{{ result_json | tojson | safe }}');
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Animate confidence meter ─────────────────────────────
+  setTimeout(() => {
+    const fill = document.getElementById('confFill');
+    if (fill) fill.style.width = fill.dataset.width;
+  }, 300);
+
+  // ── Animate SHAP bars ────────────────────────────────────
+  setTimeout(() => {
+    document.querySelectorAll('.shap-animated, .animated-bar, .cat-bar-fill').forEach(el => {
+      el.style.width = el.dataset.width;
+    });
+  }, 400);
+
+  // ── Radar chart ──────────────────────────────────────────
+  const svg = document.getElementById('radarSvg');
+  const categories = Object.entries(RESULT.category_scores || {});
+  if (svg && categories.length) {
+    const cx = 120, cy = 110, R = 78, n = categories.length;
+    const step = (Math.PI * 2) / n;
+    const start = -Math.PI / 2;
+    const clampScore = value => Math.max(0, Math.min(1, Number(value) || 0));
+    const polar = (i, r) => [
+      cx + r * Math.cos(start + i * step),
+      cy + r * Math.sin(start + i * step)
+    ];
+    let svgHTML = '';
+    // Grid rings
+    [0.25, 0.5, 0.75, 1.0].forEach(t => {
+      const pts = categories.map((_, i) => polar(i, R * t).join(',')).join(' ');
+      svgHTML += `<polygon points="${pts}" fill="none" stroke="rgba(0,229,255,0.07)" stroke-width="1"/>`;
+    });
+    // Axes
+    categories.forEach((_, i) => {
+      const [x, y] = polar(i, R);
+      svgHTML += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>`;
+    });
+    // Data polygon
+    const dataPts = categories.map(([, score], i) => polar(i, R * clampScore(score)));
+    svgHTML += `<polygon points="${dataPts.map(p => p.join(',')).join(' ')}"
+      fill="rgba(255,77,109,0.15)" stroke="var(--accent-red)" stroke-width="2"/>`;
+    // Dots + labels
+    dataPts.forEach(([x, y], i) => {
+      const score = clampScore(categories[i][1]);
+      const [lx, ly] = polar(i, R + 18);
+      const label = categories[i][0].charAt(0).toUpperCase() + categories[i][0].slice(1);
+      const pct = Math.round(score * 100);
+      svgHTML += `<circle cx="${x}" cy="${y}" r="4" fill="var(--accent-red)" opacity="0.9"/>`;
+      svgHTML += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle"
+        font-size="10" font-family="Space Mono, monospace" fill="rgba(122,143,166,0.9)">${label}</text>`;
+      const [sx, sy] = polar(i, Math.max(12, R * score - 12));
+      svgHTML += `<text x="${sx}" y="${sy}" text-anchor="middle" dominant-baseline="middle"
+        font-size="9" font-family="Space Mono, monospace" fill="var(--accent-red)">${pct}%</text>`;
+    });
+    svg.innerHTML = svgHTML;
+  }
+
+  // ── Feature table filter ──────────────────────────────────
+  window.filterTable = (q) => {
+    const lq = q.toLowerCase();
+    document.querySelectorAll('#featTable tbody tr').forEach(row => {
+      const name = row.dataset.name || '';
+      const cat  = row.dataset.cat  || '';
+      row.style.display = (name.includes(lq) || cat.includes(lq)) ? '' : 'none';
+    });
+  };
+
+});
+</script>
+{% endblock %}
