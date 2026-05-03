@@ -1,0 +1,414 @@
+{% extends "base.html" %}
+{% block title %}Adversarial Test Suite{% endblock %}
+
+{% block head %}
+<style>
+  .adv-page { min-height: 100vh; padding-top: 88px; padding-bottom: 5rem; }
+
+  /* ── Page header ──────────────────────────────────────────── */
+  .adv-breadcrumb {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--text-muted); margin-bottom: 1rem;
+  }
+  .adv-breadcrumb a { color: var(--accent-cyan); }
+
+  /* ── Overall robustness card ──────────────────────────────── */
+  .robustness-banner {
+    display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem;
+  }
+  .rob-cell { background: var(--bg-card); padding: 1.4rem 1.8rem; }
+  .rob-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+  .rob-value { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; line-height: 1; }
+  .rob-sub   { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.25rem; }
+  .rob-status-cell {
+    background: var(--bg-card); padding: 1.4rem 2rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem;
+  }
+  .status-badge-big {
+    padding: 0.4rem 1.1rem; border-radius: 100px;
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .status-passed  { background: rgba(0,255,157,0.12); color: var(--accent-green); border: 1px solid rgba(0,255,157,0.3); }
+  .status-warning { background: rgba(255,183,0,0.12); color: var(--accent-amber); border: 1px solid rgba(255,183,0,0.3); }
+  .status-failed  { background: rgba(255,77,109,0.12); color: var(--accent-red);   border: 1px solid rgba(255,77,109,0.3); }
+
+  /* ── Summary pills ────────────────────────────────────────── */
+  .summary-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .sum-pill {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.55rem 1.1rem; border-radius: var(--radius-sm);
+    font-size: 0.88rem; font-weight: 600; border: 1px solid;
+  }
+  .sum-pill.passed  { background: rgba(0,255,157,0.08); color: var(--accent-green); border-color: rgba(0,255,157,0.25); }
+  .sum-pill.warning { background: rgba(255,183,0,0.08); color: var(--accent-amber); border-color: rgba(255,183,0,0.25); }
+  .sum-pill.failed  { background: rgba(255,77,109,0.08); color: var(--accent-red);  border-color: rgba(255,77,109,0.25); }
+  .pill-count { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; }
+
+  /* ── Attack cards ─────────────────────────────────────────── */
+  .attack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+  .attack-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-md); overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .attack-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .attack-card.status-passed-card  { border-top: 3px solid var(--accent-green); }
+  .attack-card.status-warning-card { border-top: 3px solid var(--accent-amber); }
+  .attack-card.status-failed-card  { border-top: 3px solid var(--accent-red);   }
+
+  .attack-card-hdr {
+    padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  }
+  .attack-name { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em; }
+  .attack-type-tag {
+    font-family: var(--font-mono); font-size: 0.68rem; padding: 0.15rem 0.55rem;
+    border-radius: 100px; background: rgba(0,229,255,0.08);
+    color: var(--accent-cyan); border: 1px solid rgba(0,229,255,0.2);
+    white-space: nowrap;
+  }
+
+  .attack-card-body { padding: 1.1rem 1.25rem; }
+  .attack-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+
+  /* Confidence comparison */
+  .conf-compare {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .conf-box { padding: 0.7rem; background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-sm); text-align: center; }
+  .conf-box-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; font-family: var(--font-mono); margin-bottom: 0.2rem; }
+  .conf-box-val   { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; }
+  .conf-arrow     { font-size: 1.2rem; color: var(--text-muted); text-align: center; }
+  .conf-drop      { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+  /* Robustness mini-bar */
+  .rob-mini-bar-wrap { margin-bottom: 0.75rem; }
+  .rob-mini-label { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.72rem; margin-bottom: 0.3rem; }
+  .rob-mini-label-text { color: var(--text-muted); }
+  .rob-mini-label-val  { font-weight: 700; }
+
+  /* Changes list */
+  .changes-list { display: flex; flex-direction: column; gap: 0.3rem; }
+  .change-item  { font-family: var(--font-mono); font-size: 0.73rem; color: var(--text-secondary); background: var(--bg-raised); padding: 0.25rem 0.6rem; border-radius: 3px; border-left: 2px solid var(--accent-cyan); }
+
+  /* Collapsible technique details */
+  .technique-toggle {
+    width: 100%; background: none; border: none; color: var(--text-muted);
+    font-size: 0.75rem; font-family: var(--font-mono); text-align: left;
+    cursor: pointer; padding: 0.5rem 0; display: flex; align-items: center; gap: 6px;
+    transition: color var(--transition); margin-top: 0.5rem;
+  }
+  .technique-toggle:hover { color: var(--accent-cyan); }
+  .technique-detail { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; padding: 0.5rem 0; display: none; }
+  .technique-detail.open { display: block; }
+
+  /* ── Recommendations ──────────────────────────────────────── */
+  .rec-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .rec-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    padding: 0.85rem 1rem; background: var(--bg-raised);
+    border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6;
+  }
+  .rec-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Actions ──────────────────────────────────────────────── */
+  .actions-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .actions-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* ── Panel ────────────────────────────────────────────────── */
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; }
+  .panel-hdr { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.4rem; border-bottom: 1px solid var(--border); background: var(--bg-surface); }
+  .panel-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; }
+  .panel-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-cyan); animation: pulse 2s ease-in-out infinite; }
+  .panel-body { padding: 1.4rem; }
+
+  /* ── Upload form (no-paper state) ─────────────────────────── */
+  .upload-prompt {
+    text-align: center; padding: 4rem 2rem; background: var(--bg-card);
+    border: 2px dashed var(--border); border-radius: var(--radius-lg); margin-bottom: 2rem;
+  }
+  .upload-prompt h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .upload-prompt p  { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  /* ── Reveal ───────────────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.revealed { opacity: 1; transform: none; }
+
+  .verdict-ai {
+  color: var(--accent-red);
+}
+
+.verdict-human {
+  color: var(--accent-green);
+}
+.rob-value.green { color: var(--accent-green); }
+.rob-value.amber { color: var(--accent-amber); }
+.rob-value.red   { color: var(--accent-red); }
+
+.conf-high { color: var(--accent-red); }
+.conf-low  { color: var(--accent-green); }
+
+.rob-mini-label-val.green { color: var(--accent-green); }
+.rob-mini-label-val.amber { color: var(--accent-amber); }
+.rob-mini-label-val.red   { color: var(--accent-red); }
+
+
+
+  @media (max-width: 800px) { .attack-grid { grid-template-columns: 1fr; } .robustness-banner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .robustness-banner { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="adv-page">
+  <div class="container">
+
+    <!-- Breadcrumb + actions -->
+    <div class="actions-bar animate-fade-up">
+      <div>
+        <div class="adv-breadcrumb">
+          <a href="{{ request.url_for('index') }}">Home</a>
+          <span>/</span>
+          <a href="{{ request.url_for('upload') }}">Upload</a>
+          <span>/</span>
+          <span style="color:var(--text-secondary)">Adversarial Test Suite</span>
+        </div>
+        <h1 class="section-title" style="font-size:1.6rem;margin-bottom:0">
+          Adversarial <span class="highlight">Test Suite</span>
+        </h1>
+      </div>
+      <div class="actions-links">
+        <a href="{{ request.url_for('shap_get') }}" class="btn btn-outline btn-sm">💡 SHAP Dashboard</a>
+        <a href="{{ request.url_for('upload') }}" class="btn btn-ghost btn-sm">← New Scan</a>
+      </div>
+    </div>
+
+    {% if not report %}
+    <!-- ── No paper uploaded yet: show upload prompt ───────── -->
+    <div class="upload-prompt animate-fade-up">
+      <div style="font-size:3rem;margin-bottom:1rem">🛡️</div>
+      <h2>Upload a Paper First</h2>
+      <p>Run the detection analysis before launching the adversarial test suite.<br>
+         The suite will then attack the result to test robustness.</p>
+      <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-lg">Upload Paper →</a>
+    </div>
+
+    {% else %}
+    <!-- ── Report present ───────────────────────────────────── -->
+
+    <!-- Overall robustness banner -->
+    {% set overall_status = report.overall_status.value if report.overall_status.value is defined else report.overall_status %}
+    <div class="robustness-banner animate-fade-up delay-1">
+      <div class="rob-cell">
+        <div class="rob-label">Overall Robustness</div>
+       <div class="rob-value 
+  {{ 'green' if report.overall_robustness >= 80 
+     else 'amber' if report.overall_robustness >= 60 
+     else 'red' }}">
+  {{ report.overall_robustness }}%
+</div>
+
+
+
+        <div class="rob-sub">Across {{ report.results | length }} attack vectors</div>
+      </div>
+      <div class="rob-cell">
+        <div class="rob-label">Original Verdict</div>
+        <div class="rob-value verdict-{{ 'ai' if report.original_verdict == 'AI-Generated' else 'human' }}">
+  {{ report.original_verdict }}
+</div>
+
+        <div class="rob-sub">Confidence: {{ report.original_confidence }}%</div>
+      </div>
+      <div class="rob-cell">
+        <div class="rob-label">Paper Tested</div>
+        <div class="rob-value" style="font-size:1rem;font-weight:600;word-break:break-all">
+          {{ report.filename }}
+        </div>
+        <div class="rob-sub">{{ report.results | length }} attacks run</div>
+      </div>
+      <div class="rob-status-cell">
+        <span class="status-badge-big status-{{ overall_status }}">
+          {% if overall_status == 'passed' %}✓ Robust
+          {% elif overall_status == 'warning' %}⚠ At Risk
+          {% else %}✕ Vulnerable{% endif %}
+        </span>
+        <div style="font-size:0.72rem;color:var(--text-muted);font-family:var(--font-mono);margin-top:0.25rem">
+          overall status
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary pills -->
+    <div class="summary-pills animate-fade-up delay-2">
+      <div class="sum-pill passed">
+        <span class="pill-count">{{ report.summary.passed }}</span>
+        ✓ Attacks Passed
+      </div>
+      <div class="sum-pill warning">
+        <span class="pill-count">{{ report.summary.warning }}</span>
+        ⚠ Confidence Dropped
+      </div>
+      <div class="sum-pill failed">
+        <span class="pill-count">{{ report.summary.failed }}</span>
+        ✕ Verdict Flipped
+      </div>
+    </div>
+
+    <!-- Attack result cards -->
+    <div class="attack-grid">
+      {% for r in report.results %}
+      {% set attack_status = r.status.value if r.status.value is defined else r.status %}
+      <div class="attack-card status-{{ attack_status }}-card reveal delay-{{ loop.index % 4 + 1 }}">
+        <div class="attack-card-hdr">
+          <div>
+            <div class="attack-name">{{ r.attack_name }}</div>
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center;flex-shrink:0;">
+            <span class="attack-type-tag">{{ r.attack_type }}</span>
+            <span class="status-badge-big status-{{ attack_status }}" style="padding:0.2rem 0.65rem;font-size:0.7rem;">
+              {% if attack_status == 'passed' %}✓ Passed
+              {% elif attack_status == 'warning' %}⚠ Warning
+              {% else %}✕ Failed{% endif %}
+            </span>
+          </div>
+        </div>
+        <div class="attack-card-body">
+
+          <!-- Description -->
+          <p class="attack-desc">{{ r.description }}</p>
+
+          <!-- Before / After confidence -->
+          <div class="conf-compare">
+            <div class="conf-box">
+              <div class="conf-box-label">Before</div>
+              <div class="conf-box-val" style="color:var(--accent-cyan)">{{ r.original_conf }}%</div>
+            </div>
+            <div class="conf-arrow">→</div>
+            <div class="conf-box">
+              <div class="conf-box-label">After Attack</div>
+             <div class="conf-box-val conf-{{ 'high' if r.attacked_conf > 50 else 'low' }}">
+  {{ r.attacked_conf }}%
+</div>
+
+              <div class="conf-drop">
+                Δ {{ '-' if r.confidence_drop > 0 else '+' }}{{ r.confidence_drop | abs }}pp
+              </div>
+            </div>
+          </div>
+
+          <!-- Robustness mini bar -->
+          <div class="rob-mini-bar-wrap">
+            <div class="rob-mini-label">
+              <span class="rob-mini-label-text">Robustness Score</span>
+              <span class="rob-mini-label-val 
+  {{ 'green' if r.robustness_score >= 80 
+     else 'amber' if r.robustness_score >= 60 
+     else 'red' }}">
+  {{ r.robustness_score }}%
+</span>
+
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill {% if r.robustness_score < 60 %}danger{% endif %} animated-bar"
+                   data-width="{{ r.robustness_score }}%" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Verdict flip alert -->
+          {% if r.verdict_flipped %}
+          <div style="background:rgba(255,77,109,0.1);border:1px solid rgba(255,77,109,0.3);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;font-size:0.78rem;color:var(--accent-red);margin-bottom:0.75rem;">
+            ⚠ Verdict flipped to Human-Authored after this attack
+          </div>
+          {% endif %}
+
+          <!-- Example changes -->
+          {% if r.highlighted_changes %}
+          <div style="margin-bottom:0.6rem;font-size:0.72rem;color:var(--text-muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em">
+            Example Changes
+          </div>
+          <div class="changes-list">
+            {% for change in r.highlighted_changes %}
+            <div class="change-item">{{ change }}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Technique details toggle -->
+          <button class="technique-toggle" type="button" onclick="toggleTech(this)">
+            ▸ Technical Details
+          </button>
+          <div class="technique-detail">{{ r.technique_details }}</div>
+
+        </div>
+      </div>
+      {% else %}
+      <div class="panel reveal" style="grid-column:1/-1">
+        <div class="panel-body" style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6">
+          No adversarial attack results are available for this scan.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Recommendations -->
+    {% if report.recommendations %}
+    <div class="panel reveal">
+      <div class="panel-hdr">
+        <div class="panel-title"><div class="panel-dot"></div>Recommendations</div>
+      </div>
+      <div class="panel-body">
+        <div class="rec-list">
+          {% for rec in report.recommendations %}
+          <div class="rec-item">
+            <span class="rec-icon">
+              {% if 'strong' in rec.lower() or 'robust' in rec.lower() %}✅
+              {% elif 'retrain' in rec.lower() %}🔁
+              {% elif 'semantic' in rec.lower() %}🧠
+              {% else %}⚠{% endif %}
+            </span>
+            {{ rec }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:1rem 0;" class="reveal">
+      <a href="{{ request.url_for('upload') }}" class="btn btn-primary btn-lg">Test Another Paper →</a>
+    </div>
+
+    {% endif %}
+  </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Animate all progress bars
+  setTimeout(() => {
+    document.querySelectorAll('.animated-bar').forEach(el => {
+      el.style.transition = 'width 1s cubic-bezier(0.4,0,0.2,1)';
+      el.style.width = el.dataset.width;
+    });
+  }, 300);
+});
+
+function toggleTech(btn) {
+  const detail = btn.nextElementSibling;
+  if (!detail) return;
+  const open   = detail.classList.toggle('open');
+  btn.textContent = (open ? '▾' : '▸') + ' Technical Details';
+}
+</script>
+{% endblock %}
+
